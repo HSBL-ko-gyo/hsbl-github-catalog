@@ -5,7 +5,7 @@
 - 本番URL: <https://github.hsbl-ko-gyo.com/>
 - GitHubプロフィール: <https://github.com/HSBL-ko-gyo>
 - 構成: Astro + TypeScript、静的出力のみ
-- 公開: Cloudflare PagesのGit連携で `main` をデプロイ
+- 公開: GitHub Actionsで `main` をビルドし、GitHub Pagesへデプロイ
 
 READMEの転載サイトではありません。各作品ページは「何ができるか」「いつ使うか」「入力・出力・対象環境」を公開情報から整理し、本番アプリ、Release、販売ページ、GitHubへ役割が分かるリンクを置きます。
 
@@ -43,7 +43,7 @@ npm run build
 npm run preview
 ```
 
-Cloudflare Pagesの出力ディレクトリは `dist` です。
+GitHub Pagesへアップロードする静的出力ディレクトリは `dist` です。
 
 ## 公開GitHubデータの収集
 
@@ -112,4 +112,4 @@ npm run apply:repo-seo -- --dry-run
 ./automation/install-systemd.sh --dry-run
 ```
 
-Cloudflare Pages、DNS、Google Sitesの設定は自動変更しません。公開設定は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)、Google Sites側の案内は [docs/GSITE_INTEGRATION.md](docs/GSITE_INTEGRATION.md) を参照してください。
+GitHub PagesとRoute 53の公開設定は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)、Google Sites側の案内は [docs/GSITE_INTEGRATION.md](docs/GSITE_INTEGRATION.md) を参照してください。
