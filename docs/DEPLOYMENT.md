@@ -1,6 +1,6 @@
 # GitHub Pagesへの公開
 
-このサイトはAstroの静的出力 `dist` をGitHub Actionsでビルドし、GitHub Pagesへ公開します。本番URLは <https://github.hsbl-ko-gyo.com/>、DNSはAWS Route 53の `hsbl-ko-gyo.com` Public Hosted Zoneで管理します。
+このサイトはAstroの静的出力 `dist` をGitHub Actionsでビルドし、GitHub Pagesへ公開します。本番URLは <https://github.hsbl-ko-gyo.com/> です。`hsbl-ko-gyo.com` の公開DNSはCloudflareが権威を持ち、AWS Route 53にも同名のPublic Hosted Zoneがあります。公開に使うCNAMEはCloudflareへ設定し、Route 53にも同じ値を保持します。
 
 ## 事前検証
 
@@ -32,19 +32,20 @@ gh api repos/HSBL-ko-gyo/hsbl-github-catalog/pages
 gh run list --repo HSBL-ko-gyo/hsbl-github-catalog --workflow pages.yml
 ```
 
-## Route 53
+## DNS（CloudflareとRoute 53）
 
-変更前に、`hsbl-ko-gyo.com.` と完全一致するPublic Hosted Zoneを特定し、そのHosted ZoneのNSが公開DNSの権威NSと一致することを確認します。一致しないHosted Zoneへレコードを追加しても本番DNSには反映されないため、その場合は変更せず委任状態を解決します。
+変更前に公開DNSの権威NSを確認します。現在の権威NSはCloudflareであり、Route 53の `hsbl-ko-gyo.com.` Public Hosted Zoneは公開委任先ではありません。このため、Route 53だけを変更しても本番DNSには反映されません。レジストラの委任やルートドメインは変更せず、公開用のCloudflareゾーンとRoute 53の正確なHosted Zoneに同じCNAMEを設定します。
 
-変更対象は次の1レコードだけです。
+変更対象は両方のDNSサービスで次の1レコードだけです。Cloudflareでは証明書発行を妨げないよう **DNSのみ**（プロキシ無効）にします。
 
-| 名前 | タイプ | 値 | TTL |
-| --- | --- | --- | --- |
-| `github.hsbl-ko-gyo.com.` | `CNAME` | `HSBL-ko-gyo.github.io.` | `300` |
+| DNS | 名前 | タイプ | 値 | TTL | Cloudflareプロキシ |
+| --- | --- | --- | --- | --- | --- |
+| Cloudflare | `github.hsbl-ko-gyo.com.` | `CNAME` | `HSBL-ko-gyo.github.io.` | `300` | DNSのみ |
+| Route 53 | `github.hsbl-ko-gyo.com.` | `CNAME` | `HSBL-ko-gyo.github.io.` | `300` | 対象外 |
 
 同名の既存レコードが別サービスを指す場合は上書きしません。ルートドメイン、他のサブドメイン、Hosted Zone自体は変更しません。
 
-読み取り確認には次を使います。
+公開DNSはCloudflareのダッシュボードと公開リゾルバで確認します。Route 53の読み取り確認には次を使います。
 
 ```bash
 aws route53 list-hosted-zones-by-name --dns-name hsbl-ko-gyo.com
@@ -52,6 +53,8 @@ aws route53 list-resource-record-sets \
   --hosted-zone-id <EXACT_PUBLIC_HOSTED_ZONE_ID> \
   --query "ResourceRecordSets[?Name == 'github.hsbl-ko-gyo.com.']"
 ```
+
+公開リゾルバで `github.hsbl-ko-gyo.com.` が `HSBL-ko-gyo.github.io.` を返すことを確認します。Route 53のレコードが正しくても公開リゾルバが返さない場合は、権威DNS側のCloudflareレコードを確認します。
 
 ## HTTPS
 

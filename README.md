@@ -112,4 +112,4 @@ npm run apply:repo-seo -- --dry-run
 ./automation/install-systemd.sh --dry-run
 ```
 
-GitHub PagesとRoute 53の公開設定は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)、Google Sites側の案内は [docs/GSITE_INTEGRATION.md](docs/GSITE_INTEGRATION.md) を参照してください。
+GitHub PagesとDNSの公開設定は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)、Google Sites側の案内は [docs/GSITE_INTEGRATION.md](docs/GSITE_INTEGRATION.md) を参照してください。
