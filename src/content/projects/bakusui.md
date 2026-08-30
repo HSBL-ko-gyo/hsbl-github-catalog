@@ -16,6 +16,7 @@ links:
 seoTitle: 認知シャッフル睡眠法を音声で試す「バクスイ」 | ハシビロ工業 GitHub
 seoDescription: 単語の音声をシャッフル再生し、再生・停止やインターバルを調整できる実験的Androidアプリ。GitHub Releaseから公開版を確認できます。
 searchIntents: [認知シャッフル 睡眠 音声 アプリ, 寝入り 音声 シャッフル]
+repoCreatedAt: "2025-11-10T11:44:31Z"
 repoUpdatedAt: "2025-11-10T12:07:39Z"
 repoPushedAt: "2025-11-10T12:07:35Z"
 primaryLanguage: Python

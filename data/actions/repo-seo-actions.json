@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "owner": "HSBL-ko-gyo",
-  "sourceCollectedAt": "2026-08-29T22:50:39Z",
+  "sourceCollectedAt": "2026-08-30T12:25:13.519Z",
   "actions": [
     {
       "type": "readme-exact-url-repair",

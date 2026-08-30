@@ -16,6 +16,7 @@ links:
 seoTitle: WebGL2のFPSとGPU情報を確認するブラウザベンチマーク | ハシビロ工業 GitHub
 seoDescription: インストールせずにWebGL2のGPU負荷を実行。負荷レベルを変えながらFPS、GPU名、演算回数をスマートフォンやPCで確認できます。
 searchIntents: [ブラウザ GPU ベンチマーク WebGL2, スマホ GPU 負荷 テスト]
+repoCreatedAt: "2025-05-18T20:43:14Z"
 repoUpdatedAt: "2025-05-18T21:03:39Z"
 repoPushedAt: "2025-05-18T21:03:35Z"
 primaryLanguage: HTML

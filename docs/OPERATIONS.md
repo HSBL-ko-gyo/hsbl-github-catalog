@@ -62,7 +62,7 @@ journalctl -u hsbl-github-catalog-discovery.service -n 200 --no-pager
 ## 通常の週次処理
 
 1. cleanなmainをfast-forwardで更新
-2. public・非forkのGitHub情報を固定スクリプトで収集
+2. public・非forkと明示許可forkのGitHub情報を固定スクリプトで収集
 3. Codexをworkspace-write・ネットワークなしで実行
 4. action schema、対象、SHA、件数上限を検証
 5. checkとbuild

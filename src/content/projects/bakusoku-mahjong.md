@@ -16,6 +16,7 @@ links:
 seoTitle: 一人で四人麻雀のツモ・打牌を練習する爆速麻雀 | ハシビロ工業 GitHub
 seoDescription: 一人で四人麻雀のツモと打牌をテンポよく進めるReact製Webアプリ。インストールせず、PCやスマートフォンのブラウザで練習できます。
 searchIntents: [一人 麻雀 練習 Webアプリ, 四人麻雀 ツモ 打牌 練習]
+repoCreatedAt: "2026-06-14T02:07:18Z"
 repoUpdatedAt: "2026-07-01T16:28:56Z"
 repoPushedAt: "2026-07-01T16:28:50Z"
 primaryLanguage: TypeScript

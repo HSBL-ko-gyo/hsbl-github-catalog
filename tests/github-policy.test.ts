@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { isEligibleRepository, type PublicRepository } from "../scripts/lib/github-data.js";
+import {
+  isEligibleRepository,
+  type PublicRepository,
+} from "../scripts/lib/github-data.js";
 
 const base: PublicRepository = {
   name: "demo",
@@ -9,6 +12,7 @@ const base: PublicRepository = {
   isArchived: false,
   isPrivate: false,
   isFork: false,
+  forkSourceUrl: null,
   isEmpty: false,
   createdAt: "2026-01-01T00:00:00Z",
   updatedAt: "2026-01-01T00:00:00Z",
@@ -25,11 +29,47 @@ const base: PublicRepository = {
 describe("repository eligibility", () => {
   it("accepts only public owner nonfork nonarchived nonempty repositories", () => {
     expect(isEligibleRepository(base, "HSBL-ko-gyo", new Set())).toBe(true);
-    expect(isEligibleRepository({ ...base, isPrivate: true }, "HSBL-ko-gyo", new Set())).toBe(false);
-    expect(isEligibleRepository({ ...base, isFork: true }, "HSBL-ko-gyo", new Set())).toBe(false);
-    expect(isEligibleRepository({ ...base, isArchived: true }, "HSBL-ko-gyo", new Set())).toBe(false);
-    expect(isEligibleRepository({ ...base, isEmpty: true }, "HSBL-ko-gyo", new Set())).toBe(false);
+    expect(
+      isEligibleRepository(
+        { ...base, isPrivate: true },
+        "HSBL-ko-gyo",
+        new Set(),
+      ),
+    ).toBe(false);
+    expect(
+      isEligibleRepository({ ...base, isFork: true }, "HSBL-ko-gyo", new Set()),
+    ).toBe(false);
+    expect(
+      isEligibleRepository(
+        {
+          ...base,
+          name: "allowed",
+          url: "https://github.com/HSBL-ko-gyo/allowed",
+          isFork: true,
+          forkSourceUrl: "https://github.com/upstream/source",
+        },
+        "HSBL-ko-gyo",
+        new Set(),
+        new Set(["allowed"]),
+      ),
+    ).toBe(true);
+    expect(
+      isEligibleRepository(
+        { ...base, isArchived: true },
+        "HSBL-ko-gyo",
+        new Set(),
+      ),
+    ).toBe(false);
+    expect(
+      isEligibleRepository(
+        { ...base, isEmpty: true },
+        "HSBL-ko-gyo",
+        new Set(),
+      ),
+    ).toBe(false);
     expect(isEligibleRepository(base, "someone-else", new Set())).toBe(false);
-    expect(isEligibleRepository(base, "HSBL-ko-gyo", new Set(["demo"]))).toBe(false);
+    expect(isEligibleRepository(base, "HSBL-ko-gyo", new Set(["demo"]))).toBe(
+      false,
+    );
   });
 });

@@ -16,6 +16,7 @@ links:
 seoTitle: Google Drive PDFをCtrl＋ホイールで拡大する拡張機能 | ハシビロ工業 GitHub
 seoDescription: Google DriveのPDFプレビューでCtrl＋マウスホイールを拡大・縮小へ割り当てる、Chrome / Edge向けManifest V3拡張機能です。
 searchIntents: [Google Drive PDF Ctrl ホイール 拡大, Drive PDF ズーム 拡張機能]
+repoCreatedAt: "2026-08-20T04:27:01Z"
 repoUpdatedAt: "2026-08-20T04:27:15Z"
 repoPushedAt: "2026-08-20T04:27:21Z"
 primaryLanguage: JavaScript

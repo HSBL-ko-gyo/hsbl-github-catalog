@@ -16,6 +16,7 @@ links:
 seoTitle: USB Type-CのCC抵抗を確認・代替するccHacker | ハシビロ工業 GitHub
 seoDescription: HSBL-100 ccHackerは、USB Type-CデバイスのCCプルダウン抵抗を確認し、不足時に代替抵抗を中継するハードウェアです。
 searchIntents: [USB Type-C CC抵抗 確認, Type-C 充電 CC プルダウン]
+repoCreatedAt: "2023-05-10T12:05:01Z"
 repoUpdatedAt: "2023-08-07T12:09:31Z"
 repoPushedAt: "2023-12-18T05:26:41Z"
 primaryLanguage: null

@@ -27,8 +27,9 @@
    - 検索者が用途を理解できない
    - READMEのコピーに近すぎる
    - 入力、出力、対象環境、使い道の重要情報が欠けている
-   既存ページ本文の大きな修正は最大3件まで。
+     既存ページ本文の大きな修正は最大3件まで。
 5. 新規 public・非fork・非empty候補を探す。
+   - forkは自動追加しない。`config/catalog-policy.yml` で人間が明示許可したforkだけ、fork表記と派生元リンクを保って既存ページを同期する。
 6. 次をすべて満たす明確な作品だけ、最大8件の公開ページを `draft: false` で作る。
    - ownerが `HSBL-ko-gyo`
    - 自作または自分の独自派生物である
@@ -88,7 +89,7 @@ README管理ブロックは、既存READMEを置き換えるものではあり�
 
 `reports/discovery/YYYY-MM-DD.md` と `reports/discovery/latest.md` を更新します。内容:
 
-- 収集したpublic・非fork件数
+- 収集したpublic件数（通常リポジトリ / 明示許可forkを分ける）
 - 新規公開作品
 - 既存ページの事実更新
 - 既存本文の改善

@@ -16,6 +16,7 @@ links:
 seoTitle: Markdownの表をPNG画像へ変換する MD Table Shot | ハシビロ工業 GitHub
 seoDescription: Markdownの表をnoteやブログへ貼れるPNG画像に変換。配置、装飾、背景、解像度を調整でき、入力データはブラウザ内で処理します。
 searchIntents: [Markdown 表 PNG 変換, note 表 画像化]
+repoCreatedAt: "2026-08-07T18:28:13Z"
 repoUpdatedAt: "2026-08-07T18:39:30Z"
 repoPushedAt: "2026-08-07T18:39:25Z"
 primaryLanguage: TypeScript

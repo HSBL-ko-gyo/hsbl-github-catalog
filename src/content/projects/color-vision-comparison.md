@@ -16,7 +16,9 @@ links:
   article: https://hsbl-industrial-zakki.blogspot.com/2023/04/1.html
 seoTitle: 色覚タイプごとの画像の見え方を簡易比較 | ハシビロ工業 GitHub
 seoDescription: 手元の画像を読み込み、オリジナルと複数の色覚タイプの簡易シミュレーションを並べて表示。配色を見直すきっかけに使えます。
-searchIntents: [色覚 見え方 シミュレーション 画像, 色覚異常 デザイン 確認 ツール]
+searchIntents:
+  [色覚 見え方 シミュレーション 画像, 色覚異常 デザイン 確認 ツール]
+repoCreatedAt: "2023-04-24T12:34:58Z"
 repoUpdatedAt: "2023-04-24T12:43:41Z"
 repoPushedAt: "2023-04-24T13:42:44Z"
 primaryLanguage: null

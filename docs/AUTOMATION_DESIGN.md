@@ -4,7 +4,7 @@
 
 週次処理は人間の承認待ちにしません。ただし、AIへ認証付きネットワーク操作を自由に渡すのではなく、次の三段に分けます。
 
-1. 決め打ち収集スクリプトが public・非forkのGitHub情報だけを取得する。
+1. 決め打ち収集スクリプトが public・非forkと、ポリシーで明示許可したforkのGitHub情報だけを取得する。
 2. Codexがローカル収集結果を読み、カタログ更新とSEO変更計画を作る。
 3. 決め打ちスクリプトが対象・変更種類・件数・SHAを検証して、他リポジトリ更新とカタログ公開を行う。
 
@@ -74,11 +74,12 @@ HSBL_CATALOG_DRY_RUN=1 HSBL_CATALOG_SKIP_COLLECT=1 ./automation/run-weekly.sh
 - owner: `HSBL-ko-gyo`
 - visibility: public
 - fork: false
+- fork例外: `config/catalog-policy.yml` の `publication.allowedForks` に完全一致するものだけ
 
 取得しないもの:
 
 - private
-- fork
+- 許可リストにないfork
 - GitHub tokenやAPIヘッダー
 - Issue本文、PR本文、コミット差分の全量
 - 不要なコード全文
@@ -91,7 +92,7 @@ READMEは候補判定と安全な導入ブロック生成に必要な範囲だ�
 
 - public
 - owner一致
-- 非fork、非empty
+- 非fork・非empty、または人間が明示許可した非emptyの独自派生fork
 - READMEや公開ファイルから用途が説明できる
 - 自作または明確な独自派生物
 - 現行版または単独で意味がある
@@ -115,6 +116,7 @@ README管理ブロック:
 
 ```md
 <!-- hsbl-catalog:seo-start -->
+
 ここだけ自動管理
 <!-- hsbl-catalog:seo-end -->
 ```

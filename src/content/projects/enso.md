@@ -15,6 +15,7 @@ links:
 seoTitle: ブラウザで焚き火を眺めるWeb作品「炎添 enso」 | ハシビロ工業 GitHub
 seoDescription: 炎添 ensoは、ブラウザ上で焚き火を眺めるための静的Web作品です。ソースとCloudflare Pages向けの公開構成を確認できます。
 searchIntents: [Web 焚き火 ブラウザ, ブラウザ 焚き火 アプリ]
+repoCreatedAt: "2026-06-22T10:51:51Z"
 repoUpdatedAt: "2026-06-30T15:58:31Z"
 repoPushedAt: "2026-06-30T15:58:28Z"
 primaryLanguage: HTML

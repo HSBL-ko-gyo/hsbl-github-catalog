@@ -17,6 +17,10 @@ publication:
   pushDirectlyToMain: true
   includePrivateRepositories: false
   includeForks: false
+  allowedForks:
+    - repo: easyeda2kicad-digimou
+      source: https://github.com/uPesy/easyeda2kicad.py
+      reason: 販売元メタデータ対応を加えた公開派生版として、forkであることを明示して掲載
   includeEmptyRepositories: false
   includeArchivedRepositories: false
   deleteMissingProjectsOnApiFailure: false

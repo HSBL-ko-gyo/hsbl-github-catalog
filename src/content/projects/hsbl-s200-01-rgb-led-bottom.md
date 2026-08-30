@@ -16,6 +16,7 @@ links:
 seoTitle: M5Stack CoreS3へRGB LEDを追加するHSBL-S200-01 | ハシビロ工業 GitHub
 seoDescription: M5Stack CoreS3 / SEの底面へ4個のRGB LEDを追加するハードウェア。組み立て、回路図、光拡散部3Dデータ、Arduinoサンプルを公開しています。
 searchIntents: [M5Stack CoreS3 RGB LED 底面, CoreS3 NeoPixel 拡張]
+repoCreatedAt: "2024-07-20T12:58:46Z"
 repoUpdatedAt: "2025-05-05T15:18:46Z"
 repoPushedAt: "2024-10-06T09:24:48Z"
 primaryLanguage: null

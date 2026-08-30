@@ -11,6 +11,7 @@ const { data } = project;
 const searchText = [data.title, data.summary, data.category, data.primaryLanguage, ...data.tags, ...data.searchIntents]
   .join(" ")
   .toLocaleLowerCase("ja");
+const publishedDate = new Intl.DateTimeFormat("ja-JP", { dateStyle: "medium", timeZone: "Asia/Tokyo" }).format(new Date(data.repoCreatedAt));
 ---
 
 <article
@@ -22,13 +23,14 @@ const searchText = [data.title, data.summary, data.category, data.primaryLanguag
 >
   <div class="card-topline">
     <span class="category-label">{CATEGORIES[data.category].label}</span>
+    {data.isFork && <span class="fork-label">FORK版</span>}
     <span class:list={["status-label", `status-${data.status}`]}>{STATUS_LABELS[data.status]}</span>
   </div>
   <h2><a href={`/projects/${data.slug}/`}>{data.title}</a></h2>
   <p>{data.summary}</p>
   <div class="card-meta">
     <span>主な言語: {data.primaryLanguage ?? "未判定"}</span>
-    {data.createdYear && <span>{data.createdYear}年〜</span>}
+    <span>GitHub公開: {publishedDate}</span>
   </div>
   <div class="card-actions">
     <a class="button button-primary" href={`/projects/${data.slug}/`}>詳しく見る</a>

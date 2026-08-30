@@ -15,6 +15,7 @@ links:
 seoTitle: KiCad STEP基板の完成厚を1.6mmなどへ補正 | ハシビロ工業 GitHub
 seoDescription: KiCad v7以降から出力したSTEP基板の下面を固定し、1.600mmなど指定した完成厚へ補正。部品のめり込み警告と浮き量の目安を表示します。
 searchIntents: [KiCad STEP 基板 厚さ 1.6mm, KiCad STEP 部品 めり込み 補正]
+repoCreatedAt: "2025-10-10T08:00:48Z"
 repoUpdatedAt: "2025-10-10T10:35:19Z"
 repoPushedAt: "2025-10-10T10:35:16Z"
 primaryLanguage: Python

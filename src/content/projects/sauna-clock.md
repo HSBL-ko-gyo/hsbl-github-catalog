@@ -16,6 +16,7 @@ links:
 seoTitle: 周回時間を変更できるサウナ12分計風Web時計 | ハシビロ工業 GitHub
 seoDescription: サウナで見かける12分計風のアナログ時計をブラウザに表示。入力した分数に合わせて分針の一周時間を変更できます。
 searchIntents: [サウナ 12分計 Web, 周回時間 変更 アナログ時計]
+repoCreatedAt: "2023-06-18T08:59:31Z"
 repoUpdatedAt: "2023-08-23T12:25:40Z"
 repoPushedAt: "2023-07-05T14:06:17Z"
 primaryLanguage: null

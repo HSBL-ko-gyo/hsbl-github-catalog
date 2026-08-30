@@ -16,6 +16,7 @@ links:
 seoTitle: アニメーションGIFをフレームごとのPNGへ分解 | ハシビロ工業 GitHub
 seoDescription: GIFアニメーションをブラウザ内で解析し、各フレームをPNGで表示。必要な画像だけ、または全フレームをZIPでまとめて保存できます。
 searchIntents: [GIF フレーム 分解 PNG, アニメーションGIF 連番画像 変換]
+repoCreatedAt: "2025-03-21T11:10:34Z"
 repoUpdatedAt: "2025-03-22T01:13:04Z"
 repoPushedAt: "2025-03-21T11:24:50Z"
 primaryLanguage: HTML

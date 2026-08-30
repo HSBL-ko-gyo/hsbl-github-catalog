@@ -32,7 +32,7 @@ Google Sites の iframe 埋め込みを検索用本体にはしません。Googl
 
 次の通常判断は委任済みです。確認質問を挟まず進めてください。
 
-- 明確な public・非fork・非empty 自作品をカタログへ公開する。
+- 明確な public・非fork・非empty 自作品をカタログへ公開する。人間がポリシーで明示許可したforkだけは、派生元と独自変更を明記して掲載できる。
 - 既存ページの事実、リンク、検索説明を改善する。
 - 検証成功後、カタログリポジトリの `main` へ反映する。
 - public・非fork・非archived の自作リポジトリについて、Description、Topics、Homepageを改善する。
@@ -141,7 +141,7 @@ Astro Content Collections または同等の型付き方式で、作品ごとに
 - fork は除外する
 - private リポジトリは取得対象にせず、名前や件数をログへ出さない
 - 取得内容を `data/github/public-repositories.json` へ正規化して保存
-- README は public・非forkの候補だけを取得し、必要最小限のキャッシュを `data/github/readmes/` へ保存
+- README は public・非forkの候補と明示許可forkだけを取得し、必要最小限のキャッシュを `data/github/readmes/` へ保存
 - APIレスポンス、認証情報、ヘッダーをそのまま保存しない
 - 収集物は決定的な並び順にする
 - 一時的な API エラーで既存の公開ページを削除しない
@@ -212,7 +212,7 @@ Codexはネットワークを使わず、ローカルの収集データから変
 
 - owner が `HSBL-ko-gyo`
 - public
-- 非fork
+- 非fork、またはポリシーで人間が明示許可し派生元を明記できるfork
 - 非archived
 - explicit exclusionではない
 - 対象READMEのSHAが計画時と一致する

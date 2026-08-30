@@ -7,7 +7,8 @@
 掲載条件:
 
 - ownerが `HSBL-ko-gyo` のpublicリポジトリ
-- 非fork、非empty、非archived、明示的除外ではない
+- 原則として非fork。明示許可された派生版だけ、fork表記と派生元リンクを必須にして掲載可能
+- 非empty、非archived、明示的除外ではない
 - 公開READMEなどから用途と自作性を高い確度で説明できる
 - 旧版、ミラー、置き場、内部資料ではない
 
@@ -26,12 +27,14 @@ tags: [用途, 技術]
 status: public # public | beta | development | archived
 draft: false
 featured: false
+isFork: false
 createdYear: 2026
 links:
   github: https://github.com/HSBL-ko-gyo/example
 seoTitle: 固有のタイトル | ハシビロ工業 GitHub
 seoDescription: 固有の検索説明
 searchIntents: [具体的な用途検索]
+repoCreatedAt: "2026-01-01T00:00:00Z"
 repoUpdatedAt: "2026-01-01T00:00:00Z"
 repoPushedAt: "2026-01-01T00:00:00Z"
 primaryLanguage: TypeScript # GitHub未判定ならnull
@@ -41,6 +44,7 @@ sourceEvidence:
 ```
 
 `links.app`、`links.release`、`links.article`、`links.shop` は公開情報で確認できるHTTPS URLだけを任意で追加します。
+明示許可されたforkでは `isFork: true` と `forkSourceUrl` を必須にし、本文でも派生元と独自変更の範囲を説明します。
 
 ## 本文の必須節
 
@@ -66,4 +70,4 @@ READMEを丸写しせず、入力、出力、対象環境、解決する不便�
 
 ## 更新
 
-収集後、`repoUpdatedAt`、`repoPushedAt`、`primaryLanguage`、`topics`、Release / Homepageの事実を同期します。本文を書き直すのは、誤り、リンク切れ、用途不明、READMEとの過度な重複を実質的に改善できる場合だけです。
+収集後、`repoCreatedAt`、`repoUpdatedAt`、`repoPushedAt`、`primaryLanguage`、`topics`、Release / Homepageの事実を同期します。作品一覧は `repoCreatedAt` の降順です。本文を書き直すのは、誤り、リンク切れ、用途不明、READMEとの過度な重複を実質的に改善できる場合だけです。

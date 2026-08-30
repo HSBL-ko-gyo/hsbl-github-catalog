@@ -16,6 +16,7 @@ links:
 seoTitle: EasyEDA部品をKiCadへ変換するWindows GUI | ハシビロ工業 GitHub
 seoDescription: LCSC IDからEasyEDAのシンボル、フットプリント、3DモデルをKiCad形式へ変換。easyeda2kicadをGUIで操作するWindows向けツールです。
 searchIntents: [EasyEDA KiCad 変換 GUI, LCSC KiCad フットプリント 変換]
+repoCreatedAt: "2025-04-17T11:45:27Z"
 repoUpdatedAt: "2026-05-26T10:15:14Z"
 repoPushedAt: "2026-04-19T11:44:37Z"
 primaryLanguage: HTML

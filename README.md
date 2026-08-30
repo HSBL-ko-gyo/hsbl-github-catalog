@@ -51,7 +51,7 @@ GitHub Pagesへアップロードする静的出力ディレクトリは `dist` 
 npm run collect:github
 ```
 
-固定スクリプトが `GET /users/HSBL-ko-gyo/repos?type=public` を起点に、owner一致・public・非forkだけを正規化します。候補READMEだけを `data/github/readmes/` へ保存し、APIレスポンス、認証情報、HTTPヘッダーは保存しません。失敗時は既存データを置き換えません。
+固定スクリプトが `GET /users/HSBL-ko-gyo/repos?type=public` を起点に、owner一致・public・非forkと、ポリシーで明示許可したforkだけを正規化します。許可forkは派生元URLも検証します。候補READMEだけを `data/github/readmes/` へ保存し、APIレスポンス、認証情報、HTTPヘッダーは保存しません。失敗時は既存データを置き換えません。
 
 ## GitHub SEO監査と安全な適用
 

@@ -16,6 +16,7 @@ links:
 seoTitle: USBステレオマイクの左右波形を確認するテスター | ハシビロ工業 GitHub
 seoDescription: USBステレオマイクの左右チャンネルを独立した波形で表示。デバイスを切り替えながらChromeやEdge上でリアルタイム確認できます。
 searchIntents: [ステレオマイク 左右 波形 テスト, USBマイク チャンネル 確認]
+repoCreatedAt: "2025-08-12T15:21:27Z"
 repoUpdatedAt: "2025-08-12T16:09:32Z"
 repoPushedAt: "2025-08-12T16:09:29Z"
 primaryLanguage: HTML

@@ -16,10 +16,22 @@ links:
 seoTitle: Codexの状態をUNO Q LEDマトリクスへ表示 | ハシビロ工業 GitHub
 seoDescription: Codex Hooksをローカルで集約し、Arduino UNO Q内蔵8×13 LEDマトリクスへ思考中、テスト中、待機、完了などを表示します。
 searchIntents: [Arduino UNO Q Codex LED matrix, Codex status hardware display]
+repoCreatedAt: "2026-08-16T10:43:59Z"
 repoUpdatedAt: "2026-08-29T22:50:39Z"
 repoPushedAt: "2026-08-29T22:50:34Z"
 primaryLanguage: Python
-topics: [arduino-router, arduino-uno-q, codex, codex-hooks, embedded, led-matrix, python, rpc, stm32u585]
+topics:
+  [
+    arduino-router,
+    arduino-uno-q,
+    codex,
+    codex-hooks,
+    embedded,
+    led-matrix,
+    python,
+    rpc,
+    stm32u585,
+  ]
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/unoq-codex-matrix
   - https://github.com/HSBL-ko-gyo/unoq-codex-matrix/blob/main/README.md

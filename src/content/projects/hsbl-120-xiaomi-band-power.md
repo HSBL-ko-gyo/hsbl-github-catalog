@@ -15,7 +15,9 @@ links:
   shop: https://www.switch-science.com/products/10974
 seoTitle: Xiaomi Smart Band充電ケーブルから5Vを取り出すHSBL-120 | ハシビロ工業 GitHub
 seoDescription: Xiaomi Smart Band 8 / 9 / 10用マグネット充電ケーブルから5Vを取り出し、給電できる機器を作るためのアダプタです。
-searchIntents: [Xiaomi Smart Band 充電ケーブル 5V 取り出し, マグネットケーブル 電源 工作]
+searchIntents:
+  [Xiaomi Smart Band 充電ケーブル 5V 取り出し, マグネットケーブル 電源 工作]
+repoCreatedAt: "2026-01-21T18:17:20Z"
 repoUpdatedAt: "2026-03-05T07:47:19Z"
 repoPushedAt: "2026-03-05T07:47:16Z"
 primaryLanguage: null

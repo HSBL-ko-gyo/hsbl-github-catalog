@@ -16,6 +16,7 @@ links:
 seoTitle: 麻雀初心者が何切る・安全牌を練習するWebアプリ | ハシビロ工業 GitHub
 seoDescription: テンパイ判定、何切る、安全牌、押し引き、リーチ、役、用語をブラウザで学べる、麻雀初心者向けの反復練習アプリです。
 searchIntents: [麻雀 初心者 練習 Webアプリ, 何切る 安全牌 練習]
+repoCreatedAt: "2026-06-13T19:17:36Z"
 repoUpdatedAt: "2026-06-15T17:18:26Z"
 repoPushedAt: "2026-06-15T17:18:22Z"
 primaryLanguage: HTML

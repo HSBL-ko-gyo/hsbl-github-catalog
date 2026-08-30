@@ -17,6 +17,7 @@ links:
 seoTitle: AtomS3へ画像と表示設定を送るHSBL-S101 Chameleon | ハシビロ工業 GitHub
 seoDescription: USB接続したAtomS3へWebツールから画像を送り、表示、画面回転、底面LED色を本体ストレージへ保存する公開プロジェクトです。
 searchIntents: [AtomS3 画像 転送 Webツール, AtomS3 画面 回転 保存]
+repoCreatedAt: "2023-11-25T03:55:48Z"
 repoUpdatedAt: "2024-09-28T12:16:49Z"
 repoPushedAt: "2024-05-08T08:45:41Z"
 primaryLanguage: C++
