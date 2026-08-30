@@ -2,8 +2,8 @@
 title: easyeda2kicad +DigiMou
 slug: easyeda2kicad-digimou
 repo: easyeda2kicad-digimou
-summary: 部品の正確なメーカー型番を基準に、LCSC・DigiKey・MouserのメタデータとKiCad用CADデータの由来を分けて記録する変換ツール。
-description: 販売元メタデータとCADデータの由来を確認しながらKiCadライブラリへ取り込む派生版
+summary: 部品の完全な型番を軸に、販売元の情報とCADデータの出どころを分けて残すeasyeda2kicad派生版です。
+description: 部品の出どころを分けて、KiCadへ持ってくる
 category: electronics-tool
 tags: [EasyEDA, KiCad, LCSC, DigiKey, Mouser, BOM, Python]
 status: beta
@@ -34,35 +34,18 @@ sourceEvidence:
   - https://github.com/uPesy/easyeda2kicad.py
 ---
 
-## 何ができるか
+## 型番と出どころを残す
 
-メーカー名と完全なメーカー型番を基準に電子部品を照合し、KiCad 6以降で使うシンボル、フットプリント、3Dモデルと販売元メタデータをまとめます。LCSC、DigiKey、Mouserから得る部品情報と、EasyEDAなどから得るCADデータの提供元を分けて記録できる点が特徴です。
+メーカー名と完全なメーカー型番で部品を照合し、KiCad 6以降のシンボル、フットプリント、3DモデルへつなぐCLIです。LCSC、DigiKey、Mouserの販売情報と、EasyEDAなどのCADデータを同じ出どころとして扱わず、別々にManifestへ残します。
 
-このリポジトリは [uPesy/easyeda2kicad.py](https://github.com/uPesy/easyeda2kicad.py) を基にした非公式forkです。派生元の公式版や、各販売元の公式ツールではありません。
+## 派生元と独自変更
 
-## こんな時に使う
+[uPesy/easyeda2kicad.py](https://github.com/uPesy/easyeda2kicad.py)を基にした非公式forkです。完全な型番での照合、複数販売元のメタデータ、CADの配布元とモデル作成元を分けた記録、プロジェクトローカルのKiCadライブラリ登録を追加しています。各販売元の公式ツールではありません。
 
-回路図やBOMで使う部品のメーカー型番、販売元の品番、CADモデルの作成元を混同せずにKiCadプロジェクトへ残したい時に使えます。複数の販売元を横断して部品情報を確認しつつ、採用したCADデータの由来も機械可読なManifestへ保存したい場合を想定しています。
+## 今できること
 
-## 主な機能
+アカウントなしのLCSC・EasyEDA経路と、利用者自身のAPI認証を使うDigiKey・Mouserのメタデータ検索があります。Ultra Librarian、SamacSys、メーカー提供パッケージは、手元へダウンロードしたものを検証して取り込めます。認証情報は引数やリポジトリへ保存しない前提です。
 
-- メーカー名と完全なメーカー型番による照合
-- LCSCの公開情報とEasyEDA CADを使った、アカウント不要の取り込み経路
-- 利用者自身のAPI認証を使うDigiKey・Mouserメタデータ検索
-- メタデータ提供元、CAD配布元、モデル作成元を分けたManifest出力
-- KiCadプロジェクトローカルのライブラリ生成と登録
-- Ultra Librarian、SamacSys、メーカー提供パッケージの検証付きローカル取り込み
+## まだできないこと
 
-DigiKeyやMouserからCADを完全自動取得するツールではありません。READMEでは、Mouser経路の実データ検証や両販売元を通した最終E2Eなど、未完了の範囲も明示されています。
-
-## 技術・構成
-
-Python 3.9以降で動作するCLIとPythonパッケージで、配布名とコマンド名を派生元から分離しています。ライセンスは派生元と同じAGPL-3.0で、KiCad 6以降を対象にしています。DigiKeyとMouserを使う場合は利用者自身のAPI認証が必要で、認証情報をコマンド引数やリポジトリへ保存しない運用が案内されています。
-
-## 公開先または使い方
-
-[easyeda2kicad +DigiMou v1.1.0b3の公開ベータ版をGitHubで確認する](https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou/releases/tag/v1.1.0b3)。まずは認証不要のLCSC・EasyEDA経路で動作を確認し、DigiKeyやMouserは公式APIの利用条件と認証を準備した場合だけ追加します。
-
-## GitHubで見る
-
-[easyeda2kicad +DigiMouのソース、制約、検証状況をGitHubで見る](https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou)。派生元の実装と履歴は [uPesy/easyeda2kicad.py](https://github.com/uPesy/easyeda2kicad.py) で確認できます。
+DigiKeyやMouserからCADを何でも自動取得するものではありません。Mouser経路の実パッケージ確認と、両販売元を通した最終E2Eには未完了の範囲があります。現在は公開ベータです。

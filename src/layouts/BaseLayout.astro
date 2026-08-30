@@ -10,7 +10,13 @@ interface Props {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { title, description, pathname, image = "/og-default.svg", jsonLd } = Astro.props;
+const {
+  title,
+  description,
+  pathname,
+  image = "/og-default.svg",
+  jsonLd,
+} = Astro.props;
 const canonical = canonicalUrl(pathname);
 const socialImage = canonicalUrl(image);
 ---
@@ -35,7 +41,15 @@ const socialImage = canonicalUrl(image);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
-    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {
+      jsonLd && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(jsonLd)}
+        />
+      )
+    }
   </head>
   <body>
     <a class="skip-link" href="#main-content">本文へ移動</a>
@@ -43,21 +57,26 @@ const socialImage = canonicalUrl(image);
       <div class="shell header-inner">
         <a class="brand" href="/" aria-label={`${SITE.name} トップ`}>
           <span class="brand-mark" aria-hidden="true">工</span>
-          <span><strong>ハシビロ工業</strong><small>GitHub TOOL CATALOG</small></span>
+          <span
+            ><strong>ハシビロ工業</strong><small>GITHUB PROJECTS</small></span
+          >
         </a>
         <nav aria-label="メインナビゲーション">
-          <a href="/">作品一覧</a>
-          <a href="/categories/">カテゴリ</a>
-          <a href="/about/">このカタログについて</a>
+          <a href="/">作ったもの</a>
+          <a href="/categories/">種類</a>
+          <a href="/about/">このサイト</a>
         </nav>
       </div>
     </header>
     <main id="main-content"><slot /></main>
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p><strong>{SITE.name}</strong><br />個人開発・電子工作・道具箱の公開記録。</p>
+        <p>
+          <strong>{SITE.name}</strong><br
+          />自分で作った基板、ソフト、Webの置き場。
+        </p>
         <p class="footer-links">
-          <a href={SITE.githubProfile}>GitHubプロフィール</a>
+          <a href={SITE.githubProfile}>GitHub</a>
           <a href={SITE.parentSite}>ハシビロ工業 本館</a>
         </p>
       </div>

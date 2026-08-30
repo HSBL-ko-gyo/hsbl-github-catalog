@@ -2,8 +2,8 @@
 title: HSBL-100 ccHacker
 slug: hsbl-100-cchacker
 repo: HSBL-100
-summary: USB Type-CデバイスのCCプルダウン抵抗を確認し、不足時に代替抵抗を中継するためのハードウェア。
-description: USB Type-CのCCプルダウン抵抗を確認・代替するハードウェア
+summary: CCプルダウン抵抗が入っていないType-C機器を確認し、必要なら抵抗を代わりに入れる中継基板です。かなり特殊用途。
+description: Type-Cなのに給電できない機器へ、CC抵抗を足す
 category: hardware-software
 tags: [USB Type-C, CC抵抗, 充電, 回路図, ハードウェア]
 status: public
@@ -27,29 +27,14 @@ sourceEvidence:
   - https://hsbl-ko-gyo.github.io/HSBL-100/
 ---
 
-## 何ができるか
+## CC抵抗を確認して補う
 
-USB Type-CデバイスにCCプルダウン抵抗が存在するかを確認し、抵抗が不足する機器では本体の代替抵抗を中継して電源側へ接続状態を伝えます。リポジトリでは回路図などが公開されています。
+Type-CコネクタなのにCCプルダウン抵抗がなく、給電側から接続を認識されない機器があります。ccHackerは抵抗が入っているかを確認し、足りなければ代わりの抵抗を入れる中継基板です。かなり特殊用途です。
 
-## こんな時に使う
+## 使い方
 
-Type-C給電で電源が入らない小型機器について、CC抵抗の有無を確認したい時や、不足する抵抗を専用ハードウェアで補いたい時の製品です。
+IN側へ電源供給用のUSB Type-Cケーブル、OUT側へ給電したい機器をType-Cケーブル経由でつなぎます。回路図と接続資料は公開しています。
 
-## 主な機能
+## 注意
 
-- CCプルダウン抵抗の存在確認
-- 不足するCCプルダウン抵抗の代替
-- Type-CケーブルのIN / OUT間へ中継
-- 回路資料の公開
-
-## 技術・構成
-
-USB Type-CのCC接続に関わるハードウェアです。READMEには規格から外れる特殊な製品仕様である注意が明記されています。用途と注意事項を理解した上で扱う必要があります。
-
-## 公開先または使い方
-
-[HSBL-100 ccHackerの製品説明と接続方法を見る](https://hsbl-ko-gyo.github.io/HSBL-100/)。電源側をIN、充電対象側をOUTへ接続します。
-
-## GitHubで見る
-
-[HSBL-100 ccHackerの回路資料と注意事項をGitHubで見る](https://github.com/HSBL-ko-gyo/HSBL-100)。
+> **USB Type-C規格外です。** 特殊な仕様の基板なので、規格から外れることと接続先を理解した上で使ってください。

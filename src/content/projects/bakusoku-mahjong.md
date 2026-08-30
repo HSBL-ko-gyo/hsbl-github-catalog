@@ -2,8 +2,8 @@
 title: 爆速麻雀
 slug: bakusoku-mahjong
 repo: HSBL-S800
-summary: 一人で四人麻雀のツモと打牌をテンポよく進め、対局に近い流れをブラウザで練習する静的Webアプリ。
-description: 一人で四人麻雀のツモと打牌を素早く練習するWebアプリ
+summary: 手牌が変わり続ける中で、ツモと打牌をどんどん選ぶ一人用の四人麻雀です。ブラウザですぐ練習できます。
+description: 四人麻雀を、一人でテンポよく打つ
 category: web-app
 tags: [麻雀, 一人用, ツモ, 打牌, React, TypeScript]
 status: public
@@ -27,29 +27,14 @@ sourceEvidence:
   - https://bakusoku-mahjong.hsbl-ko-gyo.com/
 ---
 
-## 何ができるか
+## 一人で回す四人麻雀
 
-一人で四人麻雀のツモと打牌をテンポよく進め、対局に近い流れをブラウザ上で練習できます。
+一人で四人麻雀を進める練習用Webアプリです。一問ごとの何切るではなく、ツモる、捨てる、またツモる、という流れを続けます。手牌が変わっていく中で打牌を選びたい時に使います。
 
-## こんな時に使う
+## 練習の分け方
 
-牌効率の問題を一問ずつ解くだけでなく、手牌が変化していく中で連続して打牌を選ぶ練習をしたい時に向いています。
+対局に近い流れを回したい時は爆速麻雀、テンパイや安全牌などをテーマ別に復習したい時は[麻雀ブートキャンプ](https://hsbl-ko-gyo.github.io/mahjong-bootcamp/)という分け方です。PCとスマートフォンのブラウザで動きます。
 
-## 主な機能
+## 中身
 
-- 一人用の四人麻雀進行
-- ツモと打牌の反復練習
-- PC / スマートフォンから使える静的SPA
-- 公開ベータブランチを使えるデプロイ設計
-
-## 技術・構成
-
-React、TypeScript、Viteで構築した静的SPAです。Cloudflare Pagesでmainを本番、betaブランチを公開プレビューとして運用する構成がREADMEに記載されています。
-
-## 公開先または使い方
-
-[爆速麻雀をブラウザで始める](https://bakusoku-mahjong.hsbl-ko-gyo.com/)。基礎テーマを分けて練習する場合は[麻雀ブートキャンプ](https://hsbl-ko-gyo.github.io/mahjong-bootcamp/)も利用できます。
-
-## GitHubで見る
-
-[爆速麻雀のソース、ビルド、公開構成をGitHubで見る](https://github.com/HSBL-ko-gyo/HSBL-S800)。
+React、TypeScript、Viteで作った静的SPAです。本番はmain、試している変更はbetaブランチの公開プレビューへ出せるようにしています。

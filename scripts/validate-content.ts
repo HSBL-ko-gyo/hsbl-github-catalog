@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createSitemapPaths } from "../src/lib/sitemap.js";
 import { loadProjectFiles, markdownHeadings } from "./lib/catalog.js";
@@ -11,13 +12,30 @@ import {
 } from "./lib/github-data.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
-const REQUIRED_SECTIONS = [
+const LEGACY_SECTIONS = [
   "何ができるか",
   "こんな時に使う",
   "主な機能",
   "技術・構成",
   "公開先または使い方",
   "GitHubで見る",
+];
+const STALE_PUBLIC_COPY = [
+  "つくった道具を、使う人の言葉で。",
+  "リポジトリ名の向こうにある、使い道を伝える。",
+  "用途の近い道具を、引き出しごとにまとめました。",
+  "READMEの転載ではなく、入力・出力・使いどころを短く整理しています。",
+];
+const FIXED_COPY_FILES = [
+  "src/pages/index.astro",
+  "src/pages/about.astro",
+  "src/pages/categories/index.astro",
+  "src/pages/categories/[slug].astro",
+  "src/pages/404.astro",
+  "src/layouts/BaseLayout.astro",
+  "src/components/ProjectCard.astro",
+  "src/pages/projects/[slug].astro",
+  "src/lib/site.ts",
 ];
 
 function assertUnique(values: Array<[string, string]>, label: string): void {
@@ -42,6 +60,12 @@ async function main(): Promise<void> {
   const exclusions = explicitExclusionNames(policy);
   const allowedForks = allowedForkNames(policy);
   const configuredForkSources = allowedForkSources(policy);
+  const fixedCopySources = await Promise.all(
+    FIXED_COPY_FILES.map(async (path) => ({
+      path,
+      source: await readFile(resolve(ROOT, path), "utf8"),
+    })),
+  );
 
   assertUnique(
     projects.map(({ data, filename }) => [data.slug, filename]),
@@ -97,9 +121,14 @@ async function main(): Promise<void> {
       );
     }
     const headings = markdownHeadings(body);
-    for (const required of REQUIRED_SECTIONS) {
-      if (!headings.includes(required))
-        throw new Error(`${filename} is missing section: ${required}`);
+    if (!data.draft && headings.length < 2) {
+      throw new Error(`${filename} must have at least two H2 sections`);
+    }
+    if (
+      !data.draft &&
+      LEGACY_SECTIONS.every((heading) => headings.includes(heading))
+    ) {
+      throw new Error(`${filename} still uses all six legacy sections`);
     }
     for (const match of body.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
       const target = match[1];
@@ -110,6 +139,19 @@ async function main(): Promise<void> {
         );
       new URL(target);
     }
+  }
+
+  for (const copy of STALE_PUBLIC_COPY) {
+    const project = projects.find(
+      ({ data, body }) => !data.draft && body.includes(copy),
+    );
+    if (project)
+      throw new Error(
+        `${project.filename} contains stale public copy: ${copy}`,
+      );
+    const fixed = fixedCopySources.find(({ source }) => source.includes(copy));
+    if (fixed)
+      throw new Error(`${fixed.path} contains stale public copy: ${copy}`);
   }
 
   const sitemapPaths = createSitemapPaths(projects);

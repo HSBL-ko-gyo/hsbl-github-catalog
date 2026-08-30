@@ -6,13 +6,40 @@ import { isPublishedProject } from "../../lib/project-schema";
 
 const projects = await getCollection("projects", isPublishedProject);
 const categories = Object.entries(CATEGORIES)
-  .map(([slug, category]) => ({ slug, ...category, count: projects.filter(({ data }) => data.category === slug).length }))
+  .map(([slug, category]) => ({
+    slug,
+    ...category,
+    count: projects.filter(({ data }) => data.category === slug).length,
+  }))
   .filter(({ count }) => count > 0);
 ---
 
-<BaseLayout title={`カテゴリから探す | ${SITE.name}`} description="ハシビロ工業の公開GitHub作品を、ブラウザツール、電子回路・CAD支援、Webアプリなどのカテゴリから探せます。" pathname="/categories/">
-  <header class="page-header"><div class="shell"><p class="kicker">TOOL DRAWERS</p><h1>カテゴリから作品を探す</h1><p class="hero-copy">用途の近い道具を、引き出しごとにまとめました。</p></div></header>
-  <section class="section"><div class="shell category-grid">
-    {categories.map((category) => <a class="category-card" href={`/categories/${category.slug}/`}><h2>{category.label} <small>{category.count}</small></h2><p>{category.description}</p></a>)}
-  </div></section>
+<BaseLayout
+  title={`カテゴリから探す | ${SITE.name}`}
+  description="ハシビロ工業の公開GitHub作品を、ブラウザツール、電子回路・CAD支援、Webアプリなどのカテゴリから探せます。"
+  pathname="/categories/"
+>
+  <header class="page-header">
+    <div class="shell">
+      <p class="kicker">CATEGORIES</p><h1>種類で見る</h1><p class="hero-copy">
+        だいたいこのへんで分けています。
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="shell category-grid">
+      {
+        categories.map((category) => (
+          <a class="category-card" href={`/categories/${category.slug}/`}>
+            <>
+              <h2>
+                {category.label} <small>{category.count}</small>
+              </h2>
+              <p>{category.description}</p>
+            </>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </BaseLayout>

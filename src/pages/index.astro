@@ -2,16 +2,25 @@
 import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { GITHUB_COLLECTED_AT, GITHUB_COLLECTED_AT_DISPLAY } from "../lib/github-collection";
+import {
+  GITHUB_COLLECTED_AT,
+  GITHUB_COLLECTED_AT_DISPLAY,
+} from "../lib/github-collection";
 import { CATEGORIES, SITE } from "../lib/site";
 import { isPublishedProject, sortProjects } from "../lib/project-schema";
 
-const projects = sortProjects((await getCollection("projects", isPublishedProject)));
-const categoryCounts = Object.fromEntries(
-  Object.keys(CATEGORIES).map((category) => [category, projects.filter(({ data }) => data.category === category).length]),
+const projects = sortProjects(
+  await getCollection("projects", isPublishedProject),
 );
-const title = `${SITE.name} — 公開作品カタログ`;
-const description = SITE.description;
+const categoryCounts = Object.fromEntries(
+  Object.keys(CATEGORIES).map((category) => [
+    category,
+    projects.filter(({ data }) => data.category === category).length,
+  ]),
+);
+const title = `作ったもの | ${SITE.name}`;
+const description =
+  "ハシビロ工業で作った電子工作、基板設計ツール、ブラウザツール、Web作品をまとめています。";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -27,19 +36,29 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title={title} description={description} pathname="/" jsonLd={jsonLd}>
+<BaseLayout
+  title={title}
+  description={description}
+  pathname="/"
+  jsonLd={jsonLd}
+>
   <section class="hero">
     <div class="shell hero-grid">
       <div>
-        <p class="kicker">PUBLIC PROJECT CATALOG / HSBL-KO-GYO</p>
-        <h1>つくった道具を、使う人の言葉で。</h1>
-        <p class="hero-copy">Markdown表の画像化から電子回路設計、UNO Q連携まで。ハシビロ工業がGitHubで公開している作品を、目的から探せるカタログです。</p>
+        <p class="kicker">HSBL-KO-GYO / GITHUB</p>
+        <h1>作ったもの、置いてます。</h1>
+        <p class="hero-copy">
+          電子工作、基板設計まわりのツール、ブラウザで使う小物など。GitHubにいろいろ埋まってきたので、何に使うものか分かる形で並べ直しました。
+        </p>
       </div>
       <aside class="hero-note" aria-label="公開作品数">
         <strong>{projects.length}</strong>
-        <span>公開中の作品</span>
-        <p>READMEの転載ではなく、入力・出力・使いどころを短く整理しています。</p>
-        <p class="collection-time">GitHub情報取得: <time datetime={GITHUB_COLLECTED_AT}>{GITHUB_COLLECTED_AT_DISPLAY}</time></p>
+        <span>個、公開中</span>
+        <p>古いやつも試作もあります。使えそうなものだけどうぞ。</p>
+        <p class="collection-time">
+          GitHub情報取得: <time datetime={GITHUB_COLLECTED_AT}
+            >{GITHUB_COLLECTED_AT_DISPLAY}</time>
+        </p>
       </aside>
     </div>
   </section>
@@ -48,27 +67,38 @@ const jsonLd = {
     <div class="shell">
       <div class="section-heading">
         <div>
-          <p class="kicker">FIND A TOOL</p>
-          <h2 id="catalog-heading">目的から作品を探す</h2>
+          <p class="kicker">SEARCH</p>
+          <h2 id="catalog-heading">作ったものを探す</h2>
         </div>
-        <p>すべての作品は通常リンクから開けます。</p>
+        <p>名前が分からなくても、やりたいことから探せます。</p>
       </div>
 
       <div class="filter-panel" aria-label="作品の絞り込み">
         <div class="filters">
           <div class="field">
-            <label for="project-search">キーワード検索</label>
-            <input id="project-search" type="search" placeholder="例: Markdown 表 PNG" autocomplete="off" />
+            <label for="project-search">検索</label>
+            <input
+              id="project-search"
+              type="search"
+              placeholder="例：Markdownの表をPNGにしたい"
+              autocomplete="off"
+            />
           </div>
           <div class="field">
-            <label for="category-filter">カテゴリ</label>
+            <label for="category-filter">種類</label>
             <select id="category-filter">
               <option value="">すべてのカテゴリ</option>
-              {Object.entries(CATEGORIES).filter(([slug]) => categoryCounts[slug] > 0).map(([slug, category]) => <option value={slug}>{category.label}</option>)}
+              {
+                Object.entries(CATEGORIES)
+                  .filter(([slug]) => categoryCounts[slug] > 0)
+                  .map(([slug, category]) => (
+                    <option value={slug}>{category.label}</option>
+                  ))
+              }
             </select>
           </div>
           <div class="field">
-            <label for="status-filter">公開状態</label>
+            <label for="status-filter">状態</label>
             <select id="status-filter">
               <option value="">すべての状態</option>
               <option value="public">公開中</option>
@@ -78,41 +108,61 @@ const jsonLd = {
             </select>
           </div>
         </div>
-        <p class="result-count" aria-live="polite"><span id="visible-count">{projects.length}</span>件を表示</p>
+        <p class="result-count" aria-live="polite">
+          <span id="visible-count">{projects.length}</span>件を表示
+        </p>
       </div>
 
       <div class="project-grid" id="project-grid">
         {projects.map((project) => <ProjectCard project={project} />)}
       </div>
-      <p id="no-results" class="empty-message" hidden>条件に合う作品はありません。検索語や絞り込みを変更してください。</p>
+      <p id="no-results" class="empty-message" hidden>
+        見つかりませんでした。検索語か絞り込みを変えてください。
+      </p>
     </div>
   </section>
 
   <section class="section" aria-labelledby="category-heading">
     <div class="shell">
       <div class="section-heading">
-        <div><p class="kicker">TOOL DRAWERS</p><h2 id="category-heading">カテゴリ別に見る</h2></div>
+        <div>
+          <p class="kicker">CATEGORIES</p><h2 id="category-heading">
+            種類で見る
+          </h2>
+        </div>
       </div>
       <div class="category-grid">
-        {Object.entries(CATEGORIES).filter(([slug]) => categoryCounts[slug] > 0).map(([slug, category]) => (
-          <a class="category-card" href={`/categories/${slug}/`}>
-            <h3>{category.label} <small>{categoryCounts[slug]}</small></h3>
-            <p>{category.description}</p>
-          </a>
-        ))}
+        {
+          Object.entries(CATEGORIES)
+            .filter(([slug]) => categoryCounts[slug] > 0)
+            .map(([slug, category]) => (
+              <a class="category-card" href={`/categories/${slug}/`}>
+                <h3>
+                  {category.label} <small>{categoryCounts[slug]}</small>
+                </h3>
+                <p>{category.description}</p>
+              </a>
+            ))
+        }
       </div>
     </div>
   </section>
 
   <script>
-    const searchInput = document.querySelector<HTMLInputElement>("#project-search");
-    const categorySelect = document.querySelector<HTMLSelectElement>("#category-filter");
-    const statusSelect = document.querySelector<HTMLSelectElement>("#status-filter");
-    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-project-card]"));
+    const searchInput =
+      document.querySelector<HTMLInputElement>("#project-search");
+    const categorySelect =
+      document.querySelector<HTMLSelectElement>("#category-filter");
+    const statusSelect =
+      document.querySelector<HTMLSelectElement>("#status-filter");
+    const cards = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-project-card]"),
+    );
     const visibleCount = document.querySelector<HTMLElement>("#visible-count");
     const noResults = document.querySelector<HTMLElement>("#no-results");
 
-    const normalize = (value: string) => value.normalize("NFKC").toLocaleLowerCase("ja").trim();
+    const normalize = (value: string) =>
+      value.normalize("NFKC").toLocaleLowerCase("ja").trim();
     const update = () => {
       const query = normalize(searchInput?.value ?? "");
       const category = categorySelect?.value ?? "";

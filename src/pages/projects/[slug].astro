@@ -2,45 +2,81 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatTokyoDateTime } from "../../lib/date-time";
-import { GITHUB_COLLECTED_AT, GITHUB_COLLECTED_AT_DISPLAY } from "../../lib/github-collection";
+import {
+  GITHUB_COLLECTED_AT,
+  GITHUB_COLLECTED_AT_DISPLAY,
+} from "../../lib/github-collection";
 import { CATEGORIES, SITE, STATUS_LABELS } from "../../lib/site";
 import { isPublishedProject } from "../../lib/project-schema";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", isPublishedProject);
-  return projects.map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
 }
 
-interface Props { project: CollectionEntry<"projects"> }
+interface Props {
+  project: CollectionEntry<"projects">;
+}
 const { project } = Astro.props;
 const { Content } = await render(project);
 const { data } = project;
 const pathname = `/projects/${data.slug}/`;
-const applicationCategories = new Set(["browser-tool", "browser-extension", "electronics-tool", "web-app", "app"]);
-const schemaType = data.category === "web-app" || data.category === "browser-tool" ? "WebApplication" : applicationCategories.has(data.category) ? "SoftwareApplication" : "CreativeWork";
+const applicationCategories = new Set([
+  "browser-tool",
+  "browser-extension",
+  "electronics-tool",
+  "web-app",
+  "app",
+]);
+const schemaType =
+  data.category === "web-app" || data.category === "browser-tool"
+    ? "WebApplication"
+    : applicationCategories.has(data.category)
+      ? "SoftwareApplication"
+      : "CreativeWork";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": schemaType,
   name: data.title,
-  description: data.description,
+  description: data.summary,
   url: `${SITE.origin}${pathname}`,
   codeRepository: data.links.github,
   dateCreated: data.repoCreatedAt,
   ...(data.forkSourceUrl ? { isBasedOn: data.forkSourceUrl } : {}),
   ...(data.links.app ? { sameAs: data.links.app } : {}),
-  ...(schemaType !== "CreativeWork" ? { applicationCategory: CATEGORIES[data.category].label } : {}),
+  ...(schemaType !== "CreativeWork"
+    ? { applicationCategory: CATEGORIES[data.category].label }
+    : {}),
   inLanguage: "ja-JP",
-  creator: { "@type": "Organization", name: "ハシビロ工業", url: SITE.parentSite },
+  creator: {
+    "@type": "Organization",
+    name: "ハシビロ工業",
+    url: SITE.parentSite,
+  },
 };
 const lastUpdated = formatTokyoDateTime(data.repoUpdatedAt);
-const publishedDate = new Intl.DateTimeFormat("ja-JP", { dateStyle: "medium", timeZone: "Asia/Tokyo" }).format(new Date(data.repoCreatedAt));
 ---
 
-<BaseLayout title={data.seoTitle} description={data.seoDescription} pathname={pathname} jsonLd={jsonLd}>
+<BaseLayout
+  title={data.seoTitle}
+  description={data.seoDescription}
+  pathname={pathname}
+  jsonLd={jsonLd}
+>
   <header class="page-header">
     <div class="shell">
-      <p class="breadcrumbs"><a href="/">作品一覧</a> / <a href={`/categories/${data.category}/`}>{CATEGORIES[data.category].label}</a></p>
-      <p class="kicker">{data.title} / {data.isFork ? "FORK版 / " : ""}{STATUS_LABELS[data.status]}</p>
+      <p class="breadcrumbs">
+        <a href="/">作ったもの</a> / <a href={`/categories/${data.category}/`}
+          >{CATEGORIES[data.category].label}</a>
+      </p>
+      <p class="kicker">
+        {data.title} / {data.isFork ? "FORK版 / " : ""}{
+          STATUS_LABELS[data.status]
+        }
+      </p>
       <h1>{data.description}</h1>
       <p class="hero-copy">{data.summary}</p>
     </div>
@@ -51,22 +87,74 @@ const publishedDate = new Intl.DateTimeFormat("ja-JP", { dateStyle: "medium", ti
       <h2>データ</h2>
       <dl class="fact-list">
         <div><dt>名前</dt><dd>{data.title}</dd></div>
-        <div><dt>種類</dt><dd><a href={`/categories/${data.category}/`}>{CATEGORIES[data.category].label}</a></dd></div>
+        <div>
+          <dt>種類</dt><dd>
+            <a href={`/categories/${data.category}/`}
+              >{CATEGORIES[data.category].label}</a>
+          </dd>
+        </div>
         <div><dt>状態</dt><dd>{STATUS_LABELS[data.status]}</dd></div>
-        <div><dt>GitHub公開</dt><dd>{publishedDate}</dd></div>
-        {data.forkSourceUrl && <div><dt>派生元</dt><dd><a href={data.forkSourceUrl}>upstreamリポジトリ</a></dd></div>}
-        <div><dt>言語</dt><dd>{data.primaryLanguage ?? "GitHubで未判定"}</dd></div>
-        <div><dt>GitHub更新</dt><dd><time datetime={data.repoUpdatedAt}>{lastUpdated}</time></dd></div>
-        <div><dt>情報取得</dt><dd><time datetime={GITHUB_COLLECTED_AT}>{GITHUB_COLLECTED_AT_DISPLAY}</time></dd></div>
+        {
+          data.forkSourceUrl && (
+            <div>
+              <>
+                <dt>派生元</dt>
+                <dd>
+                  <a href={data.forkSourceUrl}>upstreamリポジトリ</a>
+                </dd>
+              </>
+            </div>
+          )
+        }
+        <div>
+          <dt>言語</dt><dd>{data.primaryLanguage ?? "GitHubで未判定"}</dd>
+        </div>
+        <div>
+          <dt>GitHub更新</dt><dd>
+            <time datetime={data.repoUpdatedAt}>{lastUpdated}</time>
+          </dd>
+        </div>
+        <div>
+          <dt>情報取得</dt><dd>
+            <time datetime={GITHUB_COLLECTED_AT}
+              >{GITHUB_COLLECTED_AT_DISPLAY}</time>
+          </dd>
+        </div>
       </dl>
       <div class="link-stack">
-        {data.links.app && <a class="button button-primary" href={data.links.app}>{data.title}を使う</a>}
-        {data.links.release && <a class="button" href={data.links.release}>{data.title}の配布版を見る</a>}
-        {data.links.article && <a class="button" href={data.links.article}>関連する解説記事を読む</a>}
-        {data.links.shop && <a class="button" href={data.links.shop}>販売ページを見る</a>}
-        <a class="button" href={data.links.github}>{data.title}のソースをGitHubで見る</a>
+        {
+          data.links.app && (
+            <a class="button button-primary" href={data.links.app}>
+              使う
+            </a>
+          )
+        }
+        {
+          data.links.release && (
+            <a class="button" href={data.links.release}>
+              配布を見る
+            </a>
+          )
+        }
+        {
+          data.links.article && (
+            <a class="button" href={data.links.article}>
+              解説
+            </a>
+          )
+        }
+        {
+          data.links.shop && (
+            <a class="button" href={data.links.shop}>
+              販売ページ
+            </a>
+          )
+        }
+        <a class="button" href={data.links.github}>GitHub</a>
       </div>
-      <ul class="tag-list" aria-label="タグ">{data.tags.map((tag) => <li>{tag}</li>)}</ul>
+      <ul class="tag-list" aria-label="タグ">
+        {data.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
     </aside>
   </div>
 </BaseLayout>

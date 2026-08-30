@@ -2,8 +2,8 @@
 title: HSBL-S101 Chameleon
 slug: hsbl-s101-chameleon
 repo: HSBL-S101
-summary: Web設定ツールからAtomS3へ画像を送り、表示内容、画面回転、底面LED色を本体へ保存できるハードウェア連携プロジェクト。
-description: AtomS3へ画像と表示設定をUSB経由で送るWeb設定ツール
+summary: ブラウザからAtomS3へ画像を送り、画面の向きや底面LEDの色と一緒に本体へ保存するツールです。
+description: AtomS3へ画像を送って、そのまま表示する
 category: hardware-software
 tags: [AtomS3, M5Stack, USB, 画像転送, Web Serial, C++]
 status: public
@@ -28,30 +28,14 @@ sourceEvidence:
   - https://hsbl-ko-gyo.github.io/HSBL-S101/
 ---
 
-## 何ができるか
+## 画像をAtomS3へ送る
 
-USB接続したM5Stack AtomS3へブラウザの設定ツールから画像を送り、画面へ表示して本体へ保存します。画面回転と、対応する底面RGB LEDの色も設定できます。
+USBでつないだAtomS3へ、ブラウザから画像を送るツールです。画像を画面へ出すだけでなく、画面の回転値と一緒に内部ストレージへ保存するので、電源を切っても設定が残ります。Chameleon Keyの機能制限版として公開しています。
 
-## こんな時に使う
+## Webツールでできること
 
-AtomS3の小型画面へ任意の画像を表示し、電源を切った後も同じ表示設定を保持したい時に使えます。Chameleon Keyの機能制限版として公開されています。
+AtomS3への接続、画像送信、画面回転、対応する底面RGB LEDの色設定ができます。ファームウェアの書き込み入口も同じ公開ページにあります。
 
-## 主な機能
+## 必要なもの
 
-- ブラウザからAtomS3へ接続
-- 画像の送信、表示、内部ストレージへの保存
-- 画面回転値の保存
-- 対応する底面LEDの色設定
-- 公開Webツールからのファームウェア書き込み案内
-
-## 技術・構成
-
-AtomS3側のC++ファームウェアとWeb設定ツールで構成されています。ビルドにM5GFX、FS、SPIFFS、Adafruit NeoPixelを使用することがREADMEに示されています。
-
-## 公開先または使い方
-
-[HSBL-S101 ChameleonのWeb設定ツールを開く](https://hsbl-ko-gyo.github.io/HSBL-S101/)。利用にはAtomS3が必要で、底面LED設定には対応ハードウェアを組み合わせます。
-
-## GitHubで見る
-
-[HSBL-S101 Chameleonのファームウェアと必要ハードウェアをGitHubで見る](https://github.com/HSBL-ko-gyo/HSBL-S101)。
+本体はM5Stack AtomS3です。底面LEDを使う場合はHSBL-S100-01を追加します。ファームウェアはC++で、M5GFX、FS、SPIFFS、Adafruit NeoPixelを使っています。

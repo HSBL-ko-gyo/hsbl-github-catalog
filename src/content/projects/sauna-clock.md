@@ -2,8 +2,8 @@
 title: サウナ時計Webアプリ
 slug: sauna-clock
 repo: Sauna-Clock-WEB-App
-summary: サウナの12分計を模したアナログ時計を表示し、分針が一周する時間を任意の分数へ変更できるWebアプリ。
-description: 針の周回時間を変更できるサウナ12分計風Web時計
+summary: サウナの12分計っぽい時計をブラウザへ出し、分針が一周する時間を好きな分数へ変えられます。
+description: 12分計っぽい時計を、好きな周回時間で動かす
 category: browser-tool
 tags: [サウナ, 12分計, アナログ時計, タイマー, JavaScript]
 status: public
@@ -27,29 +27,14 @@ sourceEvidence:
   - https://hsbl-ko-gyo.github.io/Sauna-Clock-WEB-App/
 ---
 
-## 何ができるか
+## 12分計をブラウザへ
 
-日本のサウナで見かける12分計風の時計をcanvasに描画し、青い分針と赤い秒針の動きを表示します。分針の周回時間は12分に固定せず、入力値で変更できます。
+日本のサウナでよく見る12分計を、ブラウザのcanvasへ描いたものです。青い分針と赤い秒針が動きます。12分固定ではなく、分針が一周する時間を好きな分数へ変えられます。
 
-## こんな時に使う
+## 時間の変え方
 
-サウナ12分計の雰囲気をブラウザで再現したい時や、任意の周期で一周するアナログ表示を眺めながら経過を確認したい時に使えます。
+画面下の入力欄へ一周させたい時間を分単位で入れ、Enterキーを押します。その値に合わせて分針の速度が変わります。定期的な時間をざっくり見る用途にも使えます。
 
-## 主な機能
+## 中身
 
-- 分針と秒針のcanvas描画
-- 分針が一周する時間を分単位で変更
-- Enterキーによる設定反映
-- ブラウザだけで動く静的アプリ
-
-## 技術・構成
-
-HTML canvasとJavaScriptでアナログ時計の針を描画します。GitHub APIでは主要言語が未判定ですが、READMEでJavaScript実装が明記されています。
-
-## 公開先または使い方
-
-[サウナ時計Webアプリをブラウザで開く](https://hsbl-ko-gyo.github.io/Sauna-Clock-WEB-App/)。下部の入力欄へ周回時間を分単位で入力し、Enterキーを押します。
-
-## GitHubで見る
-
-[サウナ時計Webアプリのソースと操作方法をGitHubで見る](https://github.com/HSBL-ko-gyo/Sauna-Clock-WEB-App)。
+HTML canvasとJavaScriptだけの小さなWebアプリです。公開ページを開けばそのまま動きます。

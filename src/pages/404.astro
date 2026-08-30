@@ -3,6 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE } from "../lib/site";
 ---
 
-<BaseLayout title={`ページが見つかりません | ${SITE.name}`} description="指定されたページは見つかりませんでした。ハシビロ工業のGitHub作品一覧から目的の作品を探せます。" pathname="/404/">
-  <section class="hero"><div class="shell"><p class="kicker">404 / TOOL NOT FOUND</p><h1>その引き出しは空でした。</h1><p class="hero-copy">URLが変わったか、ページが存在しません。作品一覧から探し直してください。</p><p><a class="button button-primary" href="/">GitHub作品一覧へ戻る</a></p></div></section>
+<BaseLayout
+  title={`ページが見つかりません | ${SITE.name}`}
+  description="指定されたページは見つかりませんでした。ハシビロ工業のGitHub作品一覧から目的の作品を探せます。"
+  pathname="/404/"
+>
+  <section class="hero">
+    <div class="shell">
+      <p class="kicker">404</p><h1>ページがありません。</h1><p
+        class="hero-copy"
+      >
+        消したか、URLが変わったか、そのどちらかです。作ったもの一覧から探してください。
+      </p><p><a class="button button-primary" href="/">作ったものへ戻る</a></p>
+    </div>
+  </section>
 </BaseLayout>

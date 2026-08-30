@@ -2,8 +2,8 @@
 title: 緑流 ryokuru
 slug: ryokuru
 repo: ryokuru-WEBApp-BETA
-summary: 風に揺れる緑の様子をブラウザで眺める、公開プロトタイプ段階のWeb作品。
-description: 風に揺れる緑をブラウザで眺めるプロトタイプWeb作品
+summary: 風に揺れる緑を画面に出して眺めるWeb作品です。まだプロトタイプのまま公開しています。
+description: 風に揺れる緑を、ブラウザで眺める
 category: web-art
 tags: [緑, 風, Web作品, プロトタイプ, ブラウザ]
 status: development
@@ -27,28 +27,10 @@ sourceEvidence:
   - https://hsbl-ko-gyo.github.io/ryokuru-WEBApp-BETA
 ---
 
-## 何ができるか
+## 風に揺れる緑
 
-ブラウザに表示された緑が風で揺れる様子を眺められます。完成版を装うのではなく、公開READMEの位置付けどおりプロトタイプとして掲載しています。
+風に揺れる緑をブラウザへ出して、ただ眺めるWeb作品です。インストールは要りません。公開ページを開くと動きます。
 
-## こんな時に使う
+## いまの状態
 
-作業の合間に動く緑を眺めたい時や、ブラウザ表現の小さな実験作品を試したい時に向いています。
-
-## 主な機能
-
-- 風に揺れる緑のWeb表現
-- インストール不要の公開ページ
-- ベータ段階のプロトタイプ
-
-## 技術・構成
-
-静的に公開されているWeb作品です。GitHub APIでは主要言語が未判定であり、READMEにも詳しい技術構成はないため、実装技術は推測していません。
-
-## 公開先または使い方
-
-[緑流の公開ベータをブラウザで見る](https://hsbl-ko-gyo.github.io/ryokuru-WEBApp-BETA)。
-
-## GitHubで見る
-
-[緑流 ryokuruの公開ソースと現在の位置付けをGitHubで見る](https://github.com/HSBL-ko-gyo/ryokuru-WEBApp-BETA)。
+完成品ではなく、READMEにあるとおりプロトタイプです。古い試作ですが、単独で何をするものかは分かるので残しています。詳しい技術説明は公開されていないため、ここでも推測していません。

@@ -2,8 +2,8 @@
 title: HSBL-S200-01 RGB LED bottom
 slug: hsbl-s200-01-rgb-led-bottom
 repo: HSBL-S200-01
-summary: M5Stack CoreS3 / CoreS3 SEの底面へ4個のRGB LEDと光拡散部を追加する拡張ハードウェア。
-description: M5Stack CoreS3の底面へ4個のRGB LEDを追加するハードウェア
+summary: M5Stack CoreS3 / CoreS3 SEの底へ4個のRGB LEDを足す基板です。透明な光拡散部も一緒に固定します。
+description: CoreS3の底面を、4灯のRGB LEDで光らせる
 category: hardware-software
 tags: [M5Stack, CoreS3, RGB LED, NeoPixel, 3Dデータ]
 status: public
@@ -27,29 +27,14 @@ sourceEvidence:
   - https://www.switch-science.com/products/9815
 ---
 
-## 何ができるか
+## CoreS3の底へ4灯
 
-M5Stack CoreS3またはCoreS3 SEの底面に、4個のRGB LEDと透明な光拡散部を追加します。Arduinoから各LEDの色を順に制御できます。
+M5Stack CoreS3 / CoreS3 SEの底面へ、4個のRGB LEDを追加する基板です。透明なSLA樹脂の光拡散部を重ね、付属ネジで本体へ固定します。底面を状態表示やイルミネーションに使えます。
 
-## こんな時に使う
+## 組み立てと制御
 
-CoreS3の動作状態を底面の光で表したい時や、筐体の下へカラーイルミネーションを追加したい時に使える拡張ハードウェアです。
+光拡散部には上下があるので、マークをM5の下側へ合わせます。Arduinoサンプルは信号ピン5、NeoPixel 4個の設定です。CoreS3底面から5Vを出すため、サンプルでは`M5.begin()`を呼んでいます。
 
-## 主な機能
+## 公開データ
 
-- CoreS3 / CoreS3 SE底面への4灯RGB LED追加
-- 光拡散部の3Dデータ公開
-- 回路図の公開
-- Adafruit NeoPixelとM5UnifiedによるArduinoサンプル
-
-## 技術・構成
-
-RGB LED基板、SLA樹脂製の光拡散部、固定ネジで構成されています。公開サンプルでは信号ピン5と4個のNeoPixelを設定し、CoreS3底面の5V出力のために `M5.begin()` を呼びます。
-
-## 公開先または使い方
-
-[HSBL-S200-01の販売ページをスイッチサイエンスで見る](https://www.switch-science.com/products/9815)。組み立て時は光拡散部の上下マークを確認します。
-
-## GitHubで見る
-
-[HSBL-S200-01の組み立て、回路図、3DデータをGitHubで見る](https://github.com/HSBL-ko-gyo/HSBL-S200-01)。
+組み立て写真、回路図、光拡散部の3Dデータ、Adafruit NeoPixelとM5Unifiedを使うサンプルを公開しています。完成品はスイッチサイエンスで販売しています。

@@ -1,6 +1,8 @@
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import publicRepositories from "../data/github/public-repositories.json";
-import { loadProjectFiles } from "../scripts/lib/catalog.js";
+import { loadProjectFiles, markdownHeadings } from "../scripts/lib/catalog.js";
 import {
   formatTokyoDateTime,
   isIso8601DateTime,
@@ -59,6 +61,49 @@ describe("public catalog boundaries", () => {
     expect(GITHUB_COLLECTED_AT_DISPLAY).toMatch(
       /^\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}$/,
     );
+  });
+
+  it("uses at least two content-specific H2 sections for every public project", async () => {
+    const projects = (await loadProjectFiles(process.cwd())).filter(
+      ({ data }) => !data.draft,
+    );
+    const legacySections = [
+      "何ができるか",
+      "こんな時に使う",
+      "主な機能",
+      "技術・構成",
+      "公開先または使い方",
+      "GitHubで見る",
+    ];
+    for (const { body, filename } of projects) {
+      const headings = markdownHeadings(body);
+      expect(headings.length, filename).toBeGreaterThanOrEqual(2);
+      expect(
+        legacySections.every((heading) => headings.includes(heading)),
+        filename,
+      ).toBe(false);
+    }
+  });
+
+  it("does not keep the old top or About copy in public page sources", async () => {
+    const paths = [
+      "src/pages/index.astro",
+      "src/pages/about.astro",
+      "src/pages/categories/index.astro",
+    ];
+    const source = (
+      await Promise.all(
+        paths.map((path) => readFile(resolve(process.cwd(), path), "utf8")),
+      )
+    ).join("\n");
+    for (const copy of [
+      "つくった道具を、使う人の言葉で。",
+      "リポジトリ名の向こうにある、使い道を伝える。",
+      "用途の近い道具を、引き出しごとにまとめました。",
+      "READMEの転載ではなく、入力・出力・使いどころを短く整理しています。",
+    ]) {
+      expect(source).not.toContain(copy);
+    }
   });
 
   it("has unique public SEO metadata and owner-scoped GitHub links", async () => {

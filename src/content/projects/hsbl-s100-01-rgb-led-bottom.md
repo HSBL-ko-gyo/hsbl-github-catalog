@@ -2,8 +2,8 @@
 title: HSBL-S100-01 RGB LED bottom
 slug: hsbl-s100-01-rgb-led-bottom
 repo: HSBL-S100-01
-summary: M5Stack ATOMシリーズの底面へRGB LEDを追加し、ピン切り替えやブラウザ設定にも対応する拡張ハードウェア。
-description: M5Stack ATOMの底面へRGB LEDを追加する拡張ハードウェア
+summary: M5Stack ATOMの底へRGB LEDを一灯足す基板です。Chameleon Key用に作りましたが、普通のインジケーターにも使えます。
+description: M5Stack ATOMの底を、一灯のRGB LEDで光らせる
 category: hardware-software
 tags: [M5Stack, AtomS3, RGB LED, NeoPixel, 電子工作]
 status: public
@@ -28,30 +28,14 @@ sourceEvidence:
   - https://sites.google.com/view/hsbl-s100/home#h.hl5y4fawha44
 ---
 
-## 何ができるか
+## 何を足す基板か
 
-M5Stack ATOMシリーズの底面へRGB LEDを一灯追加します。AtomS3では標準でピン6へ接続し、ハンダジャンパによってピン5または7へ切り替えられます。
+M5Stack ATOMシリーズの底面へRGB LEDを一灯追加します。画面付きマクロボタンのChameleon Key用に作ったものですが、ATOMの状態表示など別の用途でも使えます。透明なSLA樹脂の光拡散部と組み合わせます。
 
-## こんな時に使う
+## ピンと設定
 
-AtomS3などの状態を本体下側の色で示したい時や、画面付きマクロボタンの底面へ光るインジケーターを加えたい時に使えます。
+AtomS3では標準でピン6へ接続します。ハンダジャンパでピン5または7へ変える場合はJP6をカットします。Adafruit NeoPixelのArduinoサンプルがあり、AtomS3なら[HSBL-S101のWebツール](https://hsbl-ko-gyo.github.io/HSBL-S101/)から色も変更できます。
 
-## 主な機能
+## 公開データ
 
-- M5 ATOM底面へのRGB LED追加
-- ハンダジャンパによる信号ピン変更
-- 回路データと光拡散部の3Dデータ公開
-- Adafruit NeoPixelを使うArduinoサンプル
-- HSBL-S101 Webツールからの色変更
-
-## 技術・構成
-
-RGB LED基板とSLA樹脂製の光拡散部を組み合わせるハードウェアです。READMEではAtomS3用ピン設定と、ATOM向けを含むNeoPixelサンプルが公開されています。
-
-## 公開先または使い方
-
-[HSBL-S100-01の購入先と製品案内を見る](https://sites.google.com/view/hsbl-s100/home#h.hl5y4fawha44)。AtomS3向けの[HSBL-S101 Webツール](https://hsbl-ko-gyo.github.io/HSBL-S101/)からRGB色を設定できます。
-
-## GitHubで見る
-
-[HSBL-S100-01の回路、3Dデータ、サンプルコードをGitHubで見る](https://github.com/HSBL-ko-gyo/HSBL-S100-01)。
+回路データ、光拡散部の3Dデータ、サンプルコードを公開しています。購入先は製品ページにまとめています。

@@ -10,7 +10,13 @@ export async function getStaticPaths() {
   return Object.entries(CATEGORIES)
     .map(([slug, category]) => ({
       params: { slug },
-      props: { slug: slug as CategorySlug, category, projects: sortProjects(projects.filter(({ data }) => data.category === slug)) },
+      props: {
+        slug: slug as CategorySlug,
+        category,
+        projects: sortProjects(
+          projects.filter(({ data }) => data.category === slug),
+        ),
+      },
     }))
     .filter(({ props }) => props.projects.length > 0);
 }
@@ -23,7 +29,27 @@ interface Props {
 const { slug, category, projects } = Astro.props;
 ---
 
-<BaseLayout title={`${category.label}の公開作品 | ${SITE.name}`} description={`${category.description} ハシビロ工業がGitHubで公開している${category.label}の一覧です。`} pathname={`/categories/${slug}/`}>
-  <header class="page-header"><div class="shell"><p class="breadcrumbs"><a href="/categories/">カテゴリ</a> / {category.label}</p><p class="kicker">CATEGORY / {slug}</p><h1>{category.label}の作品</h1><p class="hero-copy">{category.description}</p></div></header>
-  <section class="section"><div class="shell"><div class="project-grid">{projects.map((project) => <ProjectCard project={project} />)}</div></div></section>
+<BaseLayout
+  title={`${category.label}の公開作品 | ${SITE.name}`}
+  description={`${category.description} ハシビロ工業がGitHubで公開している${category.label}の一覧です。`}
+  pathname={`/categories/${slug}/`}
+>
+  <header class="page-header">
+    <div class="shell">
+      <p class="breadcrumbs">
+        <a href="/categories/">種類</a> / {category.label}
+      </p><p class="kicker">CATEGORY / {slug}</p><h1>{category.label}</h1><p
+        class="hero-copy"
+      >
+        {category.description}
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="shell">
+      <div class="project-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
 </BaseLayout>

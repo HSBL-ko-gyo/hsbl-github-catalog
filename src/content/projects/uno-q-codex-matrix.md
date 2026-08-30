@@ -2,8 +2,8 @@
 title: UNO Q Codex Matrix
 slug: uno-q-codex-matrix
 repo: unoq-codex-matrix
-summary: Codexの処理状態と利用枠の目安を、Arduino UNO Q内蔵8×13 LEDマトリクスへアニメーション表示するローカル連携ソフト。
-description: Codexの処理状態をArduino UNO QのLEDマトリクスへ表示する連携ソフト
+summary: Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。
+description: Codexが今何してるか、UNO QのLEDに出す
 category: hardware-software
 tags: [Arduino UNO Q, Codex, LEDマトリクス, Router Bridge, Python]
 status: public
@@ -37,30 +37,18 @@ sourceEvidence:
   - https://github.com/HSBL-ko-gyo/unoq-codex-matrix/blob/main/README.md
 ---
 
-## 何ができるか
+## CodexをLEDで見る
 
-UNO Q上で動くCodexのライフサイクルイベントをローカルに受け取り、内蔵8×13青色LEDマトリクスへ状態別アニメーションを表示します。思考、読み取り、書き込み、ビルド、テスト、待機、完了などを机上で見分けられます。
+Codexが考えている、ファイルを読んでいる、テスト中、入力待ち、終わった、という状態をUNO Qの8×13青色LEDマトリクスへ出します。長い処理の間ずっと画面を見張りたくないので作りました。
 
-## こんな時に使う
+## 出しているもの
 
-Codexへ長い作業を任せて別の作業をしている間、画面を開き続けずに処理状態を把握したい時に使えます。UNO Q本体のLEDマトリクスを物理的なステータス表示器として活用します。
+READY、THINKING、READING、WRITING、BUILDING、TESTING、WAITING、SUCCESSなどを別のアニメーションで表示します。取得できる時は、上の13灯をCodex利用枠の目安にも使います。複数セッションが動いている場合は状態をまとめます。
 
-## 主な機能
+## 仕組み
 
-- Codex Hooksを待たせないfail-openなイベント取得
-- 複数セッションの状態集約
-- READY、THINKING、TESTING、WAITINGなどのアニメーション
-- Codex app-serverから取得できる場合の利用枠バー表示
-- CLIによる状態確認、デモ、診断、一時表示
+UNO QのLinux側でPythonデーモンがHooksを受け、Arduino RouterのMessagePack RPCでSTM32U585側へ送ります。MCUがLEDを描画します。状態確認、デモ、診断、一時表示用のCLIもあります。
 
-## 技術・構成
+## 注意
 
-UNO QのLinux側ではPythonデーモンがイベントを集約し、Arduino RouterのMessagePack RPCを通じてSTM32U585側のファームウェアへ状態を送ります。MCUが8×13 LEDマトリクスを描画します。プロンプトやファイル内容を保存しないプライバシー境界も文書化されています。
-
-## 公開先または使い方
-
-[UNO Q Codex MatrixのReleaseと導入履歴を見る](https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases)。UNO Q上でリポジトリを取得し、インストーラーを実行する手順がREADMEにあります。ファームウェア書き込みを含むため、対象実機を確認してから進めます。
-
-## GitHubで見る
-
-[UNO Q Codex Matrixの構成、プライバシー設計、診断手順をGitHubで見る](https://github.com/HSBL-ko-gyo/unoq-codex-matrix)。
+プロンプト、応答、コマンド、ファイル内容は保存しません。インストール時はMCUファームウェアを書き換えるので、対象がUNO Qであることを確認してから実行します。

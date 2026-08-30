@@ -2,8 +2,8 @@
 title: WebGL2 GPUベンチマーク
 slug: webgl2-gpu-benchmark
 repo: WebGPU_Test
-summary: WebGL2の演算負荷をスライダーで変え、FPS、GPU名、演算回数をスマートフォンやPCのブラウザで確認する簡易ベンチマーク。
-description: WebGL2の負荷とFPSをブラウザで確認する簡易GPUベンチマーク
+summary: アプリを入れずに、ブラウザでWebGL2へ負荷をかけます。スライダーを動かしながらFPSとGPU名を見られます。
+description: ブラウザでWebGL2の負荷とFPSを見る
 category: browser-tool
 tags: [WebGL2, GPU, ベンチマーク, FPS, スマートフォン]
 status: public
@@ -27,29 +27,14 @@ sourceEvidence:
   - https://hsbl-ko-gyo.github.io/WebGPU_Test/
 ---
 
-## 何ができるか
+## ブラウザで負荷をかける
 
-WebGL2を使ったGPU負荷テストをブラウザ上で実行し、FPS、GPU名、演算回数をリアルタイムに表示します。負荷レベルはスライダーで変更できます。
+スマートフォンやPCのブラウザでWebGL2へ負荷をかけ、FPS、GPU名、演算回数をリアルタイム表示する簡易ベンチマークです。専用アプリを入れず、ブラウザでの動きだけ手早く見ます。
 
-## こんな時に使う
+## 使い方
 
-アプリをインストールせず、スマートフォンやPCのブラウザでWebGL2描画時の様子を手早く比較したい時に向いています。厳密な機種評価ではなく簡易確認用です。
+公開ページでStartを押し、負荷スライダーを動かします。演算回数を変えた時にFPSがどう動くかを確認できます。厳密な機種評価や、別環境の数値を保証するものではありません。
 
-## 主な機能
+## 名前について
 
-- WebGL2によるGPU負荷テスト
-- FPSとGPU情報のリアルタイム表示
-- 演算回数を変える負荷スライダー
-- スマートフォンとPCのブラウザに対応
-
-## 技術・構成
-
-HTMLを主とする静的Webアプリです。リポジトリ名にはWebGPUとありますが、公開READMEで説明されている実装はWebGL2です。
-
-## 公開先または使い方
-
-[WebGL2 GPUベンチマークをブラウザで開く](https://hsbl-ko-gyo.github.io/WebGPU_Test/)。Startボタンを押し、負荷スライダーとFPS表示を確認します。
-
-## GitHubで見る
-
-[WebGL2 GPUベンチマークのソースと利用手順をGitHubで見る](https://github.com/HSBL-ko-gyo/WebGPU_Test)。
+リポジトリ名は`WebGPU_Test`ですが、公開READMEに書かれている実装はWebGPUではなくWebGL2です。このカタログでは実装に合わせてWebGL2ベンチマークとして載せています。

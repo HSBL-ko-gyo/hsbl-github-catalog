@@ -14,7 +14,7 @@ export const projectFrontmatterSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   repo: z.string().min(1).max(100),
   summary: z.string().min(20).max(180),
-  description: z.string().min(20).max(220),
+  description: z.string().min(8).max(220),
   category: z.enum(
     Object.keys(CATEGORIES) as [
       keyof typeof CATEGORIES,

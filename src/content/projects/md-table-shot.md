@@ -2,8 +2,8 @@
 title: MD Table Shot
 slug: md-table-shot
 repo: md-table-shot
-summary: Markdownの表を整ったPNG画像に変換し、noteやブログへ貼り付けやすくするブラウザ完結型ツール。
-description: Markdownの表をPNG画像へ変換するブラウザツール
+summary: noteなどへMarkdownの表を貼ると崩れるので、ブラウザ上で整えてPNGにする道具です。
+description: Markdownの表を、そのままPNGにする
 category: browser-tool
 tags: [Markdown, 表, PNG, 画像書き出し, ブラウザ]
 status: public
@@ -27,30 +27,14 @@ sourceEvidence:
   - https://hsbl-ko-gyo.github.io/md-table-shot/
 ---
 
-## 何ができるか
+## 表が崩れるのでPNGへ
 
-GFM形式のMarkdown tableを読み込み、レイアウトを確認しながらPNG画像へ書き出せます。表のテキストや設定はブラウザ内で処理され、外部サーバーへ送信しない構成です。
+noteなどへMarkdownの表を貼ると、表にならなかったり見た目が崩れたりします。そこで、GFM形式の表をブラウザで整え、貼り付けやすいPNGへ変えるようにしました。入力したMarkdownは外部サーバーへ送りません。
 
-## こんな時に使う
+## できること
 
-noteやブログなど、Markdownの表をそのまま貼り付けにくい場所へ、読みやすい画像として掲載したい時に向いています。クリップボードへ直接コピーできない環境ではPNG保存へ切り替えられます。
+左右・中央の寄せ方、太字、斜体、取り消し線、インラインコードをプレビューできます。画像は1倍・2倍・3倍、白背景・透過背景から選べます。文字サイズ、セル余白、表の最大幅も調整できます。
 
-## 主な機能
+## コピーできない時
 
-- 左寄せ・中央寄せ・右寄せを含むGFM表のプレビュー
-- 太字、斜体、取り消し線、インラインコードの描画
-- 1倍・2倍・3倍の解像度、白背景・透過背景の選択
-- 文字サイズ、セル余白、表の最大幅の調整
-- PNGのクリップボードコピーとダウンロード
-
-## 技術・構成
-
-TypeScriptとViteで作られた静的Webアプリです。PNGコピーには `ClipboardItem` とHTTPSまたはlocalhostのSecure Contextが必要で、非対応ブラウザではファイル保存を利用します。
-
-## 公開先または使い方
-
-[MD Table Shotをブラウザで使う](https://hsbl-ko-gyo.github.io/md-table-shot/)。Markdownの表を入力し、表示と出力設定を整えてからコピーまたは保存します。
-
-## GitHubで見る
-
-[MD Table Shotのソースコードと詳しい対応範囲をGitHubで見る](https://github.com/HSBL-ko-gyo/md-table-shot)。
+対応ブラウザではPNGをクリップボードへコピーできます。`ClipboardItem`やHTTPSに対応していない環境では、PNGファイルとして保存してください。

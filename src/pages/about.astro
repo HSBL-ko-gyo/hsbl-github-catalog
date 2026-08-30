@@ -3,21 +3,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE } from "../lib/site";
 ---
 
-<BaseLayout title={`このカタログについて | ${SITE.name}`} description="ハシビロ工業 GitHub作品カタログの目的、掲載基準、更新方針と、GitHubプロフィールへの導線を案内します。" pathname="/about/">
-  <header class="page-header"><div class="shell"><p class="kicker">ABOUT THIS CATALOG</p><h1>リポジトリ名の向こうにある、使い道を伝える。</h1></div></header>
+<BaseLayout
+  title={`このサイトについて | ${SITE.name}`}
+  description="GitHubにあるハシビロ工業の公開作品を、日本語で探しやすく並べたサイトについて説明します。"
+  pathname="/about/"
+>
+  <header class="page-header">
+    <div class="shell">
+      <p class="kicker">ABOUT</p>
+      <h1>GitHub、そのままだと何があるのか分かりづらいので。</h1>
+    </div>
+  </header>
   <div class="shell project-layout">
     <article class="prose">
-      <h2>このカタログの役割</h2>
-      <p>このサイトは、ハシビロ工業がGitHubで公開する個人開発・電子工作の作品を、利用者の困りごとや目的から探せるように整理した静的カタログです。ソースコードや詳しい技術情報はGitHub、実際に動かす入口は本番WebアプリやReleaseへ案内します。</p>
-      <h2>掲載基準</h2>
-      <p>ownerが <code>HSBL-ko-gyo</code> のpublicリポジトリで、空の置き場ではなく、公開情報から用途と自作性を明確に説明できる作品を掲載します。forkは原則除外し、独自の変更内容を説明できる明示許可済みの派生版だけ、派生元へのリンクと「FORK版」表記を付けて掲載します。曖昧な候補、旧版、ミラー、内部資料を連想させるものは公開しません。</p>
-      <h2>説明文について</h2>
-      <p>作品ページはREADMEの複製ではありません。何を入力し、何が得られ、どの環境で使うのかを日本語で整理しています。機能や性能は公開リポジトリで確認できる範囲だけを記載します。</p>
-      <h2>更新方針</h2>
-      <p>公開GitHub API由来の公開日時、更新日時、言語、Topicsなどを定期的に同期し、作品一覧は公開日時の新しい順に表示します。公開ページやメタデータは、厳格な対象検証とテストを通過した場合だけ更新します。</p>
-      <h2>GitHubで見る</h2>
-      <p><a href={SITE.githubProfile}>HSBL-ko-gyoのGitHubプロフィールで、公開リポジトリのソースとREADMEを見る</a></p>
+      <h2>このサイトについて</h2>
+      <p>
+        GitHubに昔の工作から最近のツールまで混ざってきました。リポジトリ名だけでは何をするものか分かりづらいので、日本語で並べ直したのがこのサイトです。
+      </p>
+
+      <h2>載せているもの</h2>
+      <p>
+        自分で作った公開物のうち、今見ても用途が分かるものを載せています。fork、空の置き場、仕事のものは載せません。例外は、独自変更を説明できる明示許可済みの派生版だけです。
+      </p>
+
+      <h2>詳しい話はGitHubにあります</h2>
+      <p>
+        ここでは、まず何をするものか分かるようにしています。コード、回路図、README、Releaseは各リポジトリへ。
+      </p>
+
+      <h2>更新について</h2>
+      <p>
+        GitHubを定期的に見て、新しく公開したものや更新日を反映します。機能は公開情報から確認できた範囲だけ。盛りません。
+      </p>
     </article>
-    <aside class="project-aside"><h2>サイトの分担</h2><dl class="fact-list"><div><dt>このカタログ</dt><dd>用途検索と作品案内</dd></div><div><dt>GitHub</dt><dd>ソース、README、Issue、Release</dd></div><div><dt>ハシビロ工業 本館</dt><dd>活動全体と代表作</dd></div></dl><div class="link-stack"><a class="button button-primary" href={SITE.githubProfile}>GitHubプロフィール</a><a class="button" href={SITE.parentSite}>ハシビロ工業 本館</a></div></aside>
+    <aside class="project-aside">
+      <h2>見る場所</h2>
+      <dl class="fact-list">
+        <div><dt>このサイト</dt><dd>何があるか探す</dd></div>
+        <div><dt>GitHub</dt><dd>ソースと資料</dd></div>
+        <div><dt>ハシビロ工業 本館</dt><dd>活動全体</dd></div>
+      </dl>
+      <div class="link-stack">
+        <a class="button button-primary" href={SITE.githubProfile}>GitHub</a>
+        <a class="button" href={SITE.parentSite}>ハシビロ工業 本館</a>
+      </div>
+    </aside>
   </div>
 </BaseLayout>
