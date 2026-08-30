@@ -10,7 +10,7 @@
 
 明確なものは自動実行し、曖昧なものは質問せず飛ばします。
 
-実装ではCodex CLIを `--sandbox workspace-write --approve-for-me` で起動し、`sandbox_workspace_write.network_access=false` を指定します。Codexの作業領域はカタログリポジトリ内、ネットワーク取得とGitHub更新は外側の固定スクリプトだけです。
+実装ではCodex CLIをworkspace-writeを内包する `--approve-for-me` で起動し、`sandbox_workspace_write.network_access=false` を指定します。Codexの作業領域はカタログリポジトリ内、ネットワーク取得とGitHub更新は外側の固定スクリプトだけです。
 
 ## 週次処理
 

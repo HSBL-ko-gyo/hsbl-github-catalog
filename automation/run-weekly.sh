@@ -75,7 +75,6 @@ fi
 set +e
 codex exec \
   --ephemeral \
-  --sandbox workspace-write \
   --approve-for-me \
   --cd "$REPO_DIR" \
   -c sandbox_workspace_write.network_access=false \
