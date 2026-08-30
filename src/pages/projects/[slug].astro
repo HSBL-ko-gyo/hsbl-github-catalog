@@ -1,0 +1,64 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { CATEGORIES, SITE, STATUS_LABELS } from "../../lib/site";
+import { isPublishedProject } from "../../lib/project-schema";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", isPublishedProject);
+  return projects.map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
+}
+
+interface Props { project: CollectionEntry<"projects"> }
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+const pathname = `/projects/${data.slug}/`;
+const applicationCategories = new Set(["browser-tool", "browser-extension", "electronics-tool", "web-app", "app"]);
+const schemaType = data.category === "web-app" || data.category === "browser-tool" ? "WebApplication" : applicationCategories.has(data.category) ? "SoftwareApplication" : "CreativeWork";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": schemaType,
+  name: data.title,
+  description: data.description,
+  url: `${SITE.origin}${pathname}`,
+  codeRepository: data.links.github,
+  ...(data.links.app ? { sameAs: data.links.app } : {}),
+  ...(schemaType !== "CreativeWork" ? { applicationCategory: CATEGORIES[data.category].label } : {}),
+  inLanguage: "ja-JP",
+  creator: { "@type": "Organization", name: "ハシビロ工業", url: SITE.parentSite },
+};
+const lastUpdated = new Intl.DateTimeFormat("ja-JP", { dateStyle: "medium", timeZone: "Asia/Tokyo" }).format(new Date(data.repoUpdatedAt));
+---
+
+<BaseLayout title={data.seoTitle} description={data.seoDescription} pathname={pathname} jsonLd={jsonLd}>
+  <header class="page-header">
+    <div class="shell">
+      <p class="breadcrumbs"><a href="/">作品一覧</a> / <a href={`/categories/${data.category}/`}>{CATEGORIES[data.category].label}</a></p>
+      <p class="kicker">{data.title} / {STATUS_LABELS[data.status]}</p>
+      <h1>{data.description}</h1>
+      <p class="hero-copy">{data.summary}</p>
+    </div>
+  </header>
+  <div class="shell project-layout">
+    <article class="prose"><Content /></article>
+    <aside class="project-aside" aria-label="作品情報と公開先">
+      <h2>作品メモ</h2>
+      <dl class="fact-list">
+        <div><dt>作品名</dt><dd>{data.title}</dd></div>
+        <div><dt>カテゴリ</dt><dd><a href={`/categories/${data.category}/`}>{CATEGORIES[data.category].label}</a></dd></div>
+        <div><dt>公開状態</dt><dd>{STATUS_LABELS[data.status]}</dd></div>
+        <div><dt>主な言語</dt><dd>{data.primaryLanguage ?? "GitHubで未判定"}</dd></div>
+        <div><dt>GitHub更新確認</dt><dd>{lastUpdated}</dd></div>
+      </dl>
+      <div class="link-stack">
+        {data.links.app && <a class="button button-primary" href={data.links.app}>{data.title}を使う</a>}
+        {data.links.release && <a class="button" href={data.links.release}>{data.title}の配布版を見る</a>}
+        {data.links.article && <a class="button" href={data.links.article}>関連する解説記事を読む</a>}
+        {data.links.shop && <a class="button" href={data.links.shop}>販売ページを見る</a>}
+        <a class="button" href={data.links.github}>{data.title}のソースをGitHubで見る</a>
+      </div>
+      <ul class="tag-list" aria-label="タグ">{data.tags.map((tag) => <li>{tag}</li>)}</ul>
+    </aside>
+  </div>
+</BaseLayout>

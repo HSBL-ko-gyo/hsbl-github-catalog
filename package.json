@@ -1,0 +1,47 @@
+{
+  "name": "hsbl-github-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run validate:content && astro build && npm run validate:build",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "validate:content": "tsx scripts/validate-content.ts",
+    "validate:build": "tsx scripts/validate-build.ts",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run validate:content",
+    "collect:github": "tsx scripts/collect-github.ts",
+    "audit:repo-seo": "tsx scripts/audit-repo-seo.ts",
+    "validate:repo-seo-actions": "tsx scripts/validate-repo-seo-actions.ts",
+    "apply:repo-seo": "tsx scripts/apply-repo-seo.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "ajv": "^8.20.0",
+    "astro": "^7.2.9",
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.0",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.4.0",
+    "astro-eslint-parser": "^3.1.0",
+    "eslint": "^10.9.1",
+    "eslint-plugin-astro": "^3.1.0",
+    "globals": "^17.11.0",
+    "typescript-eslint": "^8.68.0",
+    "vitest": "^4.1.11"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Run HSBL GitHub catalog discovery every Sunday
+
+[Timer]
+OnCalendar=Sun *-*-* 05:20:00 Asia/Tokyo
+RandomizedDelaySec=20min
+Persistent=true
+Unit=hsbl-github-catalog-discovery.service
+
+[Install]
+WantedBy=timers.target

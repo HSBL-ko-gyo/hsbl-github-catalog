@@ -1,0 +1,144 @@
+version: 1
+
+# approved: 初回から公開ページを作る候補。公開GitHubの現物確認後に生成する。
+approved:
+  - repo: md-table-shot
+    title: MD Table Shot
+    category: browser-tool
+    summary: Markdownの表を、noteやブログへ貼りやすいPNG画像に変換するWebツール。
+    searchIntents:
+      - Markdown 表 PNG 変換
+      - note 表 画像化
+
+  - repo: gdrive-pdf-ctrl-wheel-zoom
+    title: Google Drive PDF Ctrl+Wheel Zoom
+    category: browser-extension
+    summary: Google DriveのPDFプレビューをCtrl＋マウスホイールで拡大・縮小するChrome / Edge拡張機能。
+    searchIntents:
+      - Google Drive PDF Ctrl ホイール 拡大
+      - Drive PDF ズーム 拡張機能
+
+  - repo: easyeda2kicad_gui
+    title: EasyEDA to KiCad GUI
+    category: electronics-tool
+    summary: LCSC IDからEasyEDA部品データをKiCad形式へ変換するWindows向けGUI。
+    searchIntents:
+      - EasyEDA KiCad 変換 GUI
+      - LCSC KiCad フットプリント 変換
+
+  - repo: easyeda2kicad-digimou
+    title: easyeda2kicad +DigiMou
+    category: electronics-tool
+    summary: 電子部品の販売元メタデータとCADデータの由来を分けて扱う、KiCad部品取り込みツール。
+    searchIntents:
+      - DigiKey Mouser KiCad 部品 変換
+      - KiCad 部品 メタデータ 取り込み
+
+  - repo: stereo-mic-tester
+    title: ステレオマイク・テスター
+    category: browser-tool
+    summary: USBステレオマイクの左右チャンネル波形をブラウザでリアルタイム確認するテストツール。
+    searchIntents:
+      - ステレオマイク 左右 波形 テスト
+      - USBマイク チャンネル 確認
+
+  - repo: gif-splitter
+    title: アニメーションGIF分解ツール
+    category: browser-tool
+    summary: GIFアニメーションをフレームごとのPNGへ分解し、個別またはZIPで保存するWebツール。
+    searchIntents:
+      - GIF フレーム 分解 PNG
+      - アニメーションGIF 連番画像 変換
+
+  - repo: Vision-filter-for-people-with-color-blindness
+    title: 色覚での見え方比較Webアプリ
+    category: browser-tool
+    summary: 画像を読み込み、色覚タイプごとの見え方を簡易比較するWebアプリ。
+    searchIntents:
+      - 色覚 見え方 シミュレーション 画像
+      - 色覚異常 デザイン 確認 ツール
+
+  - repo: mahjong-bootcamp
+    title: 麻雀ブートキャンプ
+    category: web-app
+    summary: テンパイ、何切る、安全牌、押し引き、役などをブラウザで練習する初心者向けWebアプリ。
+    searchIntents:
+      - 麻雀 初心者 練習 Webアプリ
+      - 何切る 安全牌 練習
+
+  - repo: enso
+    title: 炎添 enso
+    category: web-art
+    summary: ブラウザ上で焚き火を眺める静的Web作品。
+    searchIntents:
+      - Web 焚き火 ブラウザ
+      - ブラウザ 焚き火 アプリ
+
+  - repo: Sauna-Clock-WEB-App
+    title: サウナ時計Webアプリ
+    category: browser-tool
+    summary: 針の周回時間を変更できる、サウナ12分計風のブラウザ時計。
+    searchIntents:
+      - サウナ 12分計 Web
+      - 周回時間 変更 アナログ時計
+
+  - repo: YouTube-Time-Summary
+    title: YouTube時間合計ツール
+    category: browser-tool
+    summary: 複数の分・秒を入力し、動画などの合計再生時間を計算するWebツール。
+    searchIntents:
+      - YouTube 再生時間 合計 計算
+      - 分秒 合計 ツール
+
+  - repo: WebGPU_Test
+    title: WebGL2 GPUベンチマーク
+    category: browser-tool
+    summary: ブラウザ上でWebGL2の負荷、FPS、GPU情報を確認する簡易ベンチマーク。
+    searchIntents:
+      - ブラウザ GPU ベンチマーク WebGL2
+      - スマホ GPU 負荷 テスト
+
+  - repo: unoq-codex-matrix
+    title: UNO Q Codex Matrix
+    category: hardware-software
+    summary: Codexの処理状態をArduino UNO QのLEDマトリクスへアニメーション表示する連携ソフト。
+    searchIntents:
+      - Arduino UNO Q Codex LED matrix
+      - Codex status hardware display
+
+  - repo: kicad-step-just-1p6
+    title: KiCad STEP完成厚補正ツール
+    category: electronics-tool
+    summary: KiCadから出力したSTEP基板の完成厚を指定値へ補正するGUIツール。
+    searchIntents:
+      - KiCad STEP 基板 厚さ 1.6mm
+      - KiCad STEP 部品 めり込み 補正
+
+  - repo: HSBL-S220-bakusui
+    title: バクスイ
+    category: app
+    summary: 認知シャッフル睡眠法を音声で試す実験的な睡眠向上アプリ。
+    searchIntents:
+      - 認知シャッフル 睡眠 音声 アプリ
+      - 寝入り 音声 シャッフル
+
+# review: 公開GitHubを確認し、内容が明確なら自動公開する。曖昧なら質問せずスキップする。
+review:
+  - repo: Text-splitter-for-GPT
+    reason: READMEと公開導線の補強が必要
+  - repo: ryokuru-WEBApp-BETA
+    reason: プロトタイプとしての位置づけと現行状態を確認
+  - repo: HSBL-100
+    reason: 公開名、用途、後継関係を確認
+  - repo: HSBL-S101
+    reason: 公開名、製品状態、利用導線を確認
+  - repo: HSBL-S100-01
+    reason: 公開名、製品状態、利用導線を確認
+  - repo: HSBL-S200-01
+    reason: 公開名、製品状態、利用導線を確認
+  - repo: HSBL-120
+    reason: 公開名、販売・利用導線を確認
+  - repo: HSBL-S800
+    reason: 公開名と本番URLを確認
+  - repo: HSBL_touka_Exhibition-plan
+    reason: 作品ページとして掲載する範囲を確認

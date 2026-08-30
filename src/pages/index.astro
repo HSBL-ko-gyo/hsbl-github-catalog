@@ -1,0 +1,135 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CATEGORIES, SITE } from "../lib/site";
+import { isPublishedProject, sortProjects } from "../lib/project-schema";
+
+const projects = sortProjects((await getCollection("projects", isPublishedProject)));
+const categoryCounts = Object.fromEntries(
+  Object.keys(CATEGORIES).map((category) => [category, projects.filter(({ data }) => data.category === category).length]),
+);
+const title = `${SITE.name} — 公開作品カタログ`;
+const description = SITE.description;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: `${SITE.origin}/`,
+  mainEntity: projects.map(({ data }, position) => ({
+    "@type": "ListItem",
+    position: position + 1,
+    url: `${SITE.origin}/projects/${data.slug}/`,
+    name: data.title,
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} pathname="/" jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="kicker">PUBLIC PROJECT CATALOG / HSBL-KO-GYO</p>
+        <h1>つくった道具を、使う人の言葉で。</h1>
+        <p class="hero-copy">Markdown表の画像化から電子回路設計、UNO Q連携まで。ハシビロ工業がGitHubで公開している作品を、目的から探せるカタログです。</p>
+      </div>
+      <aside class="hero-note" aria-label="公開作品数">
+        <strong>{projects.length}</strong>
+        <span>公開中の作品</span>
+        <p>READMEの転載ではなく、入力・出力・使いどころを短く整理しています。</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="catalog-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">FIND A TOOL</p>
+          <h2 id="catalog-heading">目的から作品を探す</h2>
+        </div>
+        <p>すべての作品は通常リンクから開けます。</p>
+      </div>
+
+      <div class="filter-panel" aria-label="作品の絞り込み">
+        <div class="filters">
+          <div class="field">
+            <label for="project-search">キーワード検索</label>
+            <input id="project-search" type="search" placeholder="例: Markdown 表 PNG" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="category-filter">カテゴリ</label>
+            <select id="category-filter">
+              <option value="">すべてのカテゴリ</option>
+              {Object.entries(CATEGORIES).filter(([slug]) => categoryCounts[slug] > 0).map(([slug, category]) => <option value={slug}>{category.label}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="status-filter">公開状態</label>
+            <select id="status-filter">
+              <option value="">すべての状態</option>
+              <option value="public">公開中</option>
+              <option value="beta">ベータ</option>
+              <option value="development">開発中</option>
+              <option value="archived">アーカイブ</option>
+            </select>
+          </div>
+        </div>
+        <p class="result-count" aria-live="polite"><span id="visible-count">{projects.length}</span>件を表示</p>
+      </div>
+
+      <div class="project-grid" id="project-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <p id="no-results" class="empty-message" hidden>条件に合う作品はありません。検索語や絞り込みを変更してください。</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="category-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="kicker">TOOL DRAWERS</p><h2 id="category-heading">カテゴリ別に見る</h2></div>
+      </div>
+      <div class="category-grid">
+        {Object.entries(CATEGORIES).filter(([slug]) => categoryCounts[slug] > 0).map(([slug, category]) => (
+          <a class="category-card" href={`/categories/${slug}/`}>
+            <h3>{category.label} <small>{categoryCounts[slug]}</small></h3>
+            <p>{category.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const searchInput = document.querySelector<HTMLInputElement>("#project-search");
+    const categorySelect = document.querySelector<HTMLSelectElement>("#category-filter");
+    const statusSelect = document.querySelector<HTMLSelectElement>("#status-filter");
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-project-card]"));
+    const visibleCount = document.querySelector<HTMLElement>("#visible-count");
+    const noResults = document.querySelector<HTMLElement>("#no-results");
+
+    const normalize = (value: string) => value.normalize("NFKC").toLocaleLowerCase("ja").trim();
+    const update = () => {
+      const query = normalize(searchInput?.value ?? "");
+      const category = categorySelect?.value ?? "";
+      const status = statusSelect?.value ?? "";
+      let count = 0;
+      for (const card of cards) {
+        const matches =
+          (!query || normalize(card.dataset.search ?? "").includes(query)) &&
+          (!category || card.dataset.category === category) &&
+          (!status || card.dataset.status === status);
+        card.hidden = !matches;
+        if (matches) count += 1;
+      }
+      if (visibleCount) visibleCount.textContent = String(count);
+      if (noResults) noResults.hidden = count !== 0;
+    };
+
+    searchInput?.addEventListener("input", update);
+    categorySelect?.addEventListener("change", update);
+    statusSelect?.addEventListener("change", update);
+  </script>
+</BaseLayout>

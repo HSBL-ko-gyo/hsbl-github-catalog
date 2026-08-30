@@ -1,0 +1,25 @@
+[Unit]
+Description=HSBL GitHub catalog autonomous Codex discovery
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=__USER__
+WorkingDirectory=__REPO_DIR__
+Environment=HOME=__HOME__
+Environment=PATH=__PATH__
+Environment=CI=1
+Environment=HSBL_CATALOG_DIR=__REPO_DIR__
+ExecStart=__REPO_DIR__/automation/run-weekly.sh
+TimeoutStartSec=120min
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "owner": "HSBL-ko-gyo",
+  "sourceCollectedAt": "2026-08-29T22:50:39Z",
+  "actions": [
+    {
+      "type": "readme-exact-url-repair",
+      "repo": "easyeda2kicad_gui",
+      "path": "README.md",
+      "baseSha": "c7870c7c9f29bf05fbf6a5703a5f01266454091c",
+      "from": "https://github.com/YOUR_USERNAME/easyeda2kicad_gui/releases",
+      "to": "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "easyeda2kicad_gui",
+      "description": "LCSC IDを入力し、EasyEDA部品のシンボル、フットプリント、3DモデルをKiCad向けに変換するWindows用GUI。",
+      "topics": [
+        "easyeda",
+        "electronics",
+        "gui",
+        "kicad",
+        "lcsc",
+        "python",
+        "windows"
+      ],
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/easyeda-to-kicad-gui/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "enso",
+      "description": "ブラウザの画面に焚き火を映し、作業や休憩のそばで炎を眺めるための静的Web作品。",
+      "topics": [
+        "digital-art",
+        "fire",
+        "relaxation",
+        "static-site",
+        "web-art"
+      ],
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/enso/"
+    },
+    {
+      "type": "readme-managed-intro",
+      "repo": "gdrive-pdf-ctrl-wheel-zoom",
+      "path": "README.md",
+      "baseSha": "2cb6f1e54008c6b5a0eefc45fbd19cb6b4d2f590",
+      "content": "<!-- hsbl-catalog:seo-start -->\n**Google Drive PDF Ctrl+Wheel Zoom** — Google DriveのPDFプレビューで、Ctrl＋マウスホイールを既存の拡大・縮小操作へ割り当てるChrome / Edge拡張機能。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/)\n<!-- hsbl-catalog:seo-end -->"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "gdrive-pdf-ctrl-wheel-zoom",
+      "description": "Google DriveのPDFプレビューで、Ctrl＋マウスホイールを既存の拡大・縮小操作へ割り当てるChrome / Edge拡張機能。",
+      "topics": [
+        "browser-extension",
+        "chrome-extension",
+        "edge-extension",
+        "google-drive",
+        "javascript",
+        "pdf",
+        "zoom"
+      ],
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "gif-splitter",
+      "description": "アニメーションGIFをブラウザ内でフレームごとのPNGへ分解し、個別またはZIPにまとめて保存するWebツール。",
+      "topics": [
+        "browser-tool",
+        "gif",
+        "image-processing",
+        "javascript",
+        "png",
+        "zip"
+      ],
+      "homepage": "https://hsbl-ko-gyo.github.io/gif-splitter/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "mahjong-bootcamp",
+      "description": "テンパイ、何切る、安全牌、押し引き、リーチ、役、用語をブラウザ上で反復できる麻雀初心者向け練習アプリ。",
+      "topics": [
+        "browser-game",
+        "learning-tool",
+        "mahjong",
+        "training",
+        "web-app"
+      ],
+      "homepage": "https://hsbl-ko-gyo.github.io/mahjong-bootcamp/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "md-table-shot",
+      "description": "Markdownの表を整ったPNG画像に変換し、noteやブログへ貼り付けやすくするブラウザ完結型ツール。",
+      "topics": [
+        "browser-tool",
+        "image-export",
+        "markdown",
+        "markdown-table",
+        "png",
+        "typescript"
+      ],
+      "homepage": "https://hsbl-ko-gyo.github.io/md-table-shot/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "stereo-mic-tester",
+      "description": "USBステレオマイクの左右チャンネルを分け、オシロスコープ風の波形でリアルタイム確認するWebツール。",
+      "topics": [
+        "browser-tool",
+        "microphone",
+        "stereo-audio",
+        "testing-tool",
+        "web-audio"
+      ],
+      "homepage": "https://hsbl-ko-gyo.github.io/stereo-mic-tester/"
+    },
+    {
+      "type": "readme-managed-intro",
+      "repo": "unoq-codex-matrix",
+      "path": "README.md",
+      "baseSha": "e6d94e798d90d104fd85739fee0eb3474088451a",
+      "content": "<!-- hsbl-catalog:seo-start -->\n**UNO Q Codex Matrix** — Codexの処理状態と利用枠の目安を、Arduino UNO Q内蔵8×13 LEDマトリクスへアニメーション表示するローカル連携ソフト。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/)\n<!-- hsbl-catalog:seo-end -->"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "Vision-filter-for-people-with-color-blindness",
+      "description": "画像を読み込み、複数の色覚タイプでの見え方を並べて簡易比較し、デザイン確認の手掛かりにするWebアプリ。",
+      "topics": [
+        "accessibility",
+        "browser-tool",
+        "color-vision",
+        "image-processing",
+        "web-app"
+      ]
+    }
+  ]
+}

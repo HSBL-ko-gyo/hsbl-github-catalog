@@ -1,0 +1,86 @@
+version: 2
+
+owner: HSBL-ko-gyo
+
+site:
+  name: ハシビロ工業 GitHub
+  canonicalOrigin: https://github.hsbl-ko-gyo.com
+  parentSite: https://sites.google.com/view/hsbl-industrial-hp/home
+  locale: ja-JP
+
+publication:
+  defaultForClearNewRepository: public
+  defaultForAmbiguousNewRepository: skip
+  autoPublishClearCandidates: true
+  requireManualMerge: false
+  openPullRequest: false
+  pushDirectlyToMain: true
+  includePrivateRepositories: false
+  includeForks: false
+  includeEmptyRepositories: false
+  includeArchivedRepositories: false
+  deleteMissingProjectsOnApiFailure: false
+  minimumConfidence: high
+
+filters:
+  denyNamePatterns:
+    - "^test($|[-_])"
+    - "(^|[-_])login($|[-_])"
+    - "^git-clone-"
+  denyContentSignals:
+    - confidential
+    - internal only
+    - customer confidential
+    - client confidential
+    - 社外秘
+    - 機密
+    - 顧客資料
+    - 受託案件
+  supersededRepositories:
+    - repo: enso-WEBApp-BETA
+      successor: enso
+  explicitExclusions:
+    - repo: arduino-esp32
+      reason: upstream fork
+    - repo: esptool-js
+      reason: upstream fork
+    - repo: usb-pids
+      reason: upstream fork
+    - repo: "569"
+      reason: third-party fork
+    - repo: kicad1.6mm
+      reason: empty or abandoned experiment
+
+repoSeo:
+  defaultMode: apply-safe
+  eligibleRepositories: public-owner-nonfork-nonarchived
+  allowDescriptionEdit: true
+  allowTopicsEdit: true
+  allowHomepageEdit: true
+  allowManagedReadmeIntro: true
+  allowExactUrlRepair: true
+  allowSourceCodeEdit: false
+  managedBlockStart: "<!-- hsbl-catalog:seo-start -->"
+  managedBlockEnd: "<!-- hsbl-catalog:seo-end -->"
+  descriptionMaxCharacters: 160
+  topicsMaxCount: 12
+  managedReadmeBlockMaxCharacters: 1200
+  directCommitMessage: "docs: improve repository discoverability"
+  protectedRepositories: []
+
+limits:
+  maxNewPublishedProjectsPerRun: 8
+  maxExistingCatalogPagesRewrittenPerRun: 3
+  maxRepoMetadataEditsPerRun: 8
+  maxManagedReadmeEditsPerRun: 3
+  maxExactUrlRepairsPerRun: 5
+
+automation:
+  semanticDiscoveryCadence: weekly
+  networkInsideCodex: false
+  useDeterministicNetworkScripts: true
+  askForHumanApproval: false
+  stopForQuestions: false
+  skipAmbiguousInsteadOfAsking: true
+  keepOneCatalogCommitPerRun: true
+  dryRunNeverMutatesRemoteRepositories: true

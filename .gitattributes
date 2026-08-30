@@ -1,0 +1,2 @@
+# README caches retain upstream bytes so Git blob SHA validation remains exact.
+data/github/readmes/** -whitespace

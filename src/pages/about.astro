@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../lib/site";
+---
+
+<BaseLayout title={`このカタログについて | ${SITE.name}`} description="ハシビロ工業 GitHub作品カタログの目的、掲載基準、更新方針と、GitHubプロフィールへの導線を案内します。" pathname="/about/">
+  <header class="page-header"><div class="shell"><p class="kicker">ABOUT THIS CATALOG</p><h1>リポジトリ名の向こうにある、使い道を伝える。</h1></div></header>
+  <div class="shell project-layout">
+    <article class="prose">
+      <h2>このカタログの役割</h2>
+      <p>このサイトは、ハシビロ工業がGitHubで公開する個人開発・電子工作の作品を、利用者の困りごとや目的から探せるように整理した静的カタログです。ソースコードや詳しい技術情報はGitHub、実際に動かす入口は本番WebアプリやReleaseへ案内します。</p>
+      <h2>掲載基準</h2>
+      <p>ownerが <code>HSBL-ko-gyo</code> のpublicリポジトリで、forkや空の置き場ではなく、公開情報から用途と自作性を明確に説明できる作品だけを掲載します。曖昧な候補、旧版、ミラー、内部資料を連想させるものは公開しません。</p>
+      <h2>説明文について</h2>
+      <p>作品ページはREADMEの複製ではありません。何を入力し、何が得られ、どの環境で使うのかを日本語で整理しています。機能や性能は公開リポジトリで確認できる範囲だけを記載します。</p>
+      <h2>更新方針</h2>
+      <p>公開GitHub API由来の更新日時、言語、Topicsなどを定期的に同期し、明確な新作は掲載します。公開ページやメタデータは、厳格な対象検証とテストを通過した場合だけ更新します。</p>
+      <h2>GitHubで見る</h2>
+      <p><a href={SITE.githubProfile}>HSBL-ko-gyoのGitHubプロフィールで、公開リポジトリのソースとREADMEを見る</a></p>
+    </article>
+    <aside class="project-aside"><h2>サイトの分担</h2><dl class="fact-list"><div><dt>このカタログ</dt><dd>用途検索と作品案内</dd></div><div><dt>GitHub</dt><dd>ソース、README、Issue、Release</dd></div><div><dt>ハシビロ工業 本館</dt><dd>活動全体と代表作</dd></div></dl><div class="link-stack"><a class="button button-primary" href={SITE.githubProfile}>GitHubプロフィール</a><a class="button" href={SITE.parentSite}>ハシビロ工業 本館</a></div></aside>
+  </div>
+</BaseLayout>
