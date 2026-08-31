@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#f2b84b"/><path d="M10 12h44v7H36v9h15v7H36v17h-8V35H13v-7h15v-9H10z" fill="#17201d"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>ハシビロ工業</title>
+  <rect x="2" y="2" width="60" height="60" fill="#f2b84b" stroke="#17201d" stroke-width="4"/>
+  <path d="M15 14h34v7H36v22h16v7H12v-7h16V21H15z" fill="#17201d"/>
+</svg>
