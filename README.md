@@ -57,14 +57,16 @@ GitHub外で公開している作品は自動探索しません。`config/catalo
 
 ## ProtoPedia並行掲載
 
-`npm run prepare:protopedia` は、連携開始時点より後に追加された公開作品だけを `data/actions/protopedia-submissions.json` へ出力します。既存掲載は `data/protopedia/publication-state.json` で重複を防ぎます。キューには公開情報だけを入れ、Cookieやログイン情報は保存しません。
+`npm run capture:thumbnails` は公開Webサービスの実画面を880×495で撮影します。同じPNGをカタログ一覧、個別ページのOG画像、ProtoPediaのアイキャッチに使います。`npm run prepare:protopedia` は、連携開始後の新規公開作品と未同期サムネイルだけを `data/actions/protopedia-submissions.json` へ出力します。既存掲載は `data/protopedia/publication-state.json` で重複を防ぎます。
 
 ```bash
+npm run capture:thumbnails
 npm run prepare:protopedia
 npm run validate:protopedia-actions
+npm run publish:protopedia -- --dry-run
 ```
 
-ProtoPediaの作品作成はログイン済みChromeで行います。キューの内容をフォームへ設定し、重複と表示を確認してから登録します。登録確定は外部公開操作のため自動実行せず、登録ボタンの直前に確認します。登録後は作品IDとURLをpublication stateへ記録し、同じ作品を再候補化しません。
+実投稿は、リポジトリ外の永続Chromeプロファイルへlocalhost CDPで接続する固定Playwright処理です。投稿前後にアカウントの作品一覧、タイトル、公式URLを照合し、公開確認後だけ台帳を更新します。送信結果が不明な場合は台帳を更新せず、次回照合で既存作品を回収するため二重投稿しません。認証情報、Cookie、プロファイル、試行ログはコミットしません。初回認証と障害対応は [ProtoPedia無人投稿](docs/PROTOPEDIA_AUTOMATION.md) を参照してください。
 
 ## GitHub SEO監査と安全な適用
 
@@ -88,7 +90,7 @@ npm run apply:repo-seo
 
 ## 週次自律更新
 
-通常のdry-run:
+通常のdry-run（ProtoPediaの認証・重複照合も行い、投稿はしません）:
 
 ```bash
 HSBL_CATALOG_DRY_RUN=1 ./automation/run-weekly.sh
@@ -117,8 +119,10 @@ UNO Qへsudoなしで登録する場合は `./automation/install-systemd.sh --us
 ```bash
 npm ci
 npm run collect:github
+npm run capture:thumbnails
 npm run prepare:protopedia
 npm run validate:protopedia-actions
+npm run publish:protopedia -- --dry-run
 npm run audit:repo-seo
 npm run validate:repo-seo-actions
 npm run check

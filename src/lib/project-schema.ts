@@ -42,6 +42,13 @@ export const projectFrontmatterSchema = z
     shop: httpsUrl.optional(),
     protopedia: protopediaUrl.optional(),
   }),
+  thumbnail: z
+    .string()
+    .regex(
+      /^\/images\/projects\/[a-z0-9]+(?:-[a-z0-9]+)*\.png$/,
+      "thumbnailは作品slugに対応するPNGパスである必要があります",
+    )
+    .optional(),
   seoTitle: z.string().min(20).max(80),
   seoDescription: z.string().min(50).max(160),
   searchIntents: z.array(z.string().min(2).max(60)).min(1).max(8),
@@ -57,6 +64,17 @@ export const projectFrontmatterSchema = z
   sourceEvidence: z.array(httpsUrl).min(1).max(8),
   })
   .superRefine((data, context) => {
+    if (data.category === "web-app" && data.links.app) {
+      const expectedThumbnail = `/images/projects/${data.slug}.png`;
+      if (data.thumbnail !== expectedThumbnail) {
+        context.addIssue({
+          code: "custom",
+          path: ["thumbnail"],
+          message: `web-app thumbnail must be ${expectedThumbnail}`,
+        });
+      }
+    }
+
     if (data.sourceType === "github") {
       for (const [field, value] of [
         ["repo", data.repo],

@@ -73,6 +73,7 @@ const publishedDate = formatTokyoDate(publishedAt);
   title={data.seoTitle}
   description={data.seoDescription}
   pathname={pathname}
+  image={data.thumbnail}
   jsonLd={jsonLd}
 >
   <header class="page-header">
@@ -90,6 +91,18 @@ const publishedDate = formatTokyoDate(publishedAt);
       </p>
       <h1>{data.description}</h1>
       <p class="hero-copy">{data.summary}</p>
+      {
+        data.thumbnail && (
+          <figure class="project-thumbnail">
+            <img
+              src={data.thumbnail}
+              alt={`${data.title}の公開サービス画面`}
+              width="880"
+              height="495"
+            />
+          </figure>
+        )
+      }
     </div>
   </header>
   <div class="shell project-layout">

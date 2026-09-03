@@ -91,5 +91,6 @@ automation:
   askForHumanApproval: false
   stopForQuestions: false
   skipAmbiguousInsteadOfAsking: true
-  keepOneCatalogCommitPerRun: true
+  keepOneCatalogCommitPerRun: false
+  commitVerifiedPublicationStateSeparately: true
   dryRunNeverMutatesRemoteRepositories: true

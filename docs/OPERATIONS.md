@@ -21,6 +21,10 @@ gh auth status --hostname github.com
 ```bash
 npm ci
 npm run collect:github
+npm run capture:thumbnails
+npm run prepare:protopedia
+npm run validate:protopedia-actions
+npm run publish:protopedia -- --dry-run
 npm run audit:repo-seo
 npm run validate:repo-seo-actions
 npm run check
@@ -67,8 +71,9 @@ journalctl -u hsbl-github-catalog-discovery.service -n 200 --no-pager
 4. action schema、対象、SHA、件数上限を検証
 5. checkとbuild
 6. 安全なGitHub SEO actionを固定スクリプトで適用
-7. 再度checkとbuild
-8. 差分がある場合だけ1コミットをmainへpush
+7. カタログとProtoPedia投稿キューをmainへpush
+8. 固定Playwright処理でProtoPediaへ投稿し、公開ページを検証
+9. 成功した場合だけ台帳を更新し、別コミットをmainへpush
 
 force push、破壊的cleanup、PR承認待ちは行いません。
 
@@ -79,6 +84,8 @@ force push、破壊的cleanup、PR承認待ちは行いません。
 - README SHA不一致: そのREADME actionだけスキップ
 - 個別action失敗: レポートへ記録し、他の安全なactionを続行
 - main競合: force pushせず終了
+- ProtoPedia認証/CDP障害: キューと台帳を保持し、外部JSONLログを残して終了
+- ProtoPedia送信結果不明: 次回、既存作品を先に照合してから再試行
 
 カタログ変更は通常の `git revert <commit>` で戻します。他リポジトリのREADME変更もREADMEだけの単独コミットなので、そのリポジトリで通常のrevertが可能です。
 

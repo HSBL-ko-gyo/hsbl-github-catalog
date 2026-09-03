@@ -34,6 +34,13 @@ const publishedDate = new Intl.DateTimeFormat("ja-JP", {
   data-category={data.category}
   data-status={data.status}
 >
+  {
+    data.thumbnail && (
+      <a class="card-thumbnail" href={`/projects/${data.slug}/`} tabindex="-1" aria-hidden="true">
+        <img src={data.thumbnail} alt="" width="880" height="495" loading="lazy" />
+      </a>
+    )
+  }
   <div class="card-topline">
     <span class="category-label">{CATEGORIES[data.category].label}</span>
     {data.isFork && <span class="fork-label">FORK版</span>}

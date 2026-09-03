@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "account": "hsbl39",
   "baselineCatalogSlugs": [
     "bakusoku-mahjong",
@@ -48,7 +48,9 @@
       "slug": "aotori-575",
       "title": "青鳥五七五",
       "prototypeId": 9613,
-      "url": "https://protopedia.net/prototype/9613"
+      "url": "https://protopedia.net/prototype/9613",
+      "officialUrl": "https://575.hsbl-ko-gyo.com/",
+      "thumbnailUploaded": false
     }
   ]
 }

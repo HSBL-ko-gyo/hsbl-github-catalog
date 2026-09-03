@@ -76,6 +76,7 @@ describe("public catalog boundaries", () => {
         app: "https://575.hsbl-ko-gyo.com/",
         article: "https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba",
       },
+      thumbnail: "/images/projects/aotori-575.png",
       seoTitle: "青鳥五七五｜俳句・川柳を気軽に共有するSNS | ハシビロ工業",
       seoDescription:
         "青鳥五七五は、俳句や川柳を気軽に投稿・閲覧できるWebサービスです。各行1〜10文字で、字余りや字足らずにも対応します。",
@@ -168,6 +169,9 @@ describe("public catalog boundaries", () => {
       } else {
         expect(data.links.github).toBeUndefined();
         expect(data.links.app).toMatch(/^https:\/\//);
+      }
+      if (data.category === "web-app" && data.links.app) {
+        expect(data.thumbnail).toBe(`/images/projects/${data.slug}.png`);
       }
       expect(data.seoTitle.length).toBeGreaterThan(0);
       expect(data.seoDescription.length).toBeGreaterThan(0);

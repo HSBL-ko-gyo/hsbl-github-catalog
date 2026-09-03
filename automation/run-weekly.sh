@@ -87,6 +87,7 @@ if [[ $CODEX_STATUS -ne 0 ]]; then
   exit "$CODEX_STATUS"
 fi
 
+npm run capture:thumbnails
 npm run prepare:protopedia
 npm run validate:protopedia-actions
 npm run audit:repo-seo
@@ -98,6 +99,8 @@ git diff --check
 if [[ "$DRY_RUN" == "1" ]]; then
   echo "== Remote SEO actions: dry-run only =="
   npm run apply:repo-seo -- --dry-run
+  echo "== ProtoPedia publisher: authentication and duplicate-check dry-run =="
+  npm run publish:protopedia -- --dry-run
   echo "== Catalog diff =="
   git status --short
   git diff --stat
@@ -115,17 +118,40 @@ npm run check
 npm run build
 git diff --check
 
-if [[ -z "$(git status --porcelain)" ]]; then
-  echo "No substantive catalog or report changes. Nothing to push."
-  exit 0
+if [[ -n "$(git status --porcelain)" ]]; then
+  git add --all
+  git commit -m "chore(catalog): autonomous GitHub discovery ${STAMP}"
+
+  # Never force-push. A concurrent main update makes this run fail safely and
+  # the next run can retry after the repository is reconciled normally.
+  git push origin main
+  echo "Catalog and ProtoPedia queue published to main."
+else
+  echo "No catalog changes before ProtoPedia publishing."
 fi
 
-git add --all
-git commit -m "chore(catalog): autonomous GitHub discovery ${STAMP}"
+# Fixed Playwright automation performs account/duplicate checks, form entry,
+# thumbnail upload, and a single submit. It records committed state only after
+# the public page has been read back successfully. A failed or uncertain submit
+# leaves the queue intact for a safe next-run reconciliation.
+npm run publish:protopedia
 
-# Never force-push. A concurrent main update makes this run fail safely and the
-# next run can retry after the repository is reconciled normally.
-git push origin main
+# A verified publication changes the registry/frontmatter and drains the queue.
+# Validate and publish those facts separately so a failed external submission
+# never creates a false publication-state entry.
+npm run prepare:protopedia
+npm run validate:protopedia-actions
+npm run check
+npm run build
+git diff --check
 
-echo "Autonomous catalog update published to main."
-echo "Cloudflare Pages may deploy from the main branch through its Git integration."
+if [[ -n "$(git status --porcelain)" ]]; then
+  git add --all
+  git commit -m "chore(protopedia): record verified publications ${STAMP}"
+  git push origin main
+  echo "Verified ProtoPedia publication state published to main."
+else
+  echo "ProtoPedia queue was empty; no publication-state commit needed."
+fi
+
+echo "Autonomous weekly catalog and ProtoPedia run complete."

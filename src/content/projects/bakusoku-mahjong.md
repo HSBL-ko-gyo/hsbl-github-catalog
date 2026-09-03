@@ -13,6 +13,7 @@ createdYear: 2026
 links:
   github: https://github.com/HSBL-ko-gyo/HSBL-S800
   app: https://bakusoku-mahjong.hsbl-ko-gyo.com/
+thumbnail: /images/projects/bakusoku-mahjong.png
 seoTitle: 一人で四人麻雀のツモ・打牌を練習する爆速麻雀 | ハシビロ工業 GitHub
 seoDescription: 一人で四人麻雀のツモと打牌をテンポよく進めるReact製Webアプリ。インストールせず、PCやスマートフォンのブラウザで練習できます。
 searchIntents: [一人 麻雀 練習 Webアプリ, 四人麻雀 ツモ 打牌 練習]

@@ -7,6 +7,7 @@
 1. 決め打ち収集スクリプトが public・非forkと、ポリシーで明示許可したforkのGitHub情報だけを取得する。
 2. Codexがローカル収集結果を読み、カタログ更新とSEO変更計画を作る。
 3. 決め打ちスクリプトが対象・変更種類・件数・SHAを検証して、他リポジトリ更新とカタログ公開を行う。
+4. 固定Playwright処理がProtoPediaの重複確認、フォーム入力、実画面サムネイルのアップロード、公開後検証を行う。
 
 明確なものは自動実行し、曖昧なものは質問せず飛ばします。
 
@@ -27,6 +28,10 @@ Codexをworkspace-write / networkなしで実行
   ├─ カタログページを作成・更新
   └─ repo-seo-actions.jsonを生成
   ↓
+公開Webサービスの不足サムネイルを880×495で撮影
+  ↓
+ProtoPedia投稿キューを決定的に生成
+  ↓
 アクション計画の厳格検証
   ↓
 check + build
@@ -39,8 +44,13 @@ dry-runなら外部変更予定だけ表示して終了
   ↓
 check + buildを再実行
   ↓
-差分あり → 1コミットにまとめてmainへpush
-差分なし → 終了
+差分あり → カタログと投稿キューをmainへpush
+  ↓
+固定Playwright処理がProtoPediaへ投稿
+  ├─ 失敗/不明 → 台帳を変えずキューを残して終了
+  └─ 公開ページ検証成功 → publication-stateとfrontmatterを更新
+  ↓
+検証済み公開結果だけを別コミットでmainへpush
 ```
 
 初回やAPIレート制限下で既存収集データを使うローカル確認だけは、次を利用できます。
@@ -65,7 +75,7 @@ HSBL_CATALOG_DRY_RUN=1 HSBL_CATALOG_SKIP_COLLECT=1 ./automation/run-weekly.sh
 - 1回あたりの件数上限を固定
 - 全変更をGit履歴とレポートへ残す
 
-カタログは1回1コミットなので、問題があれば通常のGit revertで戻せます。
+カタログと投稿キュー、検証済みの外部公開結果は段階を分けてコミットします。外部投稿に失敗しても、未投稿の台帳を成功扱いにしません。
 
 ## 収集範囲
 
@@ -131,6 +141,9 @@ README管理ブロック:
 - `data/github/readmes/<repo>.md`: 候補判定用キャッシュ
 - `src/content/projects/*.md`: 公開作品ページ
 - `data/actions/repo-seo-actions.json`: 検証前の変更計画
+- `public/images/projects/<slug>.png`: Webサービス実画面の共用サムネイル
+- `data/actions/protopedia-submissions.json`: 固定投稿処理の入力キュー
+- `data/protopedia/publication-state.json`: 検証済み公開作品の重複防止台帳
 - `reports/discovery/<date>.md`: 新規、更新、除外理由
 - `reports/repo-seo/*.md`: リポジトリ単位の監査
 - `reports/repo-seo-applied/<date>.md`: 実際の適用結果
@@ -144,6 +157,9 @@ README管理ブロック:
 - 個別SEO action失敗: そのactionだけスキップし、他の安全なactionは続行
 - 最終check/build失敗: カタログmainへpushしない
 - main push競合: force pushせず失敗として残し、次回または手動の通常Git操作で解消
+- ProtoPedia送信前の失敗: 台帳を変えず次回再試行
+- ProtoPedia送信後の結果不明: 台帳を変えず、次回は先に既存作品を照合して二重投稿を防止
+- ProtoPedia公開確認成功: 作品ID、公開URL、公式URLの一致後だけ台帳を更新
 
 ## 日次処理はAI不要
 

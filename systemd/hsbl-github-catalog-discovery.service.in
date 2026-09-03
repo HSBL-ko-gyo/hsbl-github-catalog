@@ -2,6 +2,8 @@
 Description=HSBL GitHub catalog autonomous Codex discovery
 Wants=network-online.target
 After=network-online.target
+__BROWSER_WANTS__
+__BROWSER_AFTER__
 
 [Service]
 Type=oneshot
@@ -11,6 +13,7 @@ Environment=HOME=__HOME__
 Environment=PATH=__PATH__
 Environment=CI=1
 Environment=HSBL_CATALOG_DIR=__REPO_DIR__
+EnvironmentFile=-__HOME__/.config/hsbl-github-catalog/automation.env
 ExecStart=__REPO_DIR__/automation/run-weekly.sh
 TimeoutStartSec=120min
 Nice=10

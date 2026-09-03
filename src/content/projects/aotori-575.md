@@ -14,6 +14,7 @@ links:
   app: https://575.hsbl-ko-gyo.com/
   article: https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba
   protopedia: https://protopedia.net/prototype/9613
+thumbnail: /images/projects/aotori-575.png
 seoTitle: 青鳥五七五｜俳句・川柳を気軽に共有するSNS | ハシビロ工業 GitHub
 seoDescription: 青鳥五七五は、五・七・五の三行作品を投稿・閲覧できる無料SNSです。字余り・字足らずも歓迎し、新着・人気・フォローから作品を読めます。
 searchIntents: [五七五 SNS, 俳句 投稿 サイト, 川柳 共有, 三行詩 Webサービス]

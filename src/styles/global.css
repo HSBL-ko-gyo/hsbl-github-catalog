@@ -248,6 +248,20 @@ h1 {
   background: var(--panel);
   box-shadow: var(--shadow);
 }
+.card-thumbnail {
+  display: block;
+  margin: -1.4rem -1.4rem 1.2rem;
+  border-bottom: 2px solid var(--ink);
+  overflow: hidden;
+}
+.card-thumbnail img,
+.project-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
 .project-card[hidden] {
   display: none;
 }
@@ -367,6 +381,13 @@ h1 {
 .page-header h1 {
   max-width: 24ch;
   font-size: clamp(1.8rem, 4vw, 3rem);
+}
+.project-thumbnail {
+  max-width: 880px;
+  margin: 2rem 0 0;
+  border: 2px solid var(--ink);
+  background: var(--panel);
+  box-shadow: var(--shadow);
 }
 .breadcrumbs {
   margin: 0 0 1rem;

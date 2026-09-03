@@ -36,7 +36,7 @@
 8. privateリポジトリを示す名前、件数、情報は、入力に混入していても出力しない。
 9. `npm run audit:repo-seo` の入力になる監査情報を更新する。
 10. `data/actions/repo-seo-actions.json` を作成または更新する。
-11. ProtoPediaへ直接ログイン・投稿はしない。外側の固定スクリプトが、既存掲載基準との差分から `data/actions/protopedia-submissions.json` を決定的に再生成する。新規公開作品の本文とURLを正確に保ち、認証情報やCookieは扱わない。
+11. ProtoPediaへ直接ログイン・投稿はしない。外側の固定スクリプトが、既存掲載基準との差分から `data/actions/protopedia-submissions.json` を決定的に再生成し、固定Playwright処理で投稿する。新規 `web-app` には `thumbnail: /images/projects/<slug>.png` を設定する。画像そのものは外側が実サービスを撮影するため、AI画像を作らない。本文とURLを正確に保ち、認証情報やCookieは扱わない。
 
 Codex終了後、外側の固定スクリプトも `npm run audit:repo-seo` を実行し、件数上限とローカル収集データに基づく決定的な監査結果へ正規化します。
 

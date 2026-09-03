@@ -119,13 +119,14 @@
 
 ## ProtoPedia parallel publication
 
-- 週次の無人処理は `npm run prepare:protopedia` で新規公開作品だけを投稿キューへ入れる。既存作品や公開済み作品を再候補化しない。
+- 週次の無人処理は `npm run capture:thumbnails` で公開Webサービスの実画面を880×495 PNGへ撮影し、`npm run prepare:protopedia` で新規公開作品と既存作品の未同期サムネイルだけを投稿キューへ入れる。
+- Webサービス作品は `thumbnail: /images/projects/<slug>.png` を持たせ、同じファイルをカタログ、OG画像、ProtoPediaで使う。AI生成画像で代用しない。
 - 認証情報、Cookie、ブラウザプロファイルをリポジトリへ保存しない。
-- 投稿時は `data/actions/protopedia-submissions.json` を正とし、ログイン済みChromeでアカウントの既存作品を先に確認する。
-- ProtoPediaの作品作成フォームへタイトル、概要、公式URL、本文、タグ、関連リンクを設定する。確認できないライセンスや技術情報は推測しない。
-- 一般公開の確定操作は毎回、登録ボタンを押す直前に対象と内容を示して確認する。
-- 登録後は作品IDと公開URLを `data/protopedia/publication-state.json` へ追記し、作品frontmatterの `links.protopedia` と `sourceEvidence` に公開URLを追加する。続けて投稿キューを再生成する。
-- Chromeへ接続できない無人実行では公開操作を失敗扱いにせず、キューを残す。次のCUI Codex実行で処理を再開する。
+- `npm run publish:protopedia` はリポジトリ外の永続Chromeプロファイルへlocalhost CDPで接続し、`data/actions/protopedia-submissions.json` だけを入力に固定Playwright処理でフォーム入力、画像アップロード、一般公開を行う。毎回のCodexブラウザ操作や確認待ちは置かない。
+- 投稿前にアカウントの既存作品を照合する。タイトルと公式URLがともに一致する作品があれば再投稿せず、成功結果として回収する。一方だけ一致する場合は衝突として停止する。
+- 登録・更新ボタンを押す直前にリポジトリ外のattemptを記録し、押下は1回だけにする。公開ページの作品ID、タイトル、公式URLを再確認できた後だけ `publication-state.json` と作品frontmatterを更新する。
+- 送信前の失敗は次回再試行する。送信開始後に結果不明となった場合は台帳を更新せず、次回の事前照合で公開済みか確認してから続行する。
+- Chrome/CDPまたは認証が利用できない場合もキューと台帳は変更せず、リポジトリ外のJSONLログを残して失敗終了する。
 
 ## Development workflow
 
@@ -136,8 +137,10 @@ Node.js 24以上を使います。UNO Qのユーザー領域へツールを置�
 ```bash
 npm ci
 npm run collect:github
+npm run capture:thumbnails
 npm run prepare:protopedia
 npm run validate:protopedia-actions
+npm run publish:protopedia -- --dry-run
 npm run audit:repo-seo
 npm run validate:repo-seo-actions
 npm run check

@@ -66,6 +66,18 @@ async function main(): Promise<void> {
       throw new Error(`Built description mismatch: ${project.data.slug}`);
     if (!html.includes(`<link rel="canonical" href="${ORIGIN}${pathname}">`))
       throw new Error(`Self canonical missing: ${project.data.slug}`);
+    if (project.data.thumbnail) {
+      if (!html.includes(`src="${project.data.thumbnail}"`))
+        throw new Error(`Project thumbnail missing: ${project.data.slug}`);
+      if (
+        !html.includes(
+          `<meta property="og:image" content="${ORIGIN}${project.data.thumbnail}">`,
+        )
+      )
+        throw new Error(`Project OG thumbnail mismatch: ${project.data.slug}`);
+      if (!(await exists(resolve(DIST, project.data.thumbnail.slice(1)))))
+        throw new Error(`Built thumbnail file missing: ${project.data.slug}`);
+    }
     if (!index.includes(`href="${pathname}"`))
       throw new Error(
         `Homepage does not link to public project: ${project.data.slug}`,

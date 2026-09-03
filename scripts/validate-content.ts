@@ -12,6 +12,7 @@ import {
   loadCatalogPolicy,
   loadGithubDataset,
 } from "./lib/github-data.js";
+import { assertProjectThumbnail } from "./lib/png.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const LEGACY_SECTIONS = [
@@ -104,6 +105,11 @@ async function main(): Promise<void> {
   for (const project of projects) {
     const { data, body, filename } = project;
     const headings = markdownHeadings(body);
+    if (data.thumbnail) {
+      await assertProjectThumbnail(
+        resolve(ROOT, "public", data.thumbnail.replace(/^\//, "")),
+      );
+    }
     if (!data.draft && headings.length < 2) {
       throw new Error(`${filename} must have at least two H2 sections`);
     }

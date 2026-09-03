@@ -55,7 +55,14 @@ sed \
 if [[ "$INSTALL_MODE" == "user" ]]; then
   sed -i \
     -e '/^User=/d' \
+    -e 's/^__BROWSER_WANTS__$/Wants=ashread-chromium.service/' \
+    -e 's/^__BROWSER_AFTER__$/After=ashread-chromium.service/' \
     -e 's/^WantedBy=multi-user.target$/WantedBy=default.target/' \
+    "$TMP_SERVICE"
+else
+  sed -i \
+    -e '/^__BROWSER_WANTS__$/d' \
+    -e '/^__BROWSER_AFTER__$/d' \
     "$TMP_SERVICE"
 fi
 
@@ -68,12 +75,29 @@ if [[ "$DRY_RUN" == "1" ]]; then
   exit 0
 fi
 
+AUTOMATION_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME_DIR}/.config}/hsbl-github-catalog"
+AUTOMATION_ENV="${AUTOMATION_CONFIG_DIR}/automation.env"
+if [[ ! -e "$AUTOMATION_ENV" ]]; then
+  install -d -m 0700 "$AUTOMATION_CONFIG_DIR"
+  ENV_TMP="$(mktemp)"
+  sed "s|__HOME__|$HOME_DIR|g" \
+    "$ROOT_DIR/automation/automation.env.example" > "$ENV_TMP"
+  install -m 0600 "$ENV_TMP" "$AUTOMATION_ENV"
+  rm -f "$ENV_TMP"
+  echo "Created external automation config: $AUTOMATION_ENV"
+fi
+
 if [[ "$INSTALL_MODE" == "user" ]]; then
   USER_UNIT_DIR="${XDG_CONFIG_HOME:-${HOME_DIR}/.config}/systemd/user"
   install -d -m 0755 "$USER_UNIT_DIR"
   install -m 0644 "$TMP_SERVICE" "$USER_UNIT_DIR/hsbl-github-catalog-discovery.service"
   install -m 0644 "$ROOT_DIR/systemd/hsbl-github-catalog-discovery.timer" "$USER_UNIT_DIR/hsbl-github-catalog-discovery.timer"
   systemctl --user daemon-reload
+  if systemctl --user cat ashread-chromium.service >/dev/null 2>&1; then
+    systemctl --user enable --now ashread-chromium.service
+  else
+    echo "Warning: ashread-chromium.service is not installed; ProtoPedia publishing needs a persistent CDP browser."
+  fi
   systemctl --user enable --now hsbl-github-catalog-discovery.timer
   systemctl --user list-timers hsbl-github-catalog-discovery.timer --no-pager
   exit 0
