@@ -6,6 +6,13 @@ RUN_USER_HOME="$(getent passwd "$(id -un)" | cut -d: -f6)"
 PROFILE_DIR="${HSBL_CATALOG_CHROME_PROFILE:-${RUN_USER_HOME}/.local/share/ashread/chromium-profile}"
 TARGET_URL="https://protopedia.net/settings/prototypes"
 
+if [[ -z "${DISPLAY:-}" ]]; then
+  SESSION_DISPLAY="$(systemctl --user show-environment | sed -n 's/^DISPLAY=//p' | head -n 1)"
+  if [[ -n "$SESSION_DISPLAY" ]]; then
+    export DISPLAY="$SESSION_DISPLAY"
+  fi
+fi
+
 if [[ -n "${HSBL_CHROME_BIN:-}" ]]; then
   BROWSER_BIN="$HSBL_CHROME_BIN"
 elif [[ -x /usr/bin/chromium ]]; then
