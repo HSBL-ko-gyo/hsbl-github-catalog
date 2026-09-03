@@ -87,6 +87,8 @@ if [[ $CODEX_STATUS -ne 0 ]]; then
   exit "$CODEX_STATUS"
 fi
 
+npm run prepare:protopedia
+npm run validate:protopedia-actions
 npm run audit:repo-seo
 npm run validate:repo-seo-actions
 npm run check

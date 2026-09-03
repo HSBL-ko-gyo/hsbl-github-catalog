@@ -261,7 +261,8 @@ h1 {
 }
 .category-label,
 .status-label,
-.fork-label {
+.fork-label,
+.source-label {
   display: inline-flex;
   border: 1px solid var(--ink);
   padding: 0.15rem 0.5rem;
@@ -276,6 +277,9 @@ h1 {
 }
 .fork-label {
   background: #e9ddf4;
+}
+.source-label {
+  background: #dbeaf7;
 }
 .status-public {
   background: #d9eedc;

@@ -1,6 +1,6 @@
 # ハシビロ工業 GitHub 作品カタログ
 
-`HSBL-ko-gyo` がGitHubで公開しているブラウザツール、電子回路設計支援ソフト、Webアプリ、電子工作を、用途から探せる日本語中心の静的カタログです。
+`HSBL-ko-gyo` がGitHubやWebで公開しているブラウザツール、電子回路設計支援ソフト、Webアプリ、電子工作を、用途から探せる日本語中心の静的カタログです。
 
 - 本番URL: <https://github.hsbl-ko-gyo.com/>
 - GitHubプロフィール: <https://github.com/HSBL-ko-gyo>
@@ -53,6 +53,19 @@ npm run collect:github
 
 固定スクリプトが `GET /users/HSBL-ko-gyo/repos?type=public` を起点に、owner一致・public・非forkと、ポリシーで明示許可したforkだけを正規化します。許可forkは派生元URLも検証します。候補READMEだけを `data/github/readmes/` へ保存し、APIレスポンス、認証情報、HTTPヘッダーは保存しません。失敗時は既存データを置き換えません。
 
+GitHub外で公開している作品は自動探索しません。`config/catalog-policy.yml` の `allowedExternalProjects` に、作品URLとハシビロ工業自身の公開記事を明示したものだけ掲載できます。これにより、CloudflareなどGitHub APIから見えない公開作品を扱いつつ、別ドメインや内部資産を広く走査しません。
+
+## ProtoPedia並行掲載
+
+`npm run prepare:protopedia` は、連携開始時点より後に追加された公開作品だけを `data/actions/protopedia-submissions.json` へ出力します。既存掲載は `data/protopedia/publication-state.json` で重複を防ぎます。キューには公開情報だけを入れ、Cookieやログイン情報は保存しません。
+
+```bash
+npm run prepare:protopedia
+npm run validate:protopedia-actions
+```
+
+ProtoPediaの作品作成はログイン済みChromeで行います。キューの内容をフォームへ設定し、重複と表示を確認してから登録します。登録確定は外部公開操作のため自動実行せず、登録ボタンの直前に確認します。登録後は作品IDとURLをpublication stateへ記録し、同じ作品を再候補化しません。
+
 ## GitHub SEO監査と安全な適用
 
 ```bash
@@ -92,10 +105,10 @@ dry-runは他リポジトリもカタログ `main` も変更しません。実�
 systemd定義の非変更検証:
 
 ```bash
-./automation/install-systemd.sh --dry-run
+./automation/install-systemd.sh --dry-run --user
 ```
 
-実際の登録は `./automation/install-systemd.sh` です。sudoを使って毎週日曜05:20 JSTのtimerを有効化します。
+UNO Qへsudoなしで登録する場合は `./automation/install-systemd.sh --user` です。ユーザーのlingerが有効なら、ログアウト後も毎週日曜05:20 JSTのtimerが動きます。システム単位で登録する場合は従来どおり `./automation/install-systemd.sh` を使います。
 
 ## 完全検証
 
@@ -104,12 +117,14 @@ systemd定義の非変更検証:
 ```bash
 npm ci
 npm run collect:github
+npm run prepare:protopedia
+npm run validate:protopedia-actions
 npm run audit:repo-seo
 npm run validate:repo-seo-actions
 npm run check
 npm run build
 npm run apply:repo-seo -- --dry-run
-./automation/install-systemd.sh --dry-run
+./automation/install-systemd.sh --dry-run --user
 ```
 
 GitHub PagesとDNSの公開設定は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)、Google Sites側の案内は [docs/GSITE_INTEGRATION.md](docs/GSITE_INTEGRATION.md) を参照してください。

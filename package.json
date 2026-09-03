@@ -15,8 +15,10 @@
     "test": "vitest run",
     "validate:content": "tsx scripts/validate-content.ts",
     "validate:build": "tsx scripts/validate-build.ts",
-    "check": "npm run typecheck && npm run lint && npm run test && npm run validate:content",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run validate:content && npm run validate:protopedia-actions",
     "collect:github": "tsx scripts/collect-github.ts",
+    "prepare:protopedia": "tsx scripts/prepare-protopedia.ts",
+    "validate:protopedia-actions": "tsx scripts/validate-protopedia-actions.ts",
     "audit:repo-seo": "tsx scripts/audit-repo-seo.ts",
     "validate:repo-seo-actions": "tsx scripts/validate-repo-seo-actions.ts",
     "apply:repo-seo": "tsx scripts/apply-repo-seo.ts"

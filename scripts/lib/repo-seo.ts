@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import Ajv from "ajv";
+import { isGithubProjectData } from "../../src/lib/project-schema.js";
 import { loadProjectFiles } from "./catalog.js";
 import {
   explicitExclusionNames,
@@ -127,7 +128,11 @@ export async function validateRepoSeoPlan(root: string, suppliedPlan?: RepoSeoPl
 
   const repositories = new Map(dataset.repositories.map((repo) => [repo.name, repo]));
   const exclusions = explicitExclusionNames(policy);
-  const projectsByRepo = new Map(projects.map((project) => [project.data.repo, project]));
+  const projectsByRepo = new Map(
+    projects
+      .filter((project) => isGithubProjectData(project.data))
+      .map((project) => [project.data.repo, project]),
+  );
   const counts = {
     "repository-metadata": 0,
     "readme-managed-intro": 0,

@@ -83,6 +83,8 @@
 - 検索意図を明確にする小〜中規模の本文修正
 - テスト、スキーマ、収集処理、自動化処理の保守
 - `data/actions/repo-seo-actions.json` の安全なアクション計画
+- `data/actions/protopedia-submissions.json` の公開作品だけを含む投稿候補
+- `data/protopedia/publication-state.json` の公開済み作品IDとURL
 
 固定スクリプトが他リポジトリへ適用してよいもの:
 
@@ -115,6 +117,16 @@
 - Topicsは技術名だけでなく用途も含め、最大12件程度に絞る。
 - Homepageは確認できる本番URLを優先し、なければカタログの個別ページを使う。
 
+## ProtoPedia parallel publication
+
+- 週次の無人処理は `npm run prepare:protopedia` で新規公開作品だけを投稿キューへ入れる。既存作品や公開済み作品を再候補化しない。
+- 認証情報、Cookie、ブラウザプロファイルをリポジトリへ保存しない。
+- 投稿時は `data/actions/protopedia-submissions.json` を正とし、ログイン済みChromeでアカウントの既存作品を先に確認する。
+- ProtoPediaの作品作成フォームへタイトル、概要、公式URL、本文、タグ、関連リンクを設定する。確認できないライセンスや技術情報は推測しない。
+- 一般公開の確定操作は毎回、登録ボタンを押す直前に対象と内容を示して確認する。
+- 登録後は作品IDと公開URLを `data/protopedia/publication-state.json` へ追記し、作品frontmatterの `links.protopedia` と `sourceEvidence` に公開URLを追加する。続けて投稿キューを再生成する。
+- Chromeへ接続できない無人実行では公開操作を失敗扱いにせず、キューを残す。次のCUI Codex実行で処理を再開する。
+
 ## Development workflow
 
 Node.js 24以上を使います。UNO Qのユーザー領域へツールを置いた場合は、先に `export PATH="$HOME/.local/bin:$PATH"` を実行します。
@@ -124,15 +136,17 @@ Node.js 24以上を使います。UNO Qのユーザー領域へツールを置�
 ```bash
 npm ci
 npm run collect:github
+npm run prepare:protopedia
+npm run validate:protopedia-actions
 npm run audit:repo-seo
 npm run validate:repo-seo-actions
 npm run check
 npm run build
 npm run apply:repo-seo -- --dry-run
-./automation/install-systemd.sh --dry-run
+./automation/install-systemd.sh --dry-run --user
 ```
 
-開発サーバーは `npm run dev`、静的ビルドの確認は `npm run preview` です。作品は `src/content/projects/*.md`、公開GitHub収集結果は `data/github/**`、SEO actionは `data/actions/repo-seo-actions.json` に置きます。
+開発サーバーは `npm run dev`、静的ビルドの確認は `npm run preview` です。作品は `src/content/projects/*.md`、公開GitHub収集結果は `data/github/**`、SEO actionは `data/actions/repo-seo-actions.json`、ProtoPedia投稿候補は `data/actions/protopedia-submissions.json` に置きます。
 
 週次フローの非変更確認:
 

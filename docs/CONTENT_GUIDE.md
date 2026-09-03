@@ -12,6 +12,8 @@
 - 公開READMEなどから用途と自作性を高い確度で説明できる
 - 旧版、ミラー、置き場、内部資料ではない
 
+GitHub外のWeb作品は例外として、`config/catalog-policy.yml` の `allowedExternalProjects` に作品URLとハシビロ工業自身の公開記事を明示した場合だけ掲載します。外部ドメインを自動探索せず、一次情報で開発・運営、公開日、サービスURLを確認します。
+
 曖昧な候補はdraftを量産せず、作品ファイルを作らないで発掘レポートへ短い理由を残します。
 
 ## 必須frontmatter
@@ -43,8 +45,10 @@ sourceEvidence:
   - https://github.com/HSBL-ko-gyo/example/blob/main/README.md
 ```
 
-`links.app`、`links.release`、`links.article`、`links.shop` は公開情報で確認できるHTTPS URLだけを任意で追加します。
+`links.app`、`links.release`、`links.article`、`links.shop`、`links.protopedia` は公開情報で確認できるHTTPS URLだけを任意で追加します。`links.protopedia` は `https://protopedia.net/prototype/<ID>` の公開作品URLに限定します。
 明示許可されたforkでは `isFork: true` と `forkSourceUrl` を必須にし、本文でも派生元と独自変更の範囲を説明します。
+
+GitHub外の作品は `sourceType: external`、`publishedAt`、`links.app`、`links.article` を必須にし、`repo`、`links.github`、GitHub日時フィールドを持たせません。`links.app` と `links.article` はポリシーの許可値に完全一致させます。
 
 ## 本文の書き方
 
@@ -65,4 +69,4 @@ sourceEvidence:
 
 ## 更新
 
-収集後、`repoCreatedAt`、`repoUpdatedAt`、`repoPushedAt`、`primaryLanguage`、`topics`、Release / Homepageの事実を同期します。作品一覧は `repoCreatedAt` の降順です。既に本人文体で書かれた文章を無難な説明文へ戻しません。既存本文を大きく直すのは、事実誤認、リンク切れ、重大な用途不明がある場合だけです。新規作品も既存作品の文体へ合わせます。
+GitHub作品は収集後、`repoCreatedAt`、`repoUpdatedAt`、`repoPushedAt`、`primaryLanguage`、`topics`、Release / Homepageの事実を同期します。外部作品は一次情報で確認した `publishedAt` を使います。作品一覧は両者の公開日時を合わせた降順です。既に本人文体で書かれた文章を無難な説明文へ戻しません。既存本文を大きく直すのは、事実誤認、リンク切れ、重大な用途不明がある場合だけです。新規作品も既存作品の文体へ合わせます。

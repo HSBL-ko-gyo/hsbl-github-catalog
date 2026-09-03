@@ -2,6 +2,10 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { loadProjectFiles, type ProjectFile } from "./lib/catalog.js";
 import {
+  isGithubProjectData,
+  type GithubProjectFrontmatter,
+} from "../src/lib/project-schema.js";
+import {
   explicitExclusionNames,
   isEligibleRepository,
   loadCatalogPolicy,
@@ -145,7 +149,11 @@ async function main(): Promise<void> {
   );
   const exclusions = explicitExclusionNames(policy);
   const priorityIndex = new Map(PRIORITY.map((repo, index) => [repo, index]));
-  const orderedProjects = [...projects]
+  const githubProjects = projects.filter(
+    (project): project is ProjectFile & { data: GithubProjectFrontmatter } =>
+      isGithubProjectData(project.data),
+  );
+  const orderedProjects = [...githubProjects]
     .filter(({ data }) => !data.draft)
     .sort(
       (a, b) =>
@@ -311,11 +319,15 @@ async function main(): Promise<void> {
     "",
     "## 公開状況",
     "",
-    "用途・自作性・現行性が公開READMEから明確な通常作品22件と、派生元・独自変更・制約を明記できる明示許可fork 1件を公開しています。",
+    "用途・自作性・現行性が公開READMEから明確な通常GitHub作品22件と、派生元・独自変更・制約を明記できる明示許可fork 1件を公開しています。加えて、公開元と一次情報をポリシーで明示確認した外部Web作品を掲載しています。",
     "",
     "## 明示許可fork",
     "",
     "- `easyeda2kicad-digimou`: `uPesy/easyeda2kicad.py` の非公式派生版。販売元メタデータ対応という独自変更を確認できるため、fork表記と派生元リンク付きで掲載。GitHub SEO自動変更の対象外。",
+    "",
+    "## 明示許可した外部公開作品",
+    "",
+    "- `aotori-575`: ハシビロ工業の公開noteで開発・運営、公開日、サービスURLを確認。Cloudflare公開先だけを掲載し、GitHub SEO自動変更の対象外。",
     "",
     "## スキップ",
     "",

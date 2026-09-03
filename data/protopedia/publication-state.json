@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "account": "hsbl39",
+  "baselineCatalogSlugs": [
+    "bakusoku-mahjong",
+    "bakusui",
+    "color-vision-comparison",
+    "easyeda-to-kicad-gui",
+    "easyeda2kicad-digimou",
+    "enso",
+    "gdrive-pdf-ctrl-wheel-zoom",
+    "gif-splitter",
+    "hsbl-100-cchacker",
+    "hsbl-120-xiaomi-band-power",
+    "hsbl-s100-01-rgb-led-bottom",
+    "hsbl-s101-chameleon",
+    "hsbl-s200-01-rgb-led-bottom",
+    "kicad-step-thickness-fixer",
+    "mahjong-bootcamp",
+    "md-table-shot",
+    "ryokuru",
+    "sauna-clock",
+    "stereo-mic-tester",
+    "text-splitter-for-gpt",
+    "uno-q-codex-matrix",
+    "webgl2-gpu-benchmark",
+    "youtube-time-summary"
+  ],
+  "published": [
+    {
+      "slug": "bakusui",
+      "title": "“バクスイ”一瞬で寝れるアプリ",
+      "prototypeId": 7810,
+      "url": "https://protopedia.net/prototype/7810"
+    },
+    {
+      "title": "PC使用率モニター/パフォミル",
+      "prototypeId": 5650,
+      "url": "https://protopedia.net/prototype/5650"
+    },
+    {
+      "slug": "hsbl-s200-01-rgb-led-bottom",
+      "title": "ハシビロ工業 RGB ボトム for CoreS3",
+      "prototypeId": 5655,
+      "url": "https://protopedia.net/prototype/5655"
+    },
+    {
+      "slug": "aotori-575",
+      "title": "青鳥五七五",
+      "prototypeId": 9613,
+      "url": "https://protopedia.net/prototype/9613"
+    }
+  ]
+}

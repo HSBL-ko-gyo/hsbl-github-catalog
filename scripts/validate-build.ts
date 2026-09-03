@@ -1,11 +1,18 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
-import { formatTokyoDateTime } from "../src/lib/date-time.js";
+import {
+  formatTokyoDate,
+  formatTokyoDateTime,
+} from "../src/lib/date-time.js";
 import {
   GITHUB_COLLECTED_AT,
   GITHUB_COLLECTED_AT_DISPLAY,
 } from "../src/lib/github-collection.js";
-import { sortProjects } from "../src/lib/project-schema.js";
+import {
+  isGithubProjectData,
+  projectPublishedAt,
+  sortProjects,
+} from "../src/lib/project-schema.js";
 import { loadProjectFiles } from "./lib/catalog.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -73,13 +80,30 @@ async function main(): Promise<void> {
       throw new Error(
         `Sitemap is missing public project: ${project.data.slug}`,
       );
-    const repositoryUpdateMarkup = `<dt>GitHub更新</dt><dd><time datetime="${project.data.repoUpdatedAt}">${formatTokyoDateTime(project.data.repoUpdatedAt)}</time></dd>`;
-    if (!html.includes(repositoryUpdateMarkup))
-      throw new Error(`GitHub update timestamp mismatch: ${project.data.slug}`);
-    if (!html.includes(`<dt>情報取得</dt><dd>${collectedTimeMarkup}</dd>`))
-      throw new Error(
-        `GitHub collection timestamp mismatch: ${project.data.slug}`,
-      );
+    if (isGithubProjectData(project.data)) {
+      const repositoryUpdateMarkup = `<dt>GitHub更新</dt><dd><time datetime="${project.data.repoUpdatedAt}">${formatTokyoDateTime(project.data.repoUpdatedAt)}</time></dd>`;
+      if (!html.includes(repositoryUpdateMarkup))
+        throw new Error(
+          `GitHub update timestamp mismatch: ${project.data.slug}`,
+        );
+      if (!html.includes(`<dt>情報取得</dt><dd>${collectedTimeMarkup}</dd>`))
+        throw new Error(
+          `GitHub collection timestamp mismatch: ${project.data.slug}`,
+        );
+    } else {
+      const publishedAt = projectPublishedAt(project.data);
+      const publicationMarkup = `<dt>公開日</dt><dd><time datetime="${publishedAt}">${formatTokyoDate(publishedAt)}</time></dd>`;
+      if (!html.includes(publicationMarkup))
+        throw new Error(
+          `External publication timestamp mismatch: ${project.data.slug}`,
+        );
+      if (!project.data.links.app || !html.includes(`href="${project.data.links.app}"`))
+        throw new Error(`External app link missing: ${project.data.slug}`);
+      if (html.includes('"codeRepository"'))
+        throw new Error(
+          `External project unexpectedly exposes codeRepository metadata: ${project.data.slug}`,
+        );
+    }
   }
 
   for (const project of drafts) {

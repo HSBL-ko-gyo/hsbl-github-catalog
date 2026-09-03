@@ -1,8 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createSitemapPaths } from "../src/lib/sitemap.js";
+import { isGithubProjectData } from "../src/lib/project-schema.js";
 import { loadProjectFiles, markdownHeadings } from "./lib/catalog.js";
 import {
+  allowedExternalProjects,
   allowedForkNames,
   allowedForkSources,
   explicitExclusionNames,
@@ -60,6 +62,7 @@ async function main(): Promise<void> {
   const exclusions = explicitExclusionNames(policy);
   const allowedForks = allowedForkNames(policy);
   const configuredForkSources = allowedForkSources(policy);
+  const configuredExternalProjects = allowedExternalProjects(policy);
   const fixedCopySources = await Promise.all(
     FIXED_COPY_FILES.map(async (path) => ({
       path,
@@ -72,8 +75,18 @@ async function main(): Promise<void> {
     "slug",
   );
   assertUnique(
-    projects.map(({ data, filename }) => [data.repo, filename]),
+    projects.flatMap(({ data, filename }) =>
+      isGithubProjectData(data)
+        ? ([[data.repo, filename]] as Array<[string, string]>)
+        : [],
+    ),
     "repo",
+  );
+  assertUnique(
+    projects
+      .filter(({ data }) => data.sourceType === "external")
+      .map(({ data, filename }) => [data.links.app ?? "", filename]),
+    "external app URL",
   );
   assertUnique(
     projects
@@ -90,6 +103,42 @@ async function main(): Promise<void> {
 
   for (const project of projects) {
     const { data, body, filename } = project;
+    const headings = markdownHeadings(body);
+    if (!data.draft && headings.length < 2) {
+      throw new Error(`${filename} must have at least two H2 sections`);
+    }
+    if (
+      !data.draft &&
+      LEGACY_SECTIONS.every((heading) => headings.includes(heading))
+    ) {
+      throw new Error(`${filename} still uses all six legacy sections`);
+    }
+    for (const match of body.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+      const target = match[1];
+      if (target.startsWith("#")) continue;
+      if (!target.startsWith("https://"))
+        throw new Error(
+          `${filename} contains a non-HTTPS or relative link: ${target}`,
+        );
+      new URL(target);
+    }
+
+    if (!isGithubProjectData(data)) {
+      const configured = configuredExternalProjects.get(data.slug);
+      if (
+        !configured ||
+        data.links.app !== configured.url ||
+        data.links.article !== configured.evidence ||
+        !data.sourceEvidence.includes(configured.url) ||
+        !data.sourceEvidence.includes(configured.evidence)
+      ) {
+        throw new Error(
+          `${filename} external publication does not match the explicit allowlist and evidence`,
+        );
+      }
+      continue;
+    }
+
     const repository = repositories.get(data.repo);
     if (
       !isEligibleRepository(repository, dataset.owner, exclusions, allowedForks)
@@ -120,24 +169,11 @@ async function main(): Promise<void> {
         `${filename} fork attribution does not match collected public metadata`,
       );
     }
-    const headings = markdownHeadings(body);
-    if (!data.draft && headings.length < 2) {
-      throw new Error(`${filename} must have at least two H2 sections`);
-    }
-    if (
-      !data.draft &&
-      LEGACY_SECTIONS.every((heading) => headings.includes(heading))
-    ) {
-      throw new Error(`${filename} still uses all six legacy sections`);
-    }
-    for (const match of body.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
-      const target = match[1];
-      if (target.startsWith("#")) continue;
-      if (!target.startsWith("https://"))
-        throw new Error(
-          `${filename} contains a non-HTTPS or relative link: ${target}`,
-        );
-      new URL(target);
+  }
+
+  for (const slug of configuredExternalProjects.keys()) {
+    if (!projects.some(({ data }) => data.slug === slug)) {
+      throw new Error(`Allowlisted external project is missing content: ${slug}`);
     }
   }
 

@@ -21,6 +21,11 @@ publication:
     - repo: easyeda2kicad-digimou
       source: https://github.com/uPesy/easyeda2kicad.py
       reason: 販売元メタデータ対応を加えた公開派生版として、forkであることを明示して掲載
+  allowedExternalProjects:
+    - slug: aotori-575
+      url: https://575.hsbl-ko-gyo.com/
+      evidence: https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba
+      reason: ハシビロ工業の公開noteで開発・運営、公開日、サービスURLを確認できるCloudflare公開作品
   includeEmptyRepositories: false
   includeArchivedRepositories: false
   deleteMissingProjectsOnApiFailure: false

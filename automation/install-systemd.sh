@@ -6,15 +6,19 @@ USER_NAME="$(id -un)"
 HOME_DIR="$(getent passwd "$USER_NAME" | cut -d: -f6)"
 export PATH="${HOME_DIR}/.local/bin:${PATH}"
 DRY_RUN=0
+INSTALL_MODE=system
 
-if [[ "${1:-}" == "--dry-run" ]]; then
-  DRY_RUN=1
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --dry-run) DRY_RUN=1 ;;
+    --user) INSTALL_MODE=user ;;
+    *)
+      echo "Usage: $0 [--dry-run] [--user]"
+      exit 2
+      ;;
+  esac
   shift
-fi
-if [[ $# -ne 0 ]]; then
-  echo "Usage: $0 [--dry-run]"
-  exit 2
-fi
+done
 
 CODEX_BIN="$(command -v codex)"
 GH_BIN="$(command -v gh)"
@@ -48,12 +52,30 @@ sed \
   -e "s|__PATH__|$PATH_DIRS|g" \
   "$ROOT_DIR/systemd/hsbl-github-catalog-discovery.service.in" > "$TMP_SERVICE"
 
+if [[ "$INSTALL_MODE" == "user" ]]; then
+  sed -i \
+    -e '/^User=/d' \
+    -e 's/^WantedBy=multi-user.target$/WantedBy=default.target/' \
+    "$TMP_SERVICE"
+fi
+
 if [[ "$DRY_RUN" == "1" ]]; then
   grep -q '__[A-Z_]*__' "$TMP_SERVICE" && { echo "Unresolved service template variable."; exit 1; }
   systemd-analyze verify "$TMP_SERVICE"
   systemd-analyze calendar 'Sun *-*-* 05:20:00 Asia/Tokyo' >/dev/null
   echo "systemd service template and Sunday 05:20 JST timer are valid."
   echo "No system unit was installed or enabled."
+  exit 0
+fi
+
+if [[ "$INSTALL_MODE" == "user" ]]; then
+  USER_UNIT_DIR="${XDG_CONFIG_HOME:-${HOME_DIR}/.config}/systemd/user"
+  install -d -m 0755 "$USER_UNIT_DIR"
+  install -m 0644 "$TMP_SERVICE" "$USER_UNIT_DIR/hsbl-github-catalog-discovery.service"
+  install -m 0644 "$ROOT_DIR/systemd/hsbl-github-catalog-discovery.timer" "$USER_UNIT_DIR/hsbl-github-catalog-discovery.timer"
+  systemctl --user daemon-reload
+  systemctl --user enable --now hsbl-github-catalog-discovery.timer
+  systemctl --user list-timers hsbl-github-catalog-discovery.timer --no-pager
   exit 0
 fi
 

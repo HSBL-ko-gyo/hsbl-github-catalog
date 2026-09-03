@@ -14,7 +14,7 @@
     {
       "type": "repository-metadata",
       "repo": "easyeda2kicad_gui",
-      "description": "LCSC IDを入力し、EasyEDA部品のシンボル、フットプリント、3DモデルをKiCad向けに変換するWindows用GUI。",
+      "description": "easyeda2kicadは便利ですが、毎回コマンドを打つのがだるいのでWindows GUIにしました。LCSC IDからシンボル、フットプリント、3Dモデルを変換できます。",
       "topics": [
         "easyeda",
         "electronics",
@@ -29,7 +29,7 @@
     {
       "type": "repository-metadata",
       "repo": "enso",
-      "description": "ブラウザの画面に焚き火を映し、作業や休憩のそばで炎を眺めるための静的Web作品。",
+      "description": "焚き火を画面に出して眺めるだけのWeb作品です。役には立ちませんが、炎は出ます。",
       "topics": [
         "digital-art",
         "fire",
@@ -44,12 +44,12 @@
       "repo": "gdrive-pdf-ctrl-wheel-zoom",
       "path": "README.md",
       "baseSha": "2cb6f1e54008c6b5a0eefc45fbd19cb6b4d2f590",
-      "content": "<!-- hsbl-catalog:seo-start -->\n**Google Drive PDF Ctrl+Wheel Zoom** — Google DriveのPDFプレビューで、Ctrl＋マウスホイールを既存の拡大・縮小操作へ割り当てるChrome / Edge拡張機能。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/)\n<!-- hsbl-catalog:seo-end -->"
+      "content": "<!-- hsbl-catalog:seo-start -->\n**Google Drive PDF Ctrl+Wheel Zoom** — ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/)\n<!-- hsbl-catalog:seo-end -->"
     },
     {
       "type": "repository-metadata",
       "repo": "gdrive-pdf-ctrl-wheel-zoom",
-      "description": "Google DriveのPDFプレビューで、Ctrl＋マウスホイールを既存の拡大・縮小操作へ割り当てるChrome / Edge拡張機能。",
+      "description": "ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。",
       "topics": [
         "browser-extension",
         "chrome-extension",
@@ -64,7 +64,7 @@
     {
       "type": "repository-metadata",
       "repo": "gif-splitter",
-      "description": "アニメーションGIFをブラウザ内でフレームごとのPNGへ分解し、個別またはZIPにまとめて保存するWebツール。",
+      "description": "GIFアニメの途中にある一枚が欲しい時、ブラウザで全フレームをPNGへばらす道具です。まとめてZIPにもできます。",
       "topics": [
         "browser-tool",
         "gif",
@@ -78,7 +78,7 @@
     {
       "type": "repository-metadata",
       "repo": "mahjong-bootcamp",
-      "description": "テンパイ、何切る、安全牌、押し引き、リーチ、役、用語をブラウザ上で反復できる麻雀初心者向け練習アプリ。",
+      "description": "麻雀を覚え始めた人向けに、テンパイ、何切る、安全牌、押し引きなどをテーマ別で繰り返すWebアプリです。",
       "topics": [
         "browser-game",
         "learning-tool",
@@ -91,7 +91,7 @@
     {
       "type": "repository-metadata",
       "repo": "md-table-shot",
-      "description": "Markdownの表を整ったPNG画像に変換し、noteやブログへ貼り付けやすくするブラウザ完結型ツール。",
+      "description": "noteなどへMarkdownの表を貼ると崩れるので、ブラウザ上で整えてPNGにする道具です。",
       "topics": [
         "browser-tool",
         "image-export",
@@ -105,7 +105,7 @@
     {
       "type": "repository-metadata",
       "repo": "stereo-mic-tester",
-      "description": "USBステレオマイクの左右チャンネルを分け、オシロスコープ風の波形でリアルタイム確認するWebツール。",
+      "description": "USBステレオマイクの左右がちゃんと別々に入っているか、オシロスコープ風の波形で見るWebツールです。",
       "topics": [
         "browser-tool",
         "microphone",
@@ -120,12 +120,12 @@
       "repo": "unoq-codex-matrix",
       "path": "README.md",
       "baseSha": "e6d94e798d90d104fd85739fee0eb3474088451a",
-      "content": "<!-- hsbl-catalog:seo-start -->\n**UNO Q Codex Matrix** — Codexの処理状態と利用枠の目安を、Arduino UNO Q内蔵8×13 LEDマトリクスへアニメーション表示するローカル連携ソフト。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/)\n<!-- hsbl-catalog:seo-end -->"
+      "content": "<!-- hsbl-catalog:seo-start -->\n**UNO Q Codex Matrix** — Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/)\n<!-- hsbl-catalog:seo-end -->"
     },
     {
       "type": "repository-metadata",
       "repo": "Vision-filter-for-people-with-color-blindness",
-      "description": "画像を読み込み、複数の色覚タイプでの見え方を並べて簡易比較し、デザイン確認の手掛かりにするWebアプリ。",
+      "description": "手元の画像を読み込み、オリジナルと複数の色覚タイプでの見え方を並べる簡易シミュレーターです。",
       "topics": [
         "accessibility",
         "browser-tool",

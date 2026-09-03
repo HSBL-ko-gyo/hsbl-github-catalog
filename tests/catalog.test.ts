@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import publicRepositories from "../data/github/public-repositories.json";
 import { loadProjectFiles, markdownHeadings } from "../scripts/lib/catalog.js";
 import {
+  formatTokyoDate,
   formatTokyoDateTime,
   isIso8601DateTime,
 } from "../src/lib/date-time.js";
@@ -11,7 +12,12 @@ import {
   GITHUB_COLLECTED_AT,
   GITHUB_COLLECTED_AT_DISPLAY,
 } from "../src/lib/github-collection.js";
-import { isPublishedProject, sortProjects } from "../src/lib/project-schema.js";
+import {
+  isGithubProjectData,
+  isPublishedProject,
+  projectFrontmatterSchema,
+  sortProjects,
+} from "../src/lib/project-schema.js";
 import { canonicalUrl } from "../src/lib/site.js";
 import { createSitemapPaths } from "../src/lib/sitemap.js";
 
@@ -36,17 +42,53 @@ describe("public catalog boundaries", () => {
     );
   });
 
-  it("sorts projects by GitHub publication time, newest first", () => {
+  it("sorts GitHub and external projects by publication time, newest first", () => {
     const projects = [
       { data: { title: "Older", repoCreatedAt: "2025-01-01T00:00:00Z" } },
       { data: { title: "Newest", repoCreatedAt: "2026-08-01T00:00:00Z" } },
-      { data: { title: "Middle", repoCreatedAt: "2026-01-01T00:00:00Z" } },
+      {
+        data: {
+          title: "External",
+          publishedAt: "2026-07-01T00:00:00+09:00",
+        },
+      },
     ];
     expect(sortProjects(projects).map(({ data }) => data.title)).toEqual([
       "Newest",
-      "Middle",
+      "External",
       "Older",
     ]);
+  });
+
+  it("accepts an allowlist-ready external project without GitHub fields", () => {
+    const parsed = projectFrontmatterSchema.parse({
+      sourceType: "external",
+      title: "青鳥五七五",
+      slug: "aotori-575",
+      summary: "五・七・五を気軽に投稿して読める公開Webサービスです。",
+      description: "五・七・五を詠んで共有するSNS",
+      category: "web-app",
+      tags: ["五七五"],
+      status: "public",
+      draft: false,
+      featured: true,
+      links: {
+        app: "https://575.hsbl-ko-gyo.com/",
+        article: "https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba",
+      },
+      seoTitle: "青鳥五七五｜俳句・川柳を気軽に共有するSNS | ハシビロ工業",
+      seoDescription:
+        "青鳥五七五は、俳句や川柳を気軽に投稿・閲覧できるWebサービスです。各行1〜10文字で、字余りや字足らずにも対応します。",
+      searchIntents: ["五七五 SNS"],
+      publishedAt: "2026-08-15T00:00:00+09:00",
+      sourceEvidence: [
+        "https://575.hsbl-ko-gyo.com/",
+        "https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba",
+      ],
+    });
+    expect(parsed.sourceType).toBe("external");
+    expect(parsed.repo).toBeUndefined();
+    expect(parsed.links.github).toBeUndefined();
   });
 
   it("uses the collection timestamp recorded in the public GitHub dataset", () => {
@@ -61,6 +103,7 @@ describe("public catalog boundaries", () => {
     expect(GITHUB_COLLECTED_AT_DISPLAY).toMatch(
       /^\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}$/,
     );
+    expect(formatTokyoDate("2026-08-15T00:00:00+09:00")).toBe("2026/08/15");
   });
 
   it("uses at least two content-specific H2 sections for every public project", async () => {
@@ -106,7 +149,7 @@ describe("public catalog boundaries", () => {
     }
   });
 
-  it("has unique public SEO metadata and owner-scoped GitHub links", async () => {
+  it("has unique public SEO metadata and source-appropriate links", async () => {
     const projects = (await loadProjectFiles(process.cwd())).filter(
       ({ data }) => !data.draft,
     );
@@ -118,9 +161,14 @@ describe("public catalog boundaries", () => {
       projects.length,
     );
     for (const { data } of projects) {
-      expect(data.links.github).toBe(
-        `https://github.com/HSBL-ko-gyo/${data.repo}`,
-      );
+      if (isGithubProjectData(data)) {
+        expect(data.links.github).toBe(
+          `https://github.com/HSBL-ko-gyo/${data.repo}`,
+        );
+      } else {
+        expect(data.links.github).toBeUndefined();
+        expect(data.links.app).toMatch(/^https:\/\//);
+      }
       expect(data.seoTitle.length).toBeGreaterThan(0);
       expect(data.seoDescription.length).toBeGreaterThan(0);
     }

@@ -43,6 +43,12 @@ export type CatalogPolicy = {
   site: { canonicalOrigin: string };
   publication?: {
     allowedForks?: Array<{ repo: string; source: string; reason: string }>;
+    allowedExternalProjects?: Array<{
+      slug: string;
+      url: string;
+      evidence: string;
+      reason: string;
+    }>;
   };
   filters: {
     explicitExclusions: Array<{ repo: string; reason: string }>;
@@ -117,6 +123,16 @@ export function allowedForkSources(policy: CatalogPolicy): Map<string, string> {
       repo,
       source,
     ]) ?? [],
+  );
+}
+
+export function allowedExternalProjects(
+  policy: CatalogPolicy,
+): Map<string, { url: string; evidence: string }> {
+  return new Map(
+    policy.publication?.allowedExternalProjects?.map(
+      ({ slug, url, evidence }) => [slug, { url, evidence }],
+    ) ?? [],
   );
 }
 
