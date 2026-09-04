@@ -146,6 +146,13 @@ export function projectPublishedAt(
   return value;
 }
 
+export function projectPublicationLabel(
+  data: Pick<ProjectFrontmatter, "sourceType" | "publishedAt">,
+): "公開" | "作品公開" | "GitHub公開" {
+  if (data.sourceType === "external") return "公開";
+  return data.publishedAt ? "作品公開" : "GitHub公開";
+}
+
 export function isPublishedProject(project: {
   data: Pick<ProjectFrontmatter, "draft">;
 }): boolean {

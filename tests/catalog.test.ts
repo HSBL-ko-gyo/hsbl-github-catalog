@@ -15,6 +15,7 @@ import {
 import {
   isGithubProjectData,
   isPublishedProject,
+  projectPublicationLabel,
   projectFrontmatterSchema,
   sortProjects,
 } from "../src/lib/project-schema.js";
@@ -58,6 +59,18 @@ describe("public catalog boundaries", () => {
       "External",
       "Older",
     ]);
+  });
+
+  it("distinguishes a derivative work release from its older fork date", () => {
+    expect(
+      projectPublicationLabel({
+        sourceType: "github",
+        publishedAt: "2026-07-23T12:28:46Z",
+      }),
+    ).toBe("作品公開");
+    expect(
+      projectPublicationLabel({ sourceType: "github", publishedAt: undefined }),
+    ).toBe("GitHub公開");
   });
 
   it("accepts an allowlist-ready external project without GitHub fields", () => {

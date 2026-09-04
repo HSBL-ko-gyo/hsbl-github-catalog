@@ -138,6 +138,11 @@ const publishedDate = formatTokyoDate(publishedAt);
             </>
           ) : (
             <>
+              {
+                data.publishedAt && (
+                  <div><dt>作品公開</dt><dd><time datetime={publishedAt}>{publishedDate}</time></dd></div>
+                )
+              }
               <div>
                 <dt>言語</dt><dd>{data.primaryLanguage ?? "GitHubで未判定"}</dd>
               </div>

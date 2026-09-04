@@ -69,4 +69,4 @@ GitHub外の作品は `sourceType: external`、`publishedAt`、`links.app`、`li
 
 ## 更新
 
-GitHub作品は収集後、`repoCreatedAt`、`repoUpdatedAt`、`repoPushedAt`、`primaryLanguage`、`topics`、Release / Homepageの事実を同期します。外部作品は一次情報で確認した `publishedAt` を使います。作品一覧は両者の公開日時を合わせた降順です。既に本人文体で書かれた文章を無難な説明文へ戻しません。既存本文を大きく直すのは、事実誤認、リンク切れ、重大な用途不明がある場合だけです。新規作品も既存作品の文体へ合わせます。
+GitHub作品は収集後、`repoCreatedAt`、`repoUpdatedAt`、`repoPushedAt`、`primaryLanguage`、`topics`、Release / Homepageの事実を同期します。外部作品は一次情報で確認した `publishedAt` を使います。明示許可forkで、独自作品としての最初の公開Releaseが確認できる場合は、その日時を `publishedAt`、GitHub上のfork作成日時を `repoCreatedAt` として分けます。作品一覧は作品公開日時を優先した降順です。既に本人文体で書かれた文章を無難な説明文へ戻しません。既存本文を大きく直すのは、事実誤認、リンク切れ、重大な用途不明がある場合だけです。新規作品も既存作品の文体へ合わせます。

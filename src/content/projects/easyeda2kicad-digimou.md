@@ -11,7 +11,7 @@ draft: false
 featured: false
 isFork: true
 forkSourceUrl: https://github.com/uPesy/easyeda2kicad.py
-createdYear: 2024
+createdYear: 2026
 links:
   github: https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou
   release: https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou/releases/tag/v1.1.0b3
@@ -23,6 +23,7 @@ searchIntents:
     KiCad BOM 販売元 メタデータ,
     EasyEDA KiCad 派生版,
   ]
+publishedAt: "2026-07-23T12:28:46Z"
 repoCreatedAt: "2024-08-27T06:44:26Z"
 repoUpdatedAt: "2026-07-30T01:22:07Z"
 repoPushedAt: "2026-07-30T09:16:58Z"
@@ -30,6 +31,7 @@ primaryLanguage: Python
 topics: [bom, digikey, easyeda, electronics, kicad, lcsc, mouser, pcb, python]
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou
+  - https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou/releases/tag/v1.1.0b1
   - https://github.com/HSBL-ko-gyo/easyeda2kicad-digimou/blob/feature/multi-distributor-metadata/README.md
   - https://github.com/uPesy/easyeda2kicad.py
 ---

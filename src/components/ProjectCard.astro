@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { projectPublishedAt } from "../lib/project-schema";
+import {
+  projectPublicationLabel,
+  projectPublishedAt,
+} from "../lib/project-schema";
 import { CATEGORIES, STATUS_LABELS } from "../lib/site";
 
 interface Props {
@@ -53,7 +56,7 @@ const publishedDate = new Intl.DateTimeFormat("ja-JP", {
   <p>{data.summary}</p>
   <div class="card-meta">
     <span>{data.primaryLanguage ?? (isExternal ? "Webサービス" : "未判定")}</span>
-    <span>{isExternal ? "公開" : "GitHub公開"}: {publishedDate}</span>
+    <span>{projectPublicationLabel(data)}: {publishedDate}</span>
   </div>
   <div class="card-actions">
     <a class="button button-primary" href={`/projects/${data.slug}/`}>見る</a>

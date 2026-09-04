@@ -93,6 +93,13 @@ async function main(): Promise<void> {
         `Sitemap is missing public project: ${project.data.slug}`,
       );
     if (isGithubProjectData(project.data)) {
+      if (project.data.publishedAt) {
+        const publicationMarkup = `<dt>作品公開</dt><dd><time datetime="${project.data.publishedAt}">${formatTokyoDate(project.data.publishedAt)}</time></dd>`;
+        if (!html.includes(publicationMarkup))
+          throw new Error(
+            `GitHub-derived work publication timestamp mismatch: ${project.data.slug}`,
+          );
+      }
       const repositoryUpdateMarkup = `<dt>GitHub更新</dt><dd><time datetime="${project.data.repoUpdatedAt}">${formatTokyoDateTime(project.data.repoUpdatedAt)}</time></dd>`;
       if (!html.includes(repositoryUpdateMarkup))
         throw new Error(
