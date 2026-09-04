@@ -1,8 +1,13 @@
 import { appendFile, chmod, mkdir, open, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { resolve } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
 import { chromium, type Page } from "playwright-core";
 import { assertProjectThumbnail } from "./lib/png.js";
+import {
+  protopediaMinimumIntervalMs,
+  remainingPublicationDelayMs,
+} from "./lib/protopedia-cadence.js";
 import {
   type ProtopediaForm,
   type ProtopediaState,
@@ -20,6 +25,10 @@ const RUNTIME_DIR =
   process.env.HSBL_CATALOG_STATE_DIR ??
   resolve(homedir(), ".local/state/hsbl-github-catalog/protopedia");
 const PROTOPEDIA_ORIGIN = "https://protopedia.net";
+const MIN_PUBLICATION_INTERVAL_MS = protopediaMinimumIntervalMs(
+  process.env.HSBL_PROTOPEDIA_MIN_INTERVAL_SECONDS,
+);
+const CADENCE_PATH = resolve(RUNTIME_DIR, "last-external-action.json");
 
 type AttemptStatus =
   | "prepared"
@@ -38,6 +47,12 @@ type Attempt = {
   updatedAt: string;
   prototypeUrl?: string;
   detail?: string;
+};
+
+type PublicationCadence = {
+  reservedAt: string;
+  slug: string;
+  operation: ProtopediaSubmission["operation"];
 };
 
 function isoNow(): string {
@@ -64,6 +79,55 @@ async function writeAttempt(attempt: Attempt): Promise<void> {
   const path = resolve(directory, `${attempt.slug}.json`);
   await writeJsonAtomic(path, attempt, 0o600);
   await chmod(path, 0o600);
+}
+
+async function readPublicationCadence(): Promise<PublicationCadence | null> {
+  try {
+    const parsed = JSON.parse(await readFile(CADENCE_PATH, "utf8")) as Partial<PublicationCadence>;
+    if (
+      typeof parsed.reservedAt !== "string" ||
+      typeof parsed.slug !== "string" ||
+      (parsed.operation !== "create" && parsed.operation !== "sync-thumbnail")
+    ) {
+      throw new Error("ProtoPedia publication cadence state is invalid");
+    }
+    return parsed as PublicationCadence;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw error;
+  }
+}
+
+async function reservePublicationSlot(
+  submission: ProtopediaSubmission,
+): Promise<void> {
+  const previous = await readPublicationCadence();
+  const waitMs = remainingPublicationDelayMs(
+    previous?.reservedAt,
+    Date.now(),
+    MIN_PUBLICATION_INTERVAL_MS,
+  );
+  if (waitMs > 0) {
+    const waitSeconds = Math.ceil(waitMs / 1_000);
+    await logEvent("cadence-wait-started", {
+      slug: submission.slug,
+      waitSeconds,
+      previousSlug: previous?.slug,
+    });
+    process.stdout.write(
+      `Waiting ${waitSeconds}s for the next ProtoPedia publication slot.\n`,
+    );
+    await delay(waitMs);
+  }
+
+  const cadence: PublicationCadence = {
+    reservedAt: isoNow(),
+    slug: submission.slug,
+    operation: submission.operation,
+  };
+  await writeJsonAtomic(CADENCE_PATH, cadence, 0o600);
+  await chmod(CADENCE_PATH, 0o600);
+  await logEvent("publication-slot-reserved", cadence);
 }
 
 function prototypeId(url: string): number {
@@ -445,6 +509,8 @@ async function processSubmission(
       process.stdout.write(`ProtoPedia dry-run ready: ${submission.slug}\n`);
       return;
     }
+
+    await reservePublicationSlot(submission);
 
     if (submission.operation === "create") {
       await fillCreateForm(page, submission);

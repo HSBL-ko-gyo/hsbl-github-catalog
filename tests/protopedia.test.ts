@@ -1,6 +1,10 @@
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { readProtopediaQueue, readProtopediaState } from "../scripts/lib/protopedia.js";
+import {
+  protopediaMinimumIntervalMs,
+  remainingPublicationDelayMs,
+} from "../scripts/lib/protopedia-cadence.js";
 import { readPngDimensions } from "../scripts/lib/png.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -40,5 +44,32 @@ describe("ProtoPedia unattended publication inputs", () => {
         readPngDimensions(resolve(ROOT, "public/images/projects", `${slug}.png`)),
       ).resolves.toEqual({ width: 880, height: 495 });
     }
+  });
+});
+
+describe("ProtoPedia publication cadence", () => {
+  it("defaults to a ten minute minimum interval", () => {
+    expect(protopediaMinimumIntervalMs()).toBe(600_000);
+  });
+
+  it("keeps the interval across publisher process restarts", () => {
+    expect(
+      remainingPublicationDelayMs(
+        "2026-09-05T00:00:00.000Z",
+        Date.parse("2026-09-05T00:04:00.000Z"),
+        600_000,
+      ),
+    ).toBe(360_000);
+    expect(
+      remainingPublicationDelayMs(
+        "2026-09-05T00:00:00.000Z",
+        Date.parse("2026-09-05T00:11:00.000Z"),
+        600_000,
+      ),
+    ).toBe(0);
+  });
+
+  it("rejects an unsafe interval", () => {
+    expect(() => protopediaMinimumIntervalMs("0")).toThrow();
   });
 });

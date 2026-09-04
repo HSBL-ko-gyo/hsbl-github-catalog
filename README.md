@@ -66,7 +66,7 @@ npm run validate:protopedia-actions
 npm run publish:protopedia -- --dry-run
 ```
 
-実投稿は、リポジトリ外の永続Chromeプロファイルへlocalhost CDPで接続する固定Playwright処理です。投稿前後にアカウントの作品一覧、タイトル、公式URLを照合し、公開確認後だけ台帳を更新します。送信結果が不明な場合は台帳を更新せず、次回照合で既存作品を回収するため二重投稿しません。認証情報、Cookie、プロファイル、試行ログはコミットしません。初回認証と障害対応は [ProtoPedia無人投稿](docs/PROTOPEDIA_AUTOMATION.md) を参照してください。
+実投稿は、リポジトリ外の永続Chromeプロファイルへlocalhost CDPで接続する固定Playwright処理です。外部更新は既定で10分以上の間隔を空け、前回の実行が途中終了してもリポジトリ外の予約時刻から間隔を守ります。投稿前後にアカウントの作品一覧、タイトル、公式URLを照合し、公開確認後だけ台帳を更新します。送信結果が不明な場合は台帳を更新せず、次回照合で既存作品を回収するため二重投稿しません。認証情報、Cookie、プロファイル、試行ログはコミットしません。初回認証と障害対応は [ProtoPedia無人投稿](docs/PROTOPEDIA_AUTOMATION.md) を参照してください。
 
 ## GitHub SEO監査と安全な適用
 

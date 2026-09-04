@@ -10,6 +10,7 @@ ASH READと同じく、認証済みブラウザプロファイル、実行時ロ
 - CDP: `http://127.0.0.1:9222`（既定）
 - 外部設定: `~/.config/hsbl-github-catalog/automation.env`（0600）
 - 外部状態: `~/.local/state/hsbl-github-catalog/protopedia/`（attempt、JSONLログ、lock）
+- 投稿間隔: `HSBL_PROTOPEDIA_MIN_INTERVAL_SECONDS`（既定600秒）。実際のフォーム更新・画像アップロードを始める前にリポジトリ外へ予約時刻を記録し、プロセスをまたいでも間隔を維持する
 - 外部プロファイル: `~/.local/share/ashread/chromium-profile/`
 
 Cookie、認証情報、ブラウザプロファイル、実行時ログはリポジトリへ保存しません。
