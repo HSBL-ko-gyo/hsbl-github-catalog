@@ -13,6 +13,7 @@ createdYear: 2026
 links:
   github: https://github.com/HSBL-ko-gyo/unoq-codex-matrix
   release: https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases
+  protopedia: https://protopedia.net/prototype/9619
 seoTitle: Codexの状態をUNO Q LEDマトリクスへ表示 | ハシビロ工業 GitHub
 seoDescription: Codex Hooksをローカルで集約し、Arduino UNO Q内蔵8×13 LEDマトリクスへ思考中、テスト中、待機、完了などを表示します。
 searchIntents: [Arduino UNO Q Codex LED matrix, Codex status hardware display]
@@ -35,6 +36,7 @@ topics:
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/unoq-codex-matrix
   - https://github.com/HSBL-ko-gyo/unoq-codex-matrix/blob/main/README.md
+  - https://protopedia.net/prototype/9619
 ---
 
 ## CodexをLEDで見る

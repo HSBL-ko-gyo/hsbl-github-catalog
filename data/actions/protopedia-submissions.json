@@ -2,32 +2,5 @@
   "version": 2,
   "account": "hsbl39",
   "note": "固定Playwright投稿処理の入力。投稿前後の重複確認と成功検証後にだけ公開台帳を更新する。認証情報はリポジトリ外で管理する。",
-  "submissions": [
-    {
-      "slug": "uno-q-codex-matrix",
-      "operation": "create",
-      "requestedVisibility": "general-public",
-      "sourceHash": "4bbdaf61ad49c3b722100ac1cb0a392b6a717f52dec4708f71037a5292463ea2",
-      "form": {
-        "workStatus": "完成",
-        "title": "UNO Q Codex Matrix",
-        "officialUrl": "https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases",
-        "summary": "Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。",
-        "displayCreativeCommonsLicense": false,
-        "tags": [
-          "Arduino UNO Q",
-          "Codex",
-          "LEDマトリクス",
-          "Router Bridge",
-          "Python"
-        ],
-        "storyMarkdown": "## CodexをLEDで見る\n\nCodexが考えている、ファイルを読んでいる、テスト中、入力待ち、終わった、という状態をUNO Qの8×13青色LEDマトリクスへ出します。長い処理の間ずっと画面を見張りたくないので作りました。\n\n## 出しているもの\n\nREADY、THINKING、READING、WRITING、BUILDING、TESTING、WAITING、SUCCESSなどを別のアニメーションで表示します。取得できる時は、上の13灯をCodex利用枠の目安にも使います。複数セッションが動いている場合は状態をまとめます。\n\n## 仕組み\n\nUNO QのLinux側でPythonデーモンがHooksを受け、Arduino RouterのMessagePack RPCでSTM32U585側へ送ります。MCUがLEDを描画します。状態確認、デモ、診断、一時表示用のCLIもあります。\n\n## 注意\n\nプロンプト、応答、コマンド、ファイル内容は保存しません。インストール時はMCUファームウェアを書き換えるので、対象がUNO Qであることを確認してから実行します。",
-        "slideMode": false,
-        "relatedLinks": [
-          "https://github.com/HSBL-ko-gyo/unoq-codex-matrix",
-          "https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/"
-        ]
-      }
-    }
-  ]
+  "submissions": []
 }

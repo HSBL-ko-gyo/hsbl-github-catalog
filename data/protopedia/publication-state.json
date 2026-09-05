@@ -13,6 +13,7 @@
     "hsbl-s100-01-rgb-led-bottom",
     "hsbl-s101-chameleon",
     "hsbl-s200-01-rgb-led-bottom",
+    "katachi-tab",
     "kicad-step-thickness-fixer",
     "mahjong-bootcamp",
     "md-table-shot",
@@ -72,6 +73,17 @@
       "thumbnailUploaded": false,
       "publishedAt": "2026-09-05T02:32:40.000Z",
       "verifiedAt": "2026-09-05T02:32:40.000Z"
+    },
+    {
+      "slug": "uno-q-codex-matrix",
+      "title": "UNO Q Codex Matrix",
+      "prototypeId": 9619,
+      "url": "https://protopedia.net/prototype/9619",
+      "officialUrl": "https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases",
+      "sourceHash": "4bbdaf61ad49c3b722100ac1cb0a392b6a717f52dec4708f71037a5292463ea2",
+      "thumbnailUploaded": false,
+      "publishedAt": "2026-09-05T02:47:58.000Z",
+      "verifiedAt": "2026-09-05T02:47:58.000Z"
     }
   ]
 }
