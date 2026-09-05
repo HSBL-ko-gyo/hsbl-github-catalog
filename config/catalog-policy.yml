@@ -26,6 +26,10 @@ publication:
       url: https://575.hsbl-ko-gyo.com/
       evidence: https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba
       reason: ハシビロ工業の公開noteで開発・運営、公開日、サービスURLを確認できるCloudflare公開作品
+    - slug: katachi-tab
+      url: https://katachi.hsbl-ko-gyo.com/
+      evidence: https://katachi.hsbl-ko-gyo.com/about/
+      reason: 公式サイト内の公開ページでハシビロ工業制作、用途、機能、利用条件を確認できるブラウザCAD
   includeEmptyRepositories: false
   includeArchivedRepositories: false
   deleteMissingProjectsOnApiFailure: false
