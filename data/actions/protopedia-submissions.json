@@ -2,5 +2,84 @@
   "version": 2,
   "account": "hsbl39",
   "note": "固定Playwright投稿処理の入力。投稿前後の重複確認と成功検証後にだけ公開台帳を更新する。認証情報はリポジトリ外で管理する。",
-  "submissions": []
+  "submissions": [
+    {
+      "slug": "easyeda-to-kicad-gui",
+      "operation": "create",
+      "requestedVisibility": "general-public",
+      "sourceHash": "e77acdb801501e2c69bc6fba558d5dd0cc653c9067d3b13a9b9335cc3d76dd29",
+      "form": {
+        "workStatus": "完成",
+        "title": "EasyEDA to KiCad GUI",
+        "officialUrl": "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases",
+        "summary": "easyeda2kicadは便利ですが、毎回コマンドを打つのがだるいのでWindows GUIにしました。LCSC IDからシンボル、フットプリント、3Dモデルを変換できます。",
+        "displayCreativeCommonsLicense": false,
+        "tags": [
+          "EasyEDA",
+          "KiCad",
+          "LCSC",
+          "フットプリント",
+          "3Dモデル"
+        ],
+        "storyMarkdown": "## コマンドをGUIにした\n\n`easyeda2kicad`を画面から使うためのWindows GUIです。KiCadに欲しい部品がない時、LCSC IDを入れてEasyEDAの部品データを持ってきます。毎回コマンドとオプションを組み立てなくて済むようにしました。\n\n## できること\n\nシンボル、フットプリント、3Dモデルから必要なものを選び、出力先と変換オプションを指定できます。空のLCSC IDは実行前に止めます。設定は次回用に保存し、変換ログは選択してコピーできます。必要なら`easyeda2kicad`の導入も行います。\n\n## 配布\n\nWindows用の単体実行ファイルをReleaseで配布しています。Python、tkinter、PyInstallerを使ったビルド手順もリポジトリにあります。",
+        "slideMode": false,
+        "relatedLinks": [
+          "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui",
+          "https://github.hsbl-ko-gyo.com/projects/easyeda-to-kicad-gui/"
+        ]
+      }
+    },
+    {
+      "slug": "gdrive-pdf-ctrl-wheel-zoom",
+      "operation": "create",
+      "requestedVisibility": "general-public",
+      "sourceHash": "e947e4c19e12b36e5b9283798b5e6b1df7840cd522d938246e6afbd72ac48460",
+      "form": {
+        "workStatus": "開発中",
+        "title": "Google Drive PDF Ctrl+Wheel Zoom",
+        "officialUrl": "https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0",
+        "summary": "ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。",
+        "displayCreativeCommonsLicense": false,
+        "tags": [
+          "Google Drive",
+          "PDF",
+          "ズーム",
+          "Chrome",
+          "Edge"
+        ],
+        "storyMarkdown": "## Ctrl＋ホイールを足す\n\nGoogle DriveのPDFプレビュー中だけ、`Ctrl + ホイール`を拡大・縮小に変えます。Ctrlを押していない時は、今までどおりスクロールします。PDFプレビューの外では通常のブラウザ操作のままです。\n\n## 使い方\n\nReleaseから展開して、ChromeかEdgeの拡張機能画面で読み込みます。まだストア配布はしていません。Manifest V3で、外部通信、解析、データ保存は行いません。\n\n## 中身\n\nDriveにはPDFズーム用の公開APIがないので、画面上のズームボタンを探して押しています。Drive側の画面が変わると直す必要があります。",
+        "slideMode": false,
+        "relatedLinks": [
+          "https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom",
+          "https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/"
+        ]
+      }
+    },
+    {
+      "slug": "uno-q-codex-matrix",
+      "operation": "create",
+      "requestedVisibility": "general-public",
+      "sourceHash": "4bbdaf61ad49c3b722100ac1cb0a392b6a717f52dec4708f71037a5292463ea2",
+      "form": {
+        "workStatus": "完成",
+        "title": "UNO Q Codex Matrix",
+        "officialUrl": "https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases",
+        "summary": "Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。",
+        "displayCreativeCommonsLicense": false,
+        "tags": [
+          "Arduino UNO Q",
+          "Codex",
+          "LEDマトリクス",
+          "Router Bridge",
+          "Python"
+        ],
+        "storyMarkdown": "## CodexをLEDで見る\n\nCodexが考えている、ファイルを読んでいる、テスト中、入力待ち、終わった、という状態をUNO Qの8×13青色LEDマトリクスへ出します。長い処理の間ずっと画面を見張りたくないので作りました。\n\n## 出しているもの\n\nREADY、THINKING、READING、WRITING、BUILDING、TESTING、WAITING、SUCCESSなどを別のアニメーションで表示します。取得できる時は、上の13灯をCodex利用枠の目安にも使います。複数セッションが動いている場合は状態をまとめます。\n\n## 仕組み\n\nUNO QのLinux側でPythonデーモンがHooksを受け、Arduino RouterのMessagePack RPCでSTM32U585側へ送ります。MCUがLEDを描画します。状態確認、デモ、診断、一時表示用のCLIもあります。\n\n## 注意\n\nプロンプト、応答、コマンド、ファイル内容は保存しません。インストール時はMCUファームウェアを書き換えるので、対象がUNO Qであることを確認してから実行します。",
+        "slideMode": false,
+        "relatedLinks": [
+          "https://github.com/HSBL-ko-gyo/unoq-codex-matrix",
+          "https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/"
+        ]
+      }
+    }
+  ]
 }
