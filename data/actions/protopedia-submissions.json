@@ -2,38 +2,5 @@
   "version": 2,
   "account": "hsbl39",
   "note": "固定Playwright投稿処理の入力。投稿前後の重複確認と成功検証後にだけ公開台帳を更新する。認証情報はリポジトリ外で管理する。",
-  "submissions": [
-    {
-      "slug": "aotori-575",
-      "operation": "sync-thumbnail",
-      "requestedVisibility": "general-public",
-      "sourceHash": "a41270546805a43d50c97133f646bce588531a8552b103dafb17a2a758cd046c",
-      "form": {
-        "workStatus": "完成",
-        "title": "青鳥五七五",
-        "officialUrl": "https://575.hsbl-ko-gyo.com/",
-        "summary": "五・七・五を三行で詠み、ほかの人の作品も読める、俳句・川柳どちらも歓迎のSNSです。",
-        "displayCreativeCommonsLicense": false,
-        "tags": [
-          "五七五",
-          "俳句",
-          "川柳",
-          "SNS",
-          "Webサービス"
-        ],
-        "storyMarkdown": "## 五・七・五だけを流すSNS\n\n五・七・五を基本にした三行作品を投稿し、ほかの人の句も読めるSNSです。俳句か川柳かを分けず、季語の知識も必須にしていません。各行は1〜10文字で、字余りや字足らずでもそのまま投稿できます。\n\n## 読むだけならログイン不要\n\n未ログインでも「新着」と、直近24時間の評価を反映する「人気」を閲覧できます。Googleでログインすると、投稿、作品への「芭蕉」評価、詠み手のフォロー、フォロー中だけのタイムライン、非表示、通報、アカウント削除を使えます。対象は18歳以上です。\n\n## 短い言葉へ集中する\n\nコメント、画像、動画、ダイレクトメッセージ、非公開投稿はありません。各作品には個別URLがあり、共有用テキストから外部のSNSやメッセージアプリへ持ち出せます。公開日と運営情報は、ハシビロ工業の[公開記事](https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba)で確認できます。",
-        "slideMode": false,
-        "relatedLinks": [
-          "https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba",
-          "https://protopedia.net/prototype/9613",
-          "https://github.hsbl-ko-gyo.com/projects/aotori-575/"
-        ],
-        "thumbnailPath": "public/images/projects/aotori-575.png"
-      },
-      "existingPrototype": {
-        "prototypeId": 9613,
-        "url": "https://protopedia.net/prototype/9613"
-      }
-    }
-  ]
+  "submissions": []
 }
