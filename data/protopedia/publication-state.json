@@ -50,6 +50,17 @@
       "sourceHash": "a41270546805a43d50c97133f646bce588531a8552b103dafb17a2a758cd046c",
       "thumbnailUploaded": true,
       "verifiedAt": "2026-09-05T01:08:54.565Z"
+    },
+    {
+      "slug": "easyeda-to-kicad-gui",
+      "title": "EasyEDA to KiCad GUI",
+      "prototypeId": 9617,
+      "url": "https://protopedia.net/prototype/9617",
+      "officialUrl": "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases",
+      "sourceHash": "e77acdb801501e2c69bc6fba558d5dd0cc653c9067d3b13a9b9335cc3d76dd29",
+      "thumbnailUploaded": false,
+      "publishedAt": "2026-09-05T02:22:06.000Z",
+      "verifiedAt": "2026-09-05T02:22:06.000Z"
     }
   ]
 }

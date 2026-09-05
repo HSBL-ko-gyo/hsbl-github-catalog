@@ -13,6 +13,7 @@ createdYear: 2025
 links:
   github: https://github.com/HSBL-ko-gyo/easyeda2kicad_gui
   release: https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases
+  protopedia: https://protopedia.net/prototype/9617
 seoTitle: EasyEDA部品をKiCadへ変換するWindows GUI | ハシビロ工業 GitHub
 seoDescription: LCSC IDからEasyEDAのシンボル、フットプリント、3DモデルをKiCad形式へ変換。easyeda2kicadをGUIで操作するWindows向けツールです。
 searchIntents: [EasyEDA KiCad 変換 GUI, LCSC KiCad フットプリント 変換]
@@ -24,6 +25,7 @@ topics: []
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/easyeda2kicad_gui
   - https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/blob/main/README.md
+  - https://protopedia.net/prototype/9617
 ---
 
 ## コマンドをGUIにした

@@ -4,32 +4,6 @@
   "note": "固定Playwright投稿処理の入力。投稿前後の重複確認と成功検証後にだけ公開台帳を更新する。認証情報はリポジトリ外で管理する。",
   "submissions": [
     {
-      "slug": "easyeda-to-kicad-gui",
-      "operation": "create",
-      "requestedVisibility": "general-public",
-      "sourceHash": "e77acdb801501e2c69bc6fba558d5dd0cc653c9067d3b13a9b9335cc3d76dd29",
-      "form": {
-        "workStatus": "完成",
-        "title": "EasyEDA to KiCad GUI",
-        "officialUrl": "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases",
-        "summary": "easyeda2kicadは便利ですが、毎回コマンドを打つのがだるいのでWindows GUIにしました。LCSC IDからシンボル、フットプリント、3Dモデルを変換できます。",
-        "displayCreativeCommonsLicense": false,
-        "tags": [
-          "EasyEDA",
-          "KiCad",
-          "LCSC",
-          "フットプリント",
-          "3Dモデル"
-        ],
-        "storyMarkdown": "## コマンドをGUIにした\n\n`easyeda2kicad`を画面から使うためのWindows GUIです。KiCadに欲しい部品がない時、LCSC IDを入れてEasyEDAの部品データを持ってきます。毎回コマンドとオプションを組み立てなくて済むようにしました。\n\n## できること\n\nシンボル、フットプリント、3Dモデルから必要なものを選び、出力先と変換オプションを指定できます。空のLCSC IDは実行前に止めます。設定は次回用に保存し、変換ログは選択してコピーできます。必要なら`easyeda2kicad`の導入も行います。\n\n## 配布\n\nWindows用の単体実行ファイルをReleaseで配布しています。Python、tkinter、PyInstallerを使ったビルド手順もリポジトリにあります。",
-        "slideMode": false,
-        "relatedLinks": [
-          "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui",
-          "https://github.hsbl-ko-gyo.com/projects/easyeda-to-kicad-gui/"
-        ]
-      }
-    },
-    {
       "slug": "gdrive-pdf-ctrl-wheel-zoom",
       "operation": "create",
       "requestedVisibility": "general-public",
