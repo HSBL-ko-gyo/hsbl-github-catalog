@@ -13,6 +13,7 @@ createdYear: 2026
 links:
   app: https://katachi.hsbl-ko-gyo.com/
   article: https://katachi.hsbl-ko-gyo.com/about/
+  protopedia: https://protopedia.net/prototype/9620
 thumbnail: /images/projects/katachi-tab.png
 seoTitle: KATACHI Tab｜Fusion 360ライクな無料ブラウザ3D CAD | ハシビロ工業 GitHub
 seoDescription: KATACHI Tabは、Fusion 360ライクな操作感で簡単な部品を設計し、STEP・STLへ書き出せる無料のブラウザ3DソリッドCADです。
@@ -21,6 +22,7 @@ publishedAt: "2026-09-05T00:00:00+09:00"
 sourceEvidence:
   - https://katachi.hsbl-ko-gyo.com/
   - https://katachi.hsbl-ko-gyo.com/about/
+  - https://protopedia.net/prototype/9620
 ---
 
 ## ブラウザを開いて、そのまま形にする
