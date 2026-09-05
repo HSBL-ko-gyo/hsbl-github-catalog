@@ -61,6 +61,17 @@
       "thumbnailUploaded": false,
       "publishedAt": "2026-09-05T02:22:06.000Z",
       "verifiedAt": "2026-09-05T02:22:06.000Z"
+    },
+    {
+      "slug": "gdrive-pdf-ctrl-wheel-zoom",
+      "title": "Google Drive PDF Ctrl+Wheel Zoom",
+      "prototypeId": 9618,
+      "url": "https://protopedia.net/prototype/9618",
+      "officialUrl": "https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0",
+      "sourceHash": "e947e4c19e12b36e5b9283798b5e6b1df7840cd522d938246e6afbd72ac48460",
+      "thumbnailUploaded": false,
+      "publishedAt": "2026-09-05T02:32:40.000Z",
+      "verifiedAt": "2026-09-05T02:32:40.000Z"
     }
   ]
 }

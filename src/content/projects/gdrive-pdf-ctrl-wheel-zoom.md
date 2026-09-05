@@ -13,6 +13,7 @@ createdYear: 2026
 links:
   github: https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom
   release: https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0
+  protopedia: https://protopedia.net/prototype/9618
 seoTitle: Google Drive PDFをCtrl＋ホイールで拡大する拡張機能 | ハシビロ工業 GitHub
 seoDescription: Google DriveのPDFプレビューでCtrl＋マウスホイールを拡大・縮小へ割り当てる、Chrome / Edge向けManifest V3拡張機能です。
 searchIntents: [Google Drive PDF Ctrl ホイール 拡大, Drive PDF ズーム 拡張機能]
@@ -25,6 +26,7 @@ sourceEvidence:
   - https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom
   - https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/blob/main/README.md
   - https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0
+  - https://protopedia.net/prototype/9618
 ---
 
 ## Ctrl＋ホイールを足す

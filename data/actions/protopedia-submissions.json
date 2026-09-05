@@ -4,32 +4,6 @@
   "note": "固定Playwright投稿処理の入力。投稿前後の重複確認と成功検証後にだけ公開台帳を更新する。認証情報はリポジトリ外で管理する。",
   "submissions": [
     {
-      "slug": "gdrive-pdf-ctrl-wheel-zoom",
-      "operation": "create",
-      "requestedVisibility": "general-public",
-      "sourceHash": "e947e4c19e12b36e5b9283798b5e6b1df7840cd522d938246e6afbd72ac48460",
-      "form": {
-        "workStatus": "開発中",
-        "title": "Google Drive PDF Ctrl+Wheel Zoom",
-        "officialUrl": "https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0",
-        "summary": "ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。",
-        "displayCreativeCommonsLicense": false,
-        "tags": [
-          "Google Drive",
-          "PDF",
-          "ズーム",
-          "Chrome",
-          "Edge"
-        ],
-        "storyMarkdown": "## Ctrl＋ホイールを足す\n\nGoogle DriveのPDFプレビュー中だけ、`Ctrl + ホイール`を拡大・縮小に変えます。Ctrlを押していない時は、今までどおりスクロールします。PDFプレビューの外では通常のブラウザ操作のままです。\n\n## 使い方\n\nReleaseから展開して、ChromeかEdgeの拡張機能画面で読み込みます。まだストア配布はしていません。Manifest V3で、外部通信、解析、データ保存は行いません。\n\n## 中身\n\nDriveにはPDFズーム用の公開APIがないので、画面上のズームボタンを探して押しています。Drive側の画面が変わると直す必要があります。",
-        "slideMode": false,
-        "relatedLinks": [
-          "https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom",
-          "https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/"
-        ]
-      }
-    },
-    {
       "slug": "uno-q-codex-matrix",
       "operation": "create",
       "requestedVisibility": "general-public",
