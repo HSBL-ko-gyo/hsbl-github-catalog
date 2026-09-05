@@ -2,5 +2,33 @@
   "version": 2,
   "account": "hsbl39",
   "note": "固定Playwright投稿処理の入力。投稿前後の重複確認と成功検証後にだけ公開台帳を更新する。認証情報はリポジトリ外で管理する。",
-  "submissions": []
+  "submissions": [
+    {
+      "slug": "katachi-tab",
+      "operation": "create",
+      "requestedVisibility": "general-public",
+      "sourceHash": "473a3e2f0b84fb8c32cbffd1f8cb1d59734742687687c341bbe228a050fda689",
+      "form": {
+        "workStatus": "完成",
+        "title": "KATACHI Tab｜Fusion 360ライクなブラウザ3D CAD",
+        "officialUrl": "https://katachi.hsbl-ko-gyo.com/",
+        "summary": "Fusion 360ライクな操作感で、取付板やケースなどの簡単な部品をブラウザ上で設計し、STEP・STLへ書き出せる3DソリッドCADです。",
+        "displayCreativeCommonsLicense": false,
+        "tags": [
+          "3D CAD",
+          "Fusion 360ライク",
+          "STEP",
+          "STL",
+          "3Dプリンター"
+        ],
+        "storyMarkdown": "## ブラウザを開いて、そのまま形にする\n\nKATACHI Tabは、Fusion 360ライクな操作感を目指した3DソリッドCADです。取付板、スペーサー、ケース、ブラケットなどの簡単な部品を、マウス操作と数値入力で設計できます。インストールせず、公開ページを開いてすぐ始められます。\n\n## スケッチからソリッドへ\n\nXY・XZ・YZ平面やボディの平面フェイスを選び、長方形、円、線で輪郭を描いて押し出します。新規ボディの作成、結合、切り取りに加え、ボディの移動・回転や演算もできます。寸法や位置は数値で調整でき、操作履歴は最大30件まで戻せます。\n\n## STEPとSTLで持ち出す\n\n作ったモデルは、編集を続けるためのプロジェクトファイルとして保存できます。ほかのCADへ渡す場合はSTEP、3Dプリンターなどへ持っていく場合はSTLで書き出します。モデリング計算はブラウザ内で行います。\n\n## 作ったモデルは商用利用も可能\n\n個人・法人、商用・非商用を問わず無料で利用できます。作成したモデルは、業務や製品の設計・製作にも使えます。詳しい利用条件と制作元は、KATACHI Tabの[このサイトについて](https://katachi.hsbl-ko-gyo.com/about/)で確認できます。",
+        "slideMode": false,
+        "relatedLinks": [
+          "https://katachi.hsbl-ko-gyo.com/about/",
+          "https://github.hsbl-ko-gyo.com/projects/katachi-tab/"
+        ],
+        "thumbnailPath": "public/images/projects/katachi-tab.png"
+      }
+    }
+  ]
 }

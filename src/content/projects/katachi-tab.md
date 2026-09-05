@@ -1,6 +1,6 @@
 ---
 sourceType: external
-title: KATACHI Tab
+title: KATACHI Tab｜Fusion 360ライクなブラウザ3D CAD
 slug: katachi-tab
 summary: Fusion 360ライクな操作感で、取付板やケースなどの簡単な部品をブラウザ上で設計し、STEP・STLへ書き出せる3DソリッドCADです。
 description: 簡単な部品をブラウザですぐ形にする3DソリッドCAD
