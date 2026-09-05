@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "owner": "HSBL-ko-gyo",
-  "sourceCollectedAt": "2026-08-30T12:25:13.519Z",
+  "sourceCollectedAt": "2026-09-05T20:40:09.257Z",
   "actions": [
     {
       "type": "readme-exact-url-repair",
@@ -119,7 +119,7 @@
       "type": "readme-managed-intro",
       "repo": "unoq-codex-matrix",
       "path": "README.md",
-      "baseSha": "e6d94e798d90d104fd85739fee0eb3474088451a",
+      "baseSha": "2270201ac45544c0dc9a14f3234a9ef061fa6f99",
       "content": "<!-- hsbl-catalog:seo-start -->\n**UNO Q Codex Matrix** — Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/)\n<!-- hsbl-catalog:seo-end -->"
     },
     {

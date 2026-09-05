@@ -4,7 +4,7 @@
 - Description: Show live OpenAI Codex activity on the Arduino UNO Q onboard 8x13 LED matrix.
 - Homepage: 未設定
 - Topics: arduino-router, arduino-uno-q, codex, codex-hooks, embedded, led-matrix, python, rpc, stm32u585
-- README SHA: e6d94e798d90d104fd85739fee0eb3474088451a
+- README SHA: 2270201ac45544c0dc9a14f3234a9ef061fa6f99
 
 ## 計画した変更
 

@@ -81,13 +81,13 @@ State IDs are a versioned wire ABI shared by Python and C++. This table describe
 | 6 | BUILDING | Recognized build command | Stacking blocks |
 | 7 | TESTING | Recognized test command | Progress-style animation |
 | 8 | FLASHING | Firmware upload command | Falling data streams |
-| 9 | WAITING | Permission request | Attention indicator |
+| 9 | WAITING | Permission request | Pulsing question mark |
 | 10 | SUCCESS | Completed turn | Completion mark |
 | 11 | ERROR | Explicit structured tool failure | Error mark |
 | 12 | OFFLINE | MCU heartbeat timeout | Disconnected indicator |
 | 13 | SUBAGENT | Subagent activity | Independently moving dots |
 
-The 13 LEDs in the top row form the Codex quota bar. It uses the lower remaining value across the short and long quota windows and fills from left to right in roughly 7.7% steps. The optional lower-right indicator independently shows concurrent tracked sessions, so both can remain visible. If quota data is unavailable or stale, only the top bar disappears. Aggregation, precedence, and expiry semantics are defined in [the protocol](docs/protocol.md).
+The 13 LEDs in the top row form the Codex quota bar. It uses the lower remaining value across the short and long quota windows and fills from left to right in roughly 7.7% steps. The bar blinks when the remaining quota is critically low. The optional lower-right indicator independently shows concurrent tracked sessions, so both can remain visible. If quota data is unavailable or stale, only the top bar disappears. Aggregation, precedence, and expiry semantics are defined in [the protocol](docs/protocol.md).
 
 ## CLI
 

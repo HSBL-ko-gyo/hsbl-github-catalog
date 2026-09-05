@@ -299,53 +299,6 @@ async function main(): Promise<void> {
     );
   }
 
-  const reportDate = new Intl.DateTimeFormat("sv-SE", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    timeZone: "Asia/Tokyo",
-  }).format(new Date());
-  const allowedForkCount = dataset.repositories.filter(
-    (repository) => repository.isFork,
-  ).length;
-  const originalRepositoryCount =
-    dataset.repositories.length - allowedForkCount;
-  const discoveryReport = [
-    `# GitHub作品発掘レポート — ${reportDate}`,
-    "",
-    `- 収集対象: owner一致のpublic ${dataset.repositories.length}件（通常 ${originalRepositoryCount}件 / 明示許可fork ${allowedForkCount}件）`,
-    `- 公開作品: ${projects.filter(({ data }) => !data.draft).length}件`,
-    `- SEOアクション計画: metadata ${metadataCount}件 / README管理ブロック ${managedCount}件 / 完全一致URL修正 ${repairCount}件`,
-    "",
-    "## 公開状況",
-    "",
-    "用途・自作性・現行性が公開READMEから明確な通常GitHub作品22件と、派生元・独自変更・制約を明記できる明示許可fork 1件を公開しています。加えて、公開元と一次情報をポリシーで明示確認した外部Web作品を掲載しています。",
-    "",
-    "## 明示許可fork",
-    "",
-    "- `easyeda2kicad-digimou`: `uPesy/easyeda2kicad.py` の非公式派生版。販売元メタデータ対応という独自変更を確認できるため、fork表記と派生元リンク付きで掲載。GitHub SEO自動変更の対象外。",
-    "",
-    "## 明示許可した外部公開作品",
-    "",
-    "- `aotori-575`: ハシビロ工業の公開noteで開発・運営、公開日、サービスURLを確認。Cloudflare公開先だけを掲載し、GitHub SEO自動変更の対象外。",
-    "",
-    "## スキップ",
-    "",
-    "- `HSBL_touka_Exhibition-plan`: publicだがREADMEが題名だけで、作品ページとしての用途と公開範囲を説明できないため見送り。",
-    "- `enso-WEBApp-BETA`: ポリシーで現行版 `enso` の旧版として指定されているため除外。",
-    "- `kicad1.6mm`: 空の公開リポジトリで、ポリシーの明示的除外にも該当するため除外。",
-    "",
-    "privateリポジトリは問い合わせ・集計・記録の対象にしていません。",
-    "",
-  ].join("\n");
-  await writeTextAtomic(
-    resolve(ROOT, "reports/discovery", `${reportDate}.md`),
-    discoveryReport,
-  );
-  await writeTextAtomic(
-    resolve(ROOT, "reports/discovery/latest.md"),
-    discoveryReport,
-  );
   process.stdout.write(
     `Wrote ${orderedProjects.length} repository audits and ${actions.length} validated actions.\n`,
   );
