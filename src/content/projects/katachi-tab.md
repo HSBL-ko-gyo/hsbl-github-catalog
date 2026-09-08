@@ -1,6 +1,6 @@
 ---
 sourceType: external
-title: KATACHI CAD｜Fusion 360ライクなブラウザ3D CAD
+title: ハシビロCAD｜Fusion 360ライクなブラウザ3D CAD
 slug: katachi-tab
 summary: インストール不要、ブラウザで使えるフリーのソリッド3DCAD。Fusion 360ライクな操作感で取付板やケースなどを設計し、STEP・STLへ書き出せます。個人・法人とも商用利用可能です。
 description: インストール不要、ブラウザで簡単な部品を設計できるフリーのソリッド3DCAD
@@ -15,8 +15,8 @@ links:
   article: https://katachi.hsbl-ko-gyo.com/about/
   protopedia: https://protopedia.net/prototype/9620
 thumbnail: /images/projects/katachi-tab.png
-seoTitle: KATACHI CAD｜ブラウザで使えるフリーのソリッド3DCAD・インストール不要
-seoDescription: KATACHI CADは、インストール不要でブラウザから使えるフリーのソリッド3DCADです。Fusion 360ライクな操作で部品を設計し、STEP・STLへ書き出せます。個人・法人とも商用利用可能。
+seoTitle: ハシビロCAD｜ブラウザで使えるフリーのソリッド3DCAD・インストール不要
+seoDescription: ハシビロCADは、インストール不要でブラウザから使えるフリーのソリッド3DCADです。Fusion 360ライクな操作で部品を設計し、STEP・STLへ書き出せます。個人・法人とも商用利用可能。
 searchIntents: [インストール不要 ソリッド3DCAD, フリー 商用利用 CAD, ブラウザ 3D CAD, Fusion 360 ライク CAD, STEP STL 書き出し, 3Dプリンター 部品 設計]
 publishedAt: "2026-09-05T00:00:00+09:00"
 sourceEvidence:
@@ -27,7 +27,7 @@ sourceEvidence:
 
 ## ブラウザを開いて、そのまま形にする
 
-KATACHI CADは、Fusion 360ライクな操作感を目指したソリッド3DCADです。取付板、スペーサー、ケース、ブラケットなどの簡単な部品を、マウス操作と数値入力で設計できます。インストールせず、公開ページを開いてすぐ始められます。
+ハシビロCADは、Fusion 360ライクな操作感を目指したソリッド3DCADです。取付板、スペーサー、ケース、ブラケットなどの簡単な部品を、マウス操作と数値入力で設計できます。インストールせず、公開ページを開いてすぐ始められます。
 
 ## スケッチからソリッドへ
 
@@ -39,4 +39,4 @@ XY・XZ・YZ平面やボディの平面フェイスを選び、長方形、円�
 
 ## 作ったモデルは商用利用も可能
 
-個人・法人、商用・非商用を問わず無料で利用できます。作成したモデルは、業務や製品の設計・製作にも使えます。詳しい利用条件と制作元は、KATACHI CADの[このサイトについて](https://katachi.hsbl-ko-gyo.com/about/)で確認できます。
+個人・法人、商用・非商用を問わず無料で利用できます。作成したモデルは、業務や製品の設計・製作にも使えます。詳しい利用条件と制作元は、ハシビロCADの[このサイトについて](https://katachi.hsbl-ko-gyo.com/about/)で確認できます。
