@@ -1,138 +1,62 @@
 {
   "schemaVersion": 1,
   "owner": "HSBL-ko-gyo",
-  "sourceCollectedAt": "2026-09-05T20:40:09.257Z",
+  "sourceCollectedAt": "2026-09-12T20:29:13.646Z",
   "actions": [
     {
-      "type": "readme-exact-url-repair",
-      "repo": "easyeda2kicad_gui",
-      "path": "README.md",
-      "baseSha": "c7870c7c9f29bf05fbf6a5703a5f01266454091c",
-      "from": "https://github.com/YOUR_USERNAME/easyeda2kicad_gui/releases",
-      "to": "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases"
+      "type": "repository-metadata",
+      "repo": "HSBL-100",
+      "description": "CCプルダウン抵抗が入っていないType-C機器を確認し、必要なら抵抗を代わりに入れる中継基板です。かなり特殊用途。"
     },
     {
       "type": "repository-metadata",
-      "repo": "easyeda2kicad_gui",
-      "description": "easyeda2kicadは便利ですが、毎回コマンドを打つのがだるいのでWindows GUIにしました。LCSC IDからシンボル、フットプリント、3Dモデルを変換できます。",
+      "repo": "HSBL-120",
+      "description": "Xiaomi Smart Band 8 / 9 / 10用のマグネット充電ケーブルを、小さな工作の着脱式5V電源として使うアダプタです。",
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/hsbl-120-xiaomi-band-power/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S100-01",
+      "description": "M5Stack ATOMの底へRGB LEDを一灯足す基板です。Chameleon Key用に作りましたが、普通のインジケーターにも使えます。",
+      "homepage": "https://hsbl-ko-gyo.github.io/HSBL-S101/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S101",
+      "description": "ブラウザからAtomS3へ画像を送り、画面の向きや底面LEDの色と一緒に本体へ保存するツールです。"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S200-01",
+      "description": "M5Stack CoreS3 / CoreS3 SEの底へ4個のRGB LEDを足す基板です。透明な光拡散部も一緒に固定します。",
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/hsbl-s200-01-rgb-led-bottom/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S220-bakusui",
+      "description": "意味のつながらない単語を音声で順に聞く、認知シャッフル睡眠法の実験用Androidアプリです。",
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/bakusui/"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "kicad-step-just-1p6",
+      "description": "KiCadから出したSTEP基板が少し薄くなる時、下面を動かさず1.600mmなど指定した完成厚へ直すWindows GUIです。",
       "topics": [
-        "easyeda",
+        "3d-cad",
         "electronics",
-        "gui",
         "kicad",
-        "lcsc",
+        "pcb",
         "python",
+        "step",
         "windows"
       ],
-      "homepage": "https://github.hsbl-ko-gyo.com/projects/easyeda-to-kicad-gui/"
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/kicad-step-thickness-fixer/"
     },
     {
       "type": "repository-metadata",
-      "repo": "enso",
-      "description": "焚き火を画面に出して眺めるだけのWeb作品です。役には立ちませんが、炎は出ます。",
-      "topics": [
-        "digital-art",
-        "fire",
-        "relaxation",
-        "static-site",
-        "web-art"
-      ],
-      "homepage": "https://github.hsbl-ko-gyo.com/projects/enso/"
-    },
-    {
-      "type": "readme-managed-intro",
-      "repo": "gdrive-pdf-ctrl-wheel-zoom",
-      "path": "README.md",
-      "baseSha": "2cb6f1e54008c6b5a0eefc45fbd19cb6b4d2f590",
-      "content": "<!-- hsbl-catalog:seo-start -->\n**Google Drive PDF Ctrl+Wheel Zoom** — ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/)\n<!-- hsbl-catalog:seo-end -->"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "gdrive-pdf-ctrl-wheel-zoom",
-      "description": "ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。",
-      "topics": [
-        "browser-extension",
-        "chrome-extension",
-        "edge-extension",
-        "google-drive",
-        "javascript",
-        "pdf",
-        "zoom"
-      ],
-      "homepage": "https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "gif-splitter",
-      "description": "GIFアニメの途中にある一枚が欲しい時、ブラウザで全フレームをPNGへばらす道具です。まとめてZIPにもできます。",
-      "topics": [
-        "browser-tool",
-        "gif",
-        "image-processing",
-        "javascript",
-        "png",
-        "zip"
-      ],
-      "homepage": "https://hsbl-ko-gyo.github.io/gif-splitter/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "mahjong-bootcamp",
-      "description": "麻雀を覚え始めた人向けに、テンパイ、何切る、安全牌、押し引きなどをテーマ別で繰り返すWebアプリです。",
-      "topics": [
-        "browser-game",
-        "learning-tool",
-        "mahjong",
-        "training",
-        "web-app"
-      ],
-      "homepage": "https://hsbl-ko-gyo.github.io/mahjong-bootcamp/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "md-table-shot",
-      "description": "noteなどへMarkdownの表を貼ると崩れるので、ブラウザ上で整えてPNGにする道具です。",
-      "topics": [
-        "browser-tool",
-        "image-export",
-        "markdown",
-        "markdown-table",
-        "png",
-        "typescript"
-      ],
-      "homepage": "https://hsbl-ko-gyo.github.io/md-table-shot/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "stereo-mic-tester",
-      "description": "USBステレオマイクの左右がちゃんと別々に入っているか、オシロスコープ風の波形で見るWebツールです。",
-      "topics": [
-        "browser-tool",
-        "microphone",
-        "stereo-audio",
-        "testing-tool",
-        "web-audio"
-      ],
-      "homepage": "https://hsbl-ko-gyo.github.io/stereo-mic-tester/"
-    },
-    {
-      "type": "readme-managed-intro",
       "repo": "unoq-codex-matrix",
-      "path": "README.md",
-      "baseSha": "2270201ac45544c0dc9a14f3234a9ef061fa6f99",
-      "content": "<!-- hsbl-catalog:seo-start -->\n**UNO Q Codex Matrix** — Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。\n\n- [配布版を確認する](https://github.com/HSBL-ko-gyo/unoq-codex-matrix/releases)\n- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/)\n<!-- hsbl-catalog:seo-end -->"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "Vision-filter-for-people-with-color-blindness",
-      "description": "手元の画像を読み込み、オリジナルと複数の色覚タイプでの見え方を並べる簡易シミュレーターです。",
-      "topics": [
-        "accessibility",
-        "browser-tool",
-        "color-vision",
-        "image-processing",
-        "web-app"
-      ]
+      "description": "Codexの処理中・待機中と利用枠の目安を、UNO Qの8×13 LEDマトリクスへ出すローカル連携です。画面を見張り続けたくないので作りました。",
+      "homepage": "https://github.hsbl-ko-gyo.com/projects/uno-q-codex-matrix/"
     }
   ]
 }

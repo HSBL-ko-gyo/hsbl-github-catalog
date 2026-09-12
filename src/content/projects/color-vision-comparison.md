@@ -19,10 +19,10 @@ seoDescription: 手元の画像を読み込み、オリジナルと複数の色�
 searchIntents:
   [色覚 見え方 シミュレーション 画像, 色覚異常 デザイン 確認 ツール]
 repoCreatedAt: "2023-04-24T12:34:58Z"
-repoUpdatedAt: "2023-04-24T12:43:41Z"
+repoUpdatedAt: "2026-09-05T20:53:25Z"
 repoPushedAt: "2023-04-24T13:42:44Z"
 primaryLanguage: null
-topics: []
+topics: [accessibility, browser-tool, color-vision, image-processing, web-app]
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/Vision-filter-for-people-with-color-blindness
   - https://github.com/HSBL-ko-gyo/Vision-filter-for-people-with-color-blindness/blob/main/README.md

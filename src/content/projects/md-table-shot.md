@@ -17,10 +17,10 @@ seoTitle: Markdownの表をPNG画像へ変換する MD Table Shot | ハシビロ
 seoDescription: Markdownの表をnoteやブログへ貼れるPNG画像に変換。配置、装飾、背景、解像度を調整でき、入力データはブラウザ内で処理します。
 searchIntents: [Markdown 表 PNG 変換, note 表 画像化]
 repoCreatedAt: "2026-08-07T18:28:13Z"
-repoUpdatedAt: "2026-08-07T18:39:30Z"
+repoUpdatedAt: "2026-09-05T20:53:15Z"
 repoPushedAt: "2026-08-07T18:39:25Z"
 primaryLanguage: TypeScript
-topics: []
+topics: [browser-tool, image-export, markdown, markdown-table, png, typescript]
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/md-table-shot
   - https://github.com/HSBL-ko-gyo/md-table-shot/blob/main/README.md

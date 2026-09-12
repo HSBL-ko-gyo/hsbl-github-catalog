@@ -1,5 +1,12 @@
 # Google Drive PDF Ctrl+Wheel Zoom
 
+<!-- hsbl-catalog:seo-start -->
+**Google Drive PDF Ctrl+Wheel Zoom** — ズームボタンまで毎回マウスを動かすのがだるかったので作った、Chrome / Edge用の小さな拡張です。
+
+- [配布版を確認する](https://github.com/HSBL-ko-gyo/gdrive-pdf-ctrl-wheel-zoom/releases/tag/v0.1.0)
+- [日本語の作品紹介を見る](https://github.hsbl-ko-gyo.com/projects/gdrive-pdf-ctrl-wheel-zoom/)
+<!-- hsbl-catalog:seo-end -->
+
 A small Manifest V3 extension that maps `Ctrl + mouse wheel` to the zoom controls
 in Google Drive's PDF Preview.
 

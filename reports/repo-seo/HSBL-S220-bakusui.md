@@ -8,6 +8,6 @@
 
 ## 計画した変更
 
-- なし（今回の件数上限、または現状維持）
+- repository-metadata
 
 公開メタデータとカタログ本文だけを根拠に監査しています。ソース、設定、workflow、Release、Issue、PRは変更対象外です。

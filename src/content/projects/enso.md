@@ -16,10 +16,10 @@ seoTitle: ブラウザで焚き火を眺めるWeb作品「炎添 enso」 | ハ�
 seoDescription: 炎添 ensoは、ブラウザ上で焚き火を眺めるための静的Web作品です。ソースとCloudflare Pages向けの公開構成を確認できます。
 searchIntents: [Web 焚き火 ブラウザ, ブラウザ 焚き火 アプリ]
 repoCreatedAt: "2026-06-22T10:51:51Z"
-repoUpdatedAt: "2026-06-30T15:58:31Z"
+repoUpdatedAt: "2026-09-05T20:52:58Z"
 repoPushedAt: "2026-06-30T15:58:28Z"
 primaryLanguage: HTML
-topics: []
+topics: [digital-art, fire, relaxation, static-site, web-art]
 sourceEvidence:
   - https://github.com/HSBL-ko-gyo/enso
   - https://github.com/HSBL-ko-gyo/enso/blob/main/README.md
@@ -31,4 +31,4 @@ sourceEvidence:
 
 ## 中身
 
-入口は`index.html`ひとつ。HTMLを中心にした静的なWeb作品で、サーバーやデータベースは使いません。公開用の推奨ドメインはREADMEにありますが、GitHubのHomepageはまだ未設定なので、ここではソースだけ案内しています。
+入口は`index.html`ひとつ。HTMLを中心にした静的なWeb作品で、サーバーやデータベースは使いません。GitHubのHomepageはこのカタログを案内しているため、ここでは公開ソースへつないでいます。
