@@ -18,7 +18,7 @@ seoTitle: Codexの状態をUNO Q LEDマトリクスへ表示 | ハシビロ工�
 seoDescription: Codex Hooksをローカルで集約し、Arduino UNO Q内蔵8×13 LEDマトリクスへ思考中、テスト中、待機、完了などを表示します。
 searchIntents: [Arduino UNO Q Codex LED matrix, Codex status hardware display]
 repoCreatedAt: "2026-08-16T10:43:59Z"
-repoUpdatedAt: "2026-09-05T20:53:25Z"
+repoUpdatedAt: "2026-09-12T20:40:54Z"
 repoPushedAt: "2026-09-05T20:53:22Z"
 primaryLanguage: Python
 topics:

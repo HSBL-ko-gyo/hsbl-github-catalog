@@ -18,7 +18,7 @@ seoDescription: Xiaomi Smart Band 8 / 9 / 10用マグネット充電ケーブル
 searchIntents:
   [Xiaomi Smart Band 充電ケーブル 5V 取り出し, マグネットケーブル 電源 工作]
 repoCreatedAt: "2026-01-21T18:17:20Z"
-repoUpdatedAt: "2026-03-05T07:47:19Z"
+repoUpdatedAt: "2026-09-12T20:40:40Z"
 repoPushedAt: "2026-03-05T07:47:16Z"
 primaryLanguage: null
 topics: []
