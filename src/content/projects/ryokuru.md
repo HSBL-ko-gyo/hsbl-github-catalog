@@ -17,7 +17,7 @@ seoTitle: 風に揺れる緑を眺めるWeb作品「緑流」ベータ | ハシ�
 seoDescription: 緑流 ryokuruは、風に揺れる緑の様子をブラウザで眺める公開プロトタイプです。現行のベータ版Webページとソースを案内します。
 searchIntents: [緑 風 揺れる Webアプリ, ブラウザ 緑 眺める]
 repoCreatedAt: "2023-03-21T02:40:49Z"
-repoUpdatedAt: "2023-03-21T02:40:49Z"
+repoUpdatedAt: "2026-09-19T20:45:02Z"
 repoPushedAt: "2023-03-21T02:51:10Z"
 primaryLanguage: null
 topics: []

@@ -16,7 +16,7 @@ seoTitle: 長文を分割してコピーするGPT用テキストスプリッタ�
 seoDescription: 長い文章を複数のまとまりへ分割し、生成AIなどへ順番にコピー＆ペーストしやすくするシンプルな公開ツールです。
 searchIntents: [GPT 長文 分割 コピー, テキスト 分割 ツール]
 repoCreatedAt: "2023-03-19T09:21:28Z"
-repoUpdatedAt: "2023-03-19T09:21:28Z"
+repoUpdatedAt: "2026-09-19T20:45:06Z"
 repoPushedAt: "2023-03-19T09:24:26Z"
 primaryLanguage: null
 topics: []

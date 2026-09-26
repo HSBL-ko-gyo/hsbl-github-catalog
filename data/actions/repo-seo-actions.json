@@ -1,42 +1,6 @@
 {
   "schemaVersion": 1,
   "owner": "HSBL-ko-gyo",
-  "sourceCollectedAt": "2026-09-19T20:34:59.712Z",
-  "actions": [
-    {
-      "type": "repository-metadata",
-      "repo": "HSBL-S800",
-      "description": "手牌が変わり続ける中で、ツモと打牌をどんどん選ぶ一人用の四人麻雀です。ブラウザですぐ練習できます。",
-      "homepage": "https://bakusoku-mahjong.hsbl-ko-gyo.com/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "ryokuru-WEBApp-BETA",
-      "description": "風に揺れる緑を画面に出して眺めるWeb作品です。まだプロトタイプのまま公開しています。",
-      "homepage": "https://hsbl-ko-gyo.github.io/ryokuru-WEBApp-BETA"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "Sauna-Clock-WEB-App",
-      "description": "サウナの12分計っぽい時計をブラウザへ出し、分針が一周する時間を好きな分数へ変えられます。"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "Text-splitter-for-GPT",
-      "description": "一度に貼れない長文をいくつかに分け、上から順にコピー＆ペーストするための小さなツールです。",
-      "homepage": "https://github.hsbl-ko-gyo.com/projects/text-splitter-for-gpt/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "WebGPU_Test",
-      "description": "アプリを入れずに、ブラウザでWebGL2へ負荷をかけます。スライダーを動かしながらFPSとGPU名を見られます。",
-      "homepage": "https://hsbl-ko-gyo.github.io/WebGPU_Test/"
-    },
-    {
-      "type": "repository-metadata",
-      "repo": "YouTube-Time-Summary",
-      "description": "動画の「5:30」のような時間を順に入れ、全部見ると何分かかるのかをその場で足す小さなWebツールです。",
-      "homepage": "https://github.hsbl-ko-gyo.com/projects/youtube-time-summary/"
-    }
-  ]
+  "sourceCollectedAt": "2026-09-26T20:33:11.334Z",
+  "actions": []
 }

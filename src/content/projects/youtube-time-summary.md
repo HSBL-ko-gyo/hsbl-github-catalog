@@ -17,7 +17,7 @@ seoTitle: YouTube動画の分・秒を足して合計時間を計算 | ハシビ
 seoDescription: 「5:30」のような分・秒を複数追加し、YouTube動画やプレイリストの合計再生時間を自動計算するシンプルなWebツールです。
 searchIntents: [YouTube 再生時間 合計 計算, 分秒 合計 ツール]
 repoCreatedAt: "2023-06-05T13:26:43Z"
-repoUpdatedAt: "2023-06-05T13:26:44Z"
+repoUpdatedAt: "2026-09-19T20:45:09Z"
 repoPushedAt: "2023-06-05T13:52:13Z"
 primaryLanguage: null
 topics: []
