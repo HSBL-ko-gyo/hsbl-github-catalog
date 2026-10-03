@@ -8,7 +8,7 @@
       "easyeda2kicad-digimou"
     ]
   },
-  "collectedAt": "2026-09-26T20:33:11.334Z",
+  "collectedAt": "2026-10-03T20:30:19.037Z",
   "repositories": [
     {
       "name": "easyeda2kicad_gui",
@@ -253,8 +253,8 @@
       "forkSourceUrl": null,
       "isEmpty": false,
       "createdAt": "2026-08-30T07:50:38Z",
-      "updatedAt": "2026-09-19T20:46:43Z",
-      "pushedAt": "2026-09-19T20:46:39Z",
+      "updatedAt": "2026-09-26T20:43:40Z",
+      "pushedAt": "2026-09-26T20:43:37Z",
       "primaryLanguage": "TypeScript",
       "topics": [],
       "defaultBranch": "main",

@@ -1,6 +1,106 @@
 {
   "schemaVersion": 1,
   "owner": "HSBL-ko-gyo",
-  "sourceCollectedAt": "2026-09-26T20:33:11.334Z",
-  "actions": []
+  "sourceCollectedAt": "2026-10-03T20:30:19.037Z",
+  "actions": [
+    {
+      "type": "readme-exact-url-repair",
+      "repo": "gif-splitter",
+      "path": "README.md",
+      "baseSha": "da73bdc8307fcb949e3788860504fcd8b4a5d2e2",
+      "from": "https://github.com/yourusername/gif-splitter.git",
+      "to": "https://github.com/HSBL-ko-gyo/gif-splitter.git"
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-100",
+      "topics": [
+        "charging",
+        "electronics",
+        "hardware",
+        "usb-c"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-120",
+      "topics": [
+        "electronics",
+        "hardware",
+        "magnetic-connector",
+        "power-supply",
+        "xiaomi-smart-band"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S100-01",
+      "topics": [
+        "arduino",
+        "atoms3",
+        "led-control",
+        "m5stack",
+        "neopixel",
+        "rgb-led"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S101",
+      "topics": [
+        "atoms3",
+        "image-display",
+        "image-transfer",
+        "m5stack",
+        "usb"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S200-01",
+      "topics": [
+        "arduino",
+        "cores3",
+        "led-control",
+        "m5stack",
+        "neopixel",
+        "rgb-led"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S220-bakusui",
+      "topics": [
+        "android",
+        "audio-player",
+        "cognitive-shuffle",
+        "sleep",
+        "voicevox"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "HSBL-S800",
+      "topics": [
+        "browser-game",
+        "mahjong",
+        "react",
+        "training",
+        "typescript",
+        "web-app"
+      ]
+    },
+    {
+      "type": "repository-metadata",
+      "repo": "Sauna-Clock-WEB-App",
+      "topics": [
+        "analog-clock",
+        "browser-tool",
+        "canvas",
+        "javascript",
+        "sauna",
+        "timer"
+      ]
+    }
+  ]
 }

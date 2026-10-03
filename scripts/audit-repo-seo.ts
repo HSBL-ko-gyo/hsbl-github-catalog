@@ -109,6 +109,65 @@ const TOPIC_HINTS: Record<string, string[]> = {
     "step",
     "windows",
   ],
+  // Uses and environments verified in data/github/readmes/<repository>.md.
+  "HSBL-100": ["charging", "electronics", "hardware", "usb-c"],
+  "HSBL-120": [
+    "electronics",
+    "hardware",
+    "magnetic-connector",
+    "power-supply",
+    "xiaomi-smart-band",
+  ],
+  "HSBL-S100-01": [
+    "arduino",
+    "atoms3",
+    "led-control",
+    "m5stack",
+    "neopixel",
+    "rgb-led",
+  ],
+  "HSBL-S101": ["atoms3", "image-display", "image-transfer", "m5stack", "usb"],
+  "HSBL-S200-01": [
+    "arduino",
+    "cores3",
+    "led-control",
+    "m5stack",
+    "neopixel",
+    "rgb-led",
+  ],
+  "HSBL-S220-bakusui": [
+    "android",
+    "audio-player",
+    "cognitive-shuffle",
+    "sleep",
+    "voicevox",
+  ],
+  "HSBL-S800": [
+    "browser-game",
+    "mahjong",
+    "react",
+    "training",
+    "typescript",
+    "web-app",
+  ],
+  "Sauna-Clock-WEB-App": [
+    "analog-clock",
+    "browser-tool",
+    "canvas",
+    "javascript",
+    "sauna",
+    "timer",
+  ],
+};
+const EXACT_URL_REPAIRS: Record<string, { from: string; to: string }> = {
+  easyeda2kicad_gui: {
+    from: "https://github.com/YOUR_USERNAME/easyeda2kicad_gui/releases",
+    to: "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases",
+  },
+  "gif-splitter": {
+    from: "https://github.com/yourusername/gif-splitter.git",
+    to: "https://github.com/HSBL-ko-gyo/gif-splitter.git",
+  },
 };
 
 function managedBlock(
@@ -226,15 +285,14 @@ async function main(): Promise<void> {
       }
     }
 
+    const repair = EXACT_URL_REPAIRS[project.data.repo];
     if (
-      project.data.repo === "easyeda2kicad_gui" &&
+      repair &&
       repairCount < policy.limits.maxExactUrlRepairsPerRun &&
       repository.readmePath &&
       repository.readmeSha
     ) {
-      const from =
-        "https://github.com/YOUR_USERNAME/easyeda2kicad_gui/releases";
-      const to = "https://github.com/HSBL-ko-gyo/easyeda2kicad_gui/releases";
+      const { from, to } = repair;
       const current = await readFile(
         resolve(ROOT, "data/github/readmes", `${project.data.repo}.md`),
         "utf8",
