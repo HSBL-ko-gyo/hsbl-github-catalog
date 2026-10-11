@@ -22,6 +22,10 @@ publication:
       source: https://github.com/uPesy/easyeda2kicad.py
       reason: 販売元メタデータ対応を加えた公開派生版として、forkであることを明示して掲載
   allowedExternalProjects:
+    - slug: seikou-udoku
+      url: https://seikou-udoku.pages.dev/
+      evidence: https://seikou-udoku.pages.dev/about/
+      reason: 公式サイトの公開紹介でハシビロ工業制作、雨雲レーダーの機能、試験機能と検証範囲を確認できるWebアプリ
     - slug: aotori-575
       url: https://575.hsbl-ko-gyo.com/
       evidence: https://note.com/hsbl_ko_gyo/n/ndaf60e3124ba
