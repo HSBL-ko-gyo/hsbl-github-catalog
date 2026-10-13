@@ -23,8 +23,8 @@ publication:
       reason: 販売元メタデータ対応を加えた公開派生版として、forkであることを明示して掲載
   allowedExternalProjects:
     - slug: seikou-udoku
-      url: https://seikou-udoku.pages.dev/
-      evidence: https://seikou-udoku.pages.dev/about/
+      url: https://seikou-udoku.hsbl-ko-gyo.com/
+      evidence: https://seikou-udoku.hsbl-ko-gyo.com/about/
       reason: 公式サイトの公開紹介でハシビロ工業制作、雨雲レーダーの機能、試験機能と検証範囲を確認できるWebアプリ
     - slug: aotori-575
       url: https://575.hsbl-ko-gyo.com/

@@ -11,16 +11,16 @@ draft: false
 featured: true
 createdYear: 2026
 links:
-  app: https://seikou-udoku.pages.dev/
-  article: https://seikou-udoku.pages.dev/about/
+  app: https://seikou-udoku.hsbl-ko-gyo.com/
+  article: https://seikou-udoku.hsbl-ko-gyo.com/about/
 thumbnail: /images/projects/seikou-udoku.png
 seoTitle: 晴攻雨読｜現在地・進行方向に追従する雨雲レーダー | ハシビロ工業 GitHub
 seoDescription: 晴攻雨読は、現在地と進行方向に追従する雨雲レーダーです。気象庁の実況・予測を地図に重ね、時間バーで過去・未来の雨雲を選べます。ナビと並べて見ることを想定したWebアプリです。
 searchIntents: [現在地 追従 雨雲レーダー, 進行方向 雨雲 地図, 雨雲レーダー 時間バー, ナビ 画面分割 雨雲]
 publishedAt: "2026-09-26T06:56:11Z"
 sourceEvidence:
-  - https://seikou-udoku.pages.dev/
-  - https://seikou-udoku.pages.dev/about/
+  - https://seikou-udoku.hsbl-ko-gyo.com/
+  - https://seikou-udoku.hsbl-ko-gyo.com/about/
 ---
 
 ## 現在地に合わせて雨雲を見る
@@ -35,4 +35,4 @@ sourceEvidence:
 
 Androidでナビアプリと画面分割して使うことを想定したWebアプリで、PWAとしてホーム画面にも追加できます。Android実機での画面分割・実GPS・実走行は未検証です。画面消灯中や完全なバックグラウンドでの継続測位は対象外です。
 
-「この道の先の雨域を調べる」は試験機能です。収録された道路を道なりに進む仮定で雨域との重なりを確認します。外部ナビの経路は受け取らず、通行可能や雨なしを保証するものではありません。制作元と利用範囲は[晴攻雨読について](https://seikou-udoku.pages.dev/about/)にまとめています。
+「この道の先の雨域を調べる」は試験機能です。収録された道路を道なりに進む仮定で雨域との重なりを確認します。外部ナビの経路は受け取らず、通行可能や雨なしを保証するものではありません。制作元と利用範囲は[晴攻雨読について](https://seikou-udoku.hsbl-ko-gyo.com/about/)にまとめています。
